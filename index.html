@@ -602,7 +602,7 @@
                     </div>
                     <i class="fa-solid fa-cube text-4xl text-[#00f3ff]/70 group-hover:text-[#00f3ff] transition-colors"></i>
                 </div>
-                <p class="text-white/70 mb-6">Conceptual framework for real-life 3D holographic projections. Explores immersive visualization, future HCI, education, and communication use cases.</p>
+                <p class="text-white/70 mb-6">Conceptual framework for real-life 3D holographic projections using off-the-shelf components and custom optics.</p>
                 
                 <div class="flex flex-wrap gap-2 mb-8">
                     <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">AR/VR</div>
@@ -657,7 +657,7 @@
                 <p class="text-sm text-white/70 mb-6">Full-featured AI voice assistant for Android. Natural conversations, device control, offline mode, and seamless sync with your desktop JARVIS.</p>
                 
                 <div class="flex gap-x-3">
-                    <a href="#" onclick="fakeDownload(this, 'omnexa-ai-v2.1.4.apk'); return false;" 
+                    <a href="/downloads/omne xa-ai-v2.1.4.apk" download="omnexa-ai-v2.1.4.apk"
                        class="flex-1 neon-button text-center py-4 rounded-2xl text-sm font-semibold flex items-center justify-center gap-x-2 group-hover:shadow-[0_0_25px_#00f3ff]">
                         <i class="fa-solid fa-download"></i>
                         <span>DOWNLOAD APK</span>
@@ -1284,7 +1284,6 @@
                 
                 setTimeout(() => {
                     closeModal();
-                    // Show success toast
                     showToast("Experiment successfully launched in Omnexa Lab");
                 }, 1400);
             }, 1650);
@@ -1357,7 +1356,6 @@
                     form.style.borderColor = '';
                     form.style.boxShadow = '';
                     
-                    // Extra: scroll to top or show terminal hint
                     showToast("Thank you. The future awaits your signal.");
                 }, 1800);
             }, 1350);
@@ -1373,10 +1371,6 @@
                 element.style.background = 'linear-gradient(to right, #10b981, #34d399)';
                 element.style.color = 'black';
                 
-                // In real version: change href to your actual APK URL
-                // Example: element.href = "https://yourdomain.com/downloads/OMNEXA-AI-v2.1.4.apk";
-                // element.download = filename;
-                
                 setTimeout(() => {
                     showToast(`In production: This would download ${filename} (68 MB)`);
                     
@@ -1386,7 +1380,6 @@
                     element.style.color = '';
                     element.style.pointerEvents = 'auto';
                     
-                    // Show helpful message
                     setTimeout(() => {
                         showToast("To add your real APK: Upload to GitHub Releases or Netlify, then update the href in index.html");
                     }, 3200);
@@ -1404,7 +1397,6 @@
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             
-            // Welcome message if empty
             if (output.children.length === 0) {
                 output.innerHTML = `
                     <div class="text-[#00f3ff]/70">OMNEXA SECURE TERMINAL v4.2.1</div>
@@ -1432,12 +1424,10 @@
                 
                 const output = document.getElementById('terminalOutput');
                 
-                // Add command line
                 const cmdLine = document.createElement('div');
                 cmdLine.innerHTML = `<span class="text-[#00f3ff]">root@omexa:~$</span> <span class="text-white">${value}</span>`;
                 output.appendChild(cmdLine);
                 
-                // Process command
                 processTerminalCommand(value, output);
                 
                 input.value = '';
@@ -1507,7 +1497,6 @@
             output.scrollTop = output.scrollHeight;
         }
         
-        // Add subtle scroll animations
         function initScrollAnimations() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1527,7 +1516,6 @@
             });
         }
         
-        // Keyboard shortcuts
         function initKeyboardShortcuts() {
             document.addEventListener('keydown', function(e) {
                 if (e.key === '?' && document.activeElement.tagName === 'BODY') {
@@ -1546,7 +1534,6 @@
                 }
             });
             
-            // Easter egg: Konami code for extra neon
             let konami = [];
             const code = [38,38,40,40,37,39,37,39,66,65];
             document.addEventListener('keydown', function(e) {
@@ -1561,14 +1548,12 @@
             });
         }
         
-        // Main Init
         function initializeWebsite() {
             initializeTailwind();
             createParticles();
             initScrollAnimations();
             initKeyboardShortcuts();
             
-            // Random particle burst every 12s
             setInterval(() => {
                 const container = document.getElementById('particles');
                 if (container) {
@@ -1578,10 +1563,8 @@
                 }
             }, 12000);
             
-            // Boot message in console
             console.log('%c[O.M.N.E.X.A] Futuristic portfolio initialized successfully. All systems nominal.', 'color:#00f3ff; font-size:9px');
             
-            // Optional: Auto open terminal hint after 45s
             setTimeout(() => {
                 const hint = document.createElement('div');
                 hint.className = 'fixed bottom-6 right-6 text-xs px-4 py-2 glass rounded-full border border-white/20 hidden md:flex items-center gap-x-2 text-white/50';
@@ -1593,14 +1576,11 @@
                 }, 5200);
             }, 45000);
             
-            // Make sure contact email is correct
             console.log('%c[O.M.N.E.X.A] Contact email set to acidicskull422@gmail.com', 'color:#666');
         }
         
-        // Boot the site
         window.onload = initializeWebsite;
         
-        // Expose some functions globally for fun
         window.omexa = {
             launch: (proj) => showProjectModal(proj),
             terminal: () => openTerminal(),
