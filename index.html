@@ -61,103 +61,6 @@
             border: 1px solid rgba(0, 243, 255, 0.1);
         }
 
-        .section-header {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60%;
-            height: 2px;
-            background: linear-gradient(to right, var(--neon-cyan), var(--neon-pink));
-            box-shadow: 0 0 10px var(--neon-cyan);
-        }
-
-        .project-card {
-            transition: all 0.4s cubic-bezier(0.23, 1.0, 0.32, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0,243,255,0.08) 0%, transparent 70%);
-            opacity: 0;
-            transition: all 0.6s ease;
-            pointer-events: none;
-        }
-        
-        .project-card:hover::before {
-            opacity: 1;
-            transform: rotate(30deg);
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 
-                0 0 15px var(--neon-cyan),
-                0 0 35px var(--neon-pink);
-        }
-
-        .neon-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid var(--neon-cyan);
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
-        }
-        
-        .neon-button:hover {
-            background: rgba(0, 243, 255, 0.1);
-            box-shadow: 
-                0 0 20px var(--neon-cyan),
-                0 0 40px var(--neon-pink);
-            transform: translateY(-1px);
-        }
-
-        .neon-button::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -100%;
-            width: 50%;
-            height: 200%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.4),
-                transparent
-            );
-            transition: 0.6s;
-        }
-        
-        .neon-button:hover::after {
-            left: 200%;
-        }
-
-        .glitch {
-            position: relative;
-            animation: glitch 4s infinite;
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
-
         .futuristic-grid {
             background-image: 
                 linear-gradient(rgba(0, 243, 255, 0.06) 1px, transparent 1px),
@@ -187,64 +90,20 @@
             100% { transform: scale(0); opacity: 0; }
         }
 
-        .skill-tag {
-            transition: all 0.2s ease;
+        .neon-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
         }
         
-        .skill-tag:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--neon-cyan);
-        }
-
-        .terminal {
-            font-family: 'Courier New', monospace;
-            background: #0a0a0f;
-            border: 1px solid #00f3ff;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
-        }
-
-        .scanline {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent 50%,
-                rgba(0, 255, 255, 0.08) 50%
-            );
-            background-size: 100% 4px;
-            pointer-events: none;
-            animation: scan 1.5s linear infinite;
-        }
-
-        .matrix-rain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .status-dot {
-            animation: pulse 2s infinite;
-        }
-
-        .holo-text {
-            background: linear-gradient(90deg, #00f3ff, #ff00aa, #00f3ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: holo-shift 3s linear infinite;
-        }
-
-        @keyframes holo-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .neon-button:hover {
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 
+                0 0 20px var(--neon-cyan),
+                0 0 40px var(--neon-pink);
+            transform: translateY(-1px);
         }
 
         .nav-link {
@@ -265,26 +124,30 @@
         .nav-link:hover::after {
             width: 100%;
         }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem !important;
+                line-height: 1 !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-[#050507] text-white overflow-x-hidden">
     <!-- NAV -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
         <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-x-4">
-                <!-- Logo -->
-                <div class="flex items-center gap-x-3">
-                    <div class="w-11 h-11 rounded-full border border-[#00f3ff] flex items-center justify-center neon-glow">
-                        <i class="fa-solid fa-infinity text-[#00f3ff] text-3xl"></i>
-                    </div>
-                    <div>
-                        <div class="font-futuristic text-3xl font-bold tracking-[4px] neon-text">O.M.N.E.X.A</div>
-                        <div class="text-[10px] text-[#00f3ff]/70 -mt-1 tracking-[3px]">EST 2026</div>
-                    </div>
+            <div class="flex items-center gap-x-3">
+                <div class="w-10 h-10 rounded-full border border-[#00f3ff] flex items-center justify-center neon-glow">
+                    <i class="fa-solid fa-infinity text-[#00f3ff] text-3xl"></i>
+                </div>
+                <div>
+                    <div class="font-futuristic text-2xl md:text-3xl font-bold tracking-[3px] neon-text">O.M.N.E.X.A</div>
+                    <div class="text-[9px] text-[#00f3ff]/70 -mt-1 tracking-[2px]">EST 2026</div>
                 </div>
             </div>
             
-            <div class="hidden md:flex items-center gap-x-10 text-sm uppercase tracking-widest">
+            <div class="hidden md:flex items-center gap-x-8 text-sm uppercase tracking-widest">
                 <a href="#about" class="nav-link text-white/80 hover:text-white transition-colors">ABOUT</a>
                 <a href="#projects" class="nav-link text-white/80 hover:text-white transition-colors">PROJECTS</a>
                 <a href="#downloads" class="nav-link text-white/80 hover:text-white transition-colors">APPS</a>
@@ -292,17 +155,16 @@
                 <a href="#vision" class="nav-link text-white/80 hover:text-white transition-colors">VISION</a>
             </div>
             
-            <div class="flex items-center gap-x-4">
+            <div class="flex items-center gap-x-3">
                 <button onclick="openTerminal()" 
-                        class="px-6 py-2.5 text-xs font-medium border border-[#00f3ff] text-[#00f3ff] hover:bg-[#00f3ff]/10 rounded-full flex items-center gap-x-2 transition-all neon-button">
+                        class="px-5 py-2 text-xs font-medium border border-[#00f3ff] text-[#00f3ff] hover:bg-[#00f3ff]/10 rounded-full flex items-center gap-x-2 transition-all neon-button">
                     <i class="fa-solid fa-terminal"></i>
-                    <span class="hidden md:inline">ACCESS TERMINAL</span>
+                    <span class="hidden md:inline">TERMINAL</span>
                 </button>
                 
                 <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
-                        class="px-6 py-2.5 bg-white text-black text-xs font-semibold rounded-full flex items-center gap-x-2 hover:bg-[#00f3ff] hover:text-black transition-all">
+                        class="px-5 py-2 bg-white text-black text-xs font-semibold rounded-full flex items-center gap-x-2 hover:bg-[#00f3ff] hover:text-black transition-all">
                     <span>CONNECT</span>
-                    <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
         </div>
@@ -310,80 +172,56 @@
 
     <!-- HERO -->
     <div class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-        <!-- Animated Background -->
         <div class="absolute inset-0 futuristic-grid"></div>
-        
-        <!-- Floating Particles -->
         <div id="particles" class="absolute inset-0"></div>
-        
-        <!-- Subtle Scanlines -->
         <div class="absolute inset-0 scanline opacity-30"></div>
         
         <div class="relative z-10 max-w-5xl px-6 text-center">
-            <div class="inline-flex items-center gap-x-2 px-4 py-1 rounded-full border border-[#00f3ff]/40 mb-8">
+            <div class="inline-flex items-center gap-x-2 px-4 py-1 rounded-full border border-[#00f3ff]/40 mb-6 md:mb-8">
                 <div class="w-2 h-2 bg-[#00f3ff] rounded-full status-dot"></div>
                 <span class="uppercase text-xs tracking-[3px] text-[#00f3ff]">LIVE • EXPERIMENTAL AI LAB</span>
             </div>
             
-            <h1 class="text-[92px] md:text-[120px] leading-[0.92] font-futuristic font-bold tracking-[-4px] mb-6">
-                <span class="neon-text">O.M.N.E.X.A</span>
+            <h1 class="hero-title text-6xl md:text-[110px] leading-none font-futuristic font-bold tracking-[-3px] mb-6 neon-text">
+                O.M.N.E.X.A
             </h1>
             
             <p class="max-w-2xl mx-auto text-2xl md:text-3xl text-white/70 mb-4 tracking-tight">
-                Pioneering <span class="holo-text font-semibold">human-centric</span> artificial intelligence
+                Pioneering <span class="holo-text font-semibold">human-centric</span> AI
             </p>
             
-            <p class="max-w-md mx-auto text-white/50 mb-12 text-lg">
-                Where imagination meets code. Building the future, one experiment at a time.
+            <p class="max-w-md mx-auto text-white/50 mb-10 text-lg">
+                Where imagination meets code.
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
-                        class="neon-button group px-10 py-4 rounded-full flex items-center justify-center gap-x-3 text-lg font-medium border border-[#00f3ff]">
+                        class="neon-button px-8 md:px-10 py-4 rounded-full flex items-center justify-center gap-x-3 text-lg font-medium border border-[#00f3ff]">
                     <span>EXPLORE PROJECTS</span>
-                    <i class="fa-solid fa-rocket group-active:rotate-45 transition-transform"></i>
+                    <i class="fa-solid fa-rocket"></i>
                 </button>
                 
                 <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })" 
-                        class="px-10 py-4 rounded-full border border-white/20 hover:bg-white/5 flex items-center justify-center gap-x-3 text-lg font-medium transition-all">
+                        class="px-8 md:px-10 py-4 rounded-full border border-white/20 hover:bg-white/5 flex items-center justify-center gap-x-3 text-lg font-medium transition-all">
                     <span>MEET THE FOUNDER</span>
                 </button>
             </div>
-            
-            <div class="mt-16 flex justify-center">
-                <div class="flex items-center gap-x-8 text-xs uppercase tracking-[2px] text-white/40">
-                    <div>SCROLL TO BEGIN</div>
-                    <div class="w-px h-8 bg-white/20"></div>
-                    <div class="flex gap-x-1">
-                        <i class="fa-solid fa-chevron-down animate-bounce"></i>
-                    </div>
-                </div>
-            </div>
         </div>
-        
-        <!-- Corner Accents -->
-        <div class="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-[#00f3ff]/40"></div>
-        <div class="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-[#00f3ff]/40"></div>
-        <div class="absolute bottom-8 left-8 w-16 h-16 border-l-2 border-b-2 border-[#00f3ff]/40"></div>
-        <div class="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-[#00f3ff]/40"></div>
     </div>
 
     <!-- ABOUT -->
-    <div id="about" class="max-w-7xl mx-auto px-8 py-24 border-t border-white/10">
-        <div class="grid md:grid-cols-12 gap-16 items-center">
+    <div id="about" class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 border-t border-white/10">
+        <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
             <div class="md:col-span-7">
                 <div class="uppercase tracking-[3px] text-sm text-[#00f3ff] mb-4">CHAPTER 01 • ORIGIN STORY</div>
-                <h2 class="text-6xl font-futuristic tracking-tighter leading-none mb-8">The Mind Behind<br>the Machine</h2>
+                <h2 class="text-5xl md:text-6xl font-futuristic tracking-tighter leading-none mb-8">The Mind Behind<br>the Machine</h2>
                 
                 <div class="max-w-2xl text-lg text-white/70 space-y-6">
                     <p>A highly curious and innovation-driven technology enthusiast with a deep passion for Artificial Intelligence, futuristic systems, and creative problem solving.</p>
-                    
-                    <p>I am the founder of <span class="text-[#00f3ff]">Omnexa</span>, an independent experimental initiative focused on exploring the future of human-AI collaboration. My flagship creation, <span class="font-semibold text-white">JARVIS</span>, is an experimental AI personal assistant inspired by the advanced AI concept from Iron Man.</p>
-                    
-                    <p>Beyond technology, I mentor NDA aspirants and run <span class="text-[#ff00aa]">Bharwan Diaries</span> — a digital platform for raw conversations, leadership insights, and interviews with inspiring personalities like Col. Rajeev Bharwan.</p>
+                    <p>I am the founder of <span class="text-[#00f3ff]">Omnexa</span>, focused on human-AI collaboration. My flagship creation <span class="font-semibold text-white">JARVIS</span> is an experimental AI personal assistant inspired by Iron Man.</p>
                 </div>
                 
-                <div class="mt-10 flex flex-wrap gap-3">
+                <div class="mt-8 flex flex-wrap gap-3">
                     <div class="px-5 py-2 glass rounded-full text-sm flex items-center gap-x-2">
                         <i class="fa-solid fa-graduation-cap text-[#00f3ff]"></i>
                         <span>BSc • CSJMU (First Division)</span>
@@ -396,10 +234,8 @@
             </div>
             
             <div class="md:col-span-5">
-                <div class="glass p-8 rounded-3xl neon-border relative">
-                    <div class="absolute -top-4 -right-4 bg-[#050507] px-4 py-1 text-xs border border-[#00f3ff]/50 rounded">CURRENT STATUS</div>
-                    
-                    <div class="space-y-6">
+                <div class="glass p-8 rounded-3xl neon-border">
+                    <div class="space-y-5">
                         <div>
                             <div class="flex justify-between text-sm mb-2">
                                 <span class="text-white/60">AI EXPERIMENTS</span>
@@ -409,7 +245,6 @@
                                 <div class="h-1.5 w-[92%] bg-gradient-to-r from-[#00f3ff] to-[#ff00aa]"></div>
                             </div>
                         </div>
-                        
                         <div>
                             <div class="flex justify-between text-sm mb-2">
                                 <span class="text-white/60">PROTOTYPES BUILT</span>
@@ -419,1176 +254,168 @@
                                 <div class="h-1.5 w-[78%] bg-gradient-to-r from-[#00f3ff] to-[#ff00aa]"></div>
                             </div>
                         </div>
-                        
-                        <div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-white/60">STUDENTS MENTORED</span>
-                                <span class="font-mono text-[#00f3ff]">30+</span>
-                            </div>
-                            <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                <div class="h-1.5 w-[100%] bg-gradient-to-r from-[#00f3ff] to-[#ff00aa]"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 pt-6 border-t border-white/10 text-xs flex items-center gap-x-2 text-[#00f3ff]">
-                        <i class="fa-solid fa-satellite"></i>
-                        <span class="uppercase tracking-widest">OMNEXA INITIATIVE • ACTIVE</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- PROJECTS -->
-    <div id="projects" class="max-w-7xl mx-auto px-8 py-20 border-t border-white/10">
-        <div class="flex justify-between items-end mb-12">
+    <!-- PROJECTS + DOWNLOADS -->
+    <div id="projects" class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-20 border-t border-white/10">
+        <div class="flex justify-between items-end mb-10">
             <div>
                 <div class="uppercase tracking-[3px] text-sm text-[#00f3ff]">CHAPTER 02 • THE LAB</div>
-                <h2 class="text-6xl font-futuristic tracking-tighter">Featured Experiments</h2>
-            </div>
-            <div class="hidden md:block text-right">
-                <div class="text-sm text-white/50">8 ACTIVE PROJECTS</div>
-                <div class="text-xs text-[#00f3ff]">UPDATED JAN 2026</div>
+                <h2 class="text-5xl md:text-6xl font-futuristic tracking-tighter">Featured Experiments</h2>
             </div>
         </div>
         
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- JARVIS Full -->
-            <div class="project-card glass rounded-3xl p-8 group neon-border">
-                <div class="flex justify-between items-start mb-8">
+            <!-- JARVIS -->
+            <div class="project-card glass rounded-3xl p-8 neon-border">
+                <div class="flex justify-between items-start mb-6">
                     <div>
                         <div class="text-[#00f3ff] text-xs tracking-[2px]">CORE • 2024</div>
                         <div class="text-3xl font-semibold mt-1">JARVIS 2.0</div>
                     </div>
-                    <i class="fa-solid fa-robot text-4xl text-[#00f3ff]/70 group-hover:text-[#00f3ff] transition-colors"></i>
+                    <i class="fa-solid fa-robot text-4xl text-[#00f3ff]/70"></i>
                 </div>
-                <p class="text-white/70 mb-6">Fully functional real-life JARVIS with complete PC automation, voice interaction, intelligent task execution, and advanced context awareness. Inspired by Iron Man.</p>
-                
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">Voice AI</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">PC Automation</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">Multi-modal</div>
-                </div>
-                
-                <button onclick="showProjectModal('jarvis')" class="text-sm flex items-center gap-x-2 text-[#00f3ff] hover:text-white group-hover:gap-x-3 transition-all">
-                    <span>VIEW FULL SPEC</span> 
-                    <i class="fa-solid fa-arrow-right"></i>
+                <p class="text-white/70 mb-6">Fully functional real-life JARVIS with complete PC automation, voice interaction, and advanced context awareness.</p>
+                <button onclick="showProjectModal('jarvis')" class="text-sm flex items-center gap-x-2 text-[#00f3ff] hover:text-white">
+                    <span>VIEW FULL SPEC</span> <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
             
-            <!-- Android AI Assistant -->
-            <div class="project-card glass rounded-3xl p-8 group neon-border">
-                <div class="flex justify-between items-start mb-8">
+            <!-- OMNEXA AI (Android) -->
+            <div class="project-card glass rounded-3xl p-8 neon-border">
+                <div class="flex justify-between items-start mb-6">
                     <div>
                         <div class="text-[#ff00aa] text-xs tracking-[2px]">MOBILE • 2025</div>
                         <div class="text-3xl font-semibold mt-1">OMNEXA AI</div>
                     </div>
-                    <i class="fa-solid fa-mobile-alt text-4xl text-[#ff00aa]/70 group-hover:text-[#ff00aa] transition-colors"></i>
+                    <i class="fa-solid fa-mobile-alt text-4xl text-[#ff00aa]/70"></i>
                 </div>
-                <p class="text-white/70 mb-6">Advanced AI voice assistant for Android — more capable than Siri. Features natural conversation, proactive assistance, device control, and seamless integration with Omnexa ecosystem.</p>
-                
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#ff00aa]/10 text-[#ff00aa] rounded-full">Android</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#ff00aa]/10 text-[#ff00aa] rounded-full">LLM</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#ff00aa]/10 text-[#ff00aa] rounded-full">Offline Mode</div>
-                </div>
-                
-                <button onclick="showProjectModal('android')" class="text-sm flex items-center gap-x-2 text-[#ff00aa] hover:text-white group-hover:gap-x-3 transition-all">
-                    <span>EXPLORE FEATURES</span> 
-                    <i class="fa-solid fa-arrow-right"></i>
+                <p class="text-white/70 mb-6">Advanced AI voice assistant for Android — more capable than Siri. Works offline and syncs with desktop JARVIS.</p>
+                <button onclick="showProjectModal('android')" class="text-sm flex items-center gap-x-2 text-[#ff00aa] hover:text-white">
+                    <span>EXPLORE FEATURES</span> <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
             
-            <!-- Creators AI Tool -->
-            <div class="project-card glass rounded-3xl p-8 group neon-border">
-                <div class="flex justify-between items-start mb-8">
+            <!-- Creator AI -->
+            <div class="project-card glass rounded-3xl p-8 neon-border">
+                <div class="flex justify-between items-start mb-6">
                     <div>
                         <div class="text-[#7b2cbf] text-xs tracking-[2px]">CREATOR OS • 2025</div>
                         <div class="text-3xl font-semibold mt-1">CREATOR AI</div>
                     </div>
-                    <i class="fa-solid fa-chart-line text-4xl text-[#7b2cbf]/70 group-hover:text-[#7b2cbf] transition-colors"></i>
+                    <i class="fa-solid fa-chart-line text-4xl text-[#7b2cbf]/70"></i>
                 </div>
-                <p class="text-white/70 mb-6">AI-powered growth engine for content creators. Analyzes trends, generates viral hooks, optimizes posting times, suggests content ideas, and automates engagement across platforms.</p>
-                
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#7b2cbf]/10 text-[#7b2cbf] rounded-full">Social Analytics</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#7b2cbf]/10 text-[#7b2cbf] rounded-full">Viral Prediction</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#7b2cbf]/10 text-[#7b2cbf] rounded-full">Multi-platform</div>
-                </div>
-                
-                <button onclick="showProjectModal('creator')" class="text-sm flex items-center gap-x-2 text-[#7b2cbf] hover:text-white group-hover:gap-x-3 transition-all">
-                    <span>SEE DEMO</span> 
-                    <i class="fa-solid fa-arrow-right"></i>
+                <p class="text-white/70 mb-6">AI-powered growth engine for content creators. Generates viral hooks, optimizes posting times, and automates engagement.</p>
+                <button onclick="showProjectModal('creator')" class="text-sm flex items-center gap-x-2 text-[#7b2cbf] hover:text-white">
+                    <span>SEE DEMO</span> <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
-            
-            <!-- Trading AI Bot -->
-            <div class="project-card glass rounded-3xl p-8 group neon-border">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <div class="text-[#00f3ff] text-xs tracking-[2px]">FINANCE • 2025</div>
-                        <div class="text-3xl font-semibold mt-1">NEXUS TRADER</div>
-                    </div>
-                    <i class="fa-solid fa-chart-area text-4xl text-[#00f3ff]/70 group-hover:text-[#00f3ff] transition-colors"></i>
-                </div>
-                <p class="text-white/70 mb-6">Intelligent trading bot with real-time market analysis, sentiment tracking from social &amp; news, risk management, and autonomous execution across crypto &amp; stocks.</p>
-                
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">Live Markets</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">Sentiment AI</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">Backtesting</div>
-                </div>
-                
-                <button onclick="showProjectModal('trading')" class="text-sm flex items-center gap-x-2 text-[#00f3ff] hover:text-white group-hover:gap-x-3 transition-all">
-                    <span>VIEW PERFORMANCE</span> 
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- Recon Tool -->
-            <div class="project-card glass rounded-3xl p-8 group neon-border">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <div class="text-[#ff00aa] text-xs tracking-[2px]">CYBER • 2024</div>
-                        <div class="text-3xl font-semibold mt-1">SHADOW RECON</div>
-                    </div>
-                    <i class="fa-solid fa-search text-4xl text-[#ff00aa]/70 group-hover:text-[#ff00aa] transition-colors"></i>
-                </div>
-                <p class="text-white/70 mb-6">Advanced reconnaissance framework for Kali Linux. Automated OSINT, network mapping, vulnerability scanning, and stealthy information gathering with beautiful reporting.</p>
-                
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#ff00aa]/10 text-[#ff00aa] rounded-full">Kali Linux</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#ff00aa]/10 text-[#ff00aa] rounded-full">OSINT</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#ff00aa]/10 text-[#ff00aa] rounded-full">Stealth Mode</div>
-                </div>
-                
-                <button onclick="showProjectModal('recon')" class="text-sm flex items-center gap-x-2 text-[#ff00aa] hover:text-white group-hover:gap-x-3 transition-all">
-                    <span>ACCESS DOCS</span> 
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- WiFi Deauth -->
-            <div class="project-card glass rounded-3xl p-8 group neon-border">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <div class="text-[#7b2cbf] text-xs tracking-[2px]">DEFENSE • 2024</div>
-                        <div class="text-3xl font-semibold mt-1">PHANTOM JAMMER</div>
-                    </div>
-                    <i class="fa-solid fa-wifi text-4xl text-[#7b2cbf]/70 group-hover:text-[#7b2cbf] transition-colors"></i>
-                </div>
-                <p class="text-white/70 mb-6">Educational WiFi deauthentication &amp; jamming scripts with ethical guidelines. Includes packet crafting, targeted deauth, and real-time network visualization for learning purposes.</p>
-                
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#7b2cbf]/10 text-[#7b2cbf] rounded-full">802.11</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#7b2cbf]/10 text-[#7b2cbf] rounded-full">Scapy</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#7b2cbf]/10 text-[#7b2cbf] rounded-full">Educational</div>
-                </div>
-                
-                <button onclick="showProjectModal('wifi')" class="text-sm flex items-center gap-x-2 text-[#7b2cbf] hover:text-white group-hover:gap-x-3 transition-all">
-                    <span>LEARN MORE</span> 
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- 3D Holographic -->
-            <div class="project-card glass rounded-3xl p-8 group neon-border md:col-span-2 lg:col-span-1">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <div class="text-[#00f3ff] text-xs tracking-[2px]">HARDWARE • 2025</div>
-                        <div class="text-3xl font-semibold mt-1">HOLO FORGE</div>
-                    </div>
-                    <i class="fa-solid fa-cube text-4xl text-[#00f3ff]/70 group-hover:text-[#00f3ff] transition-colors"></i>
-                </div>
-                <p class="text-white/70 mb-6">Conceptual framework for real-life 3D holographic projections using off-the-shelf components and custom optics.</p>
-                
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">AR/VR</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">Optics</div>
-                    <div class="skill-tag text-xs px-3 py-1 bg-[#00f3ff]/10 text-[#00f3ff] rounded-full">Futuristic UI</div>
-                </div>
-                
-                <button onclick="showProjectModal('holo')" class="text-sm flex items-center gap-x-2 text-[#00f3ff] hover:text-white group-hover:gap-x-3 transition-all">
-                    <span>WATCH CONCEPT</span> 
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-            
-        </div>
-        
-        <div class="mt-8 text-center">
-            <button onclick="showProjectModal('cyber')" class="text-sm px-8 py-3 border border-white/30 hover:bg-white/5 rounded-full flex items-center gap-x-2 mx-auto">
-                <span>VIEW ALL CYBERSECURITY EXPERIMENTS</span>
-                <i class="fa-solid fa-shield-halved"></i>
-            </button>
         </div>
     </div>
 
-    <!-- DOWNLOADS / APPS -->
-    <div id="downloads" class="max-w-7xl mx-auto px-8 py-20 border-t border-white/10">
+    <!-- DOWNLOADS SECTION -->
+    <div id="downloads" class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-20 border-t border-white/10 bg-[#0a0a0f]">
         <div class="text-center mb-12">
             <div class="uppercase tracking-[3px] text-sm text-[#ff00aa]">GET THE BUILDS</div>
-            <h2 class="text-6xl font-futuristic tracking-tighter mt-2">Omnexa Apps</h2>
-            <p class="mt-4 text-white/60 max-w-md mx-auto">Experimental AI systems ready for your devices. Download the latest APKs and builds.</p>
+            <h2 class="text-5xl md:text-6xl font-futuristic tracking-tighter mt-2">Omnexa Apps</h2>
+            <p class="mt-4 text-white/60 max-w-md mx-auto">Download the latest experimental AI systems for your devices.</p>
         </div>
         
-        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            
-            <!-- Android APK -->
-            <div class="glass rounded-3xl p-8 neon-border group">
-                <div class="flex items-start justify-between mb-6">
-                    <div class="flex items-center gap-x-4">
-                        <div class="w-14 h-14 rounded-2xl bg-[#00f3ff]/10 flex items-center justify-center">
-                            <i class="fa-brands fa-android text-4xl text-[#00f3ff]"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-3xl">OMNEXA AI</div>
-                            <div class="text-xs text-[#00f3ff] font-mono">ANDROID • v2.1.4</div>
-                        </div>
+        <div class="max-w-md mx-auto">
+            <div class="glass rounded-3xl p-8 neon-border">
+                <div class="flex items-center gap-x-4 mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-[#00f3ff]/10 flex items-center justify-center">
+                        <i class="fa-brands fa-android text-4xl text-[#00f3ff]"></i>
                     </div>
-                    <div class="text-right">
-                        <div class="text-xs text-white/50">68 MB</div>
-                        <div class="text-[10px] text-emerald-400">LIVE</div>
+                    <div>
+                        <div class="font-semibold text-3xl">OMNEXA AI</div>
+                        <div class="text-xs text-[#00f3ff] font-mono">ANDROID • v2.1.4 • 68 MB</div>
                     </div>
                 </div>
                 
-                <p class="text-sm text-white/70 mb-6">Full-featured AI voice assistant for Android. Natural conversations, device control, offline mode, and seamless sync with your desktop JARVIS.</p>
+                <p class="text-sm text-white/70 mb-6">Advanced AI voice assistant for Android. Natural conversations, device control, offline mode, and seamless sync with desktop JARVIS.</p>
                 
-                <div class="flex gap-x-3">
-                    <a href="/downloads/omne xa-ai-v2.1.4.apk" download="omnexa-ai-v2.1.4.apk"
-                       class="flex-1 neon-button text-center py-4 rounded-2xl text-sm font-semibold flex items-center justify-center gap-x-2 group-hover:shadow-[0_0_25px_#00f3ff]">
-                        <i class="fa-solid fa-download"></i>
-                        <span>DOWNLOAD APK</span>
-                    </a>
-                    <button onclick="showProjectModal('android')" 
-                            class="px-6 py-4 border border-white/30 rounded-2xl text-xs hover:bg-white/5 transition-colors">DETAILS</button>
-                </div>
+                <a href="/downloads/omne xa-ai-v2.1.4.apk" download="omnexa-ai-v2.1.4.apk"
+                   class="block w-full neon-button text-center py-4 rounded-2xl text-sm font-semibold flex items-center justify-center gap-x-2">
+                    <i class="fa-solid fa-download"></i>
+                    <span>DOWNLOAD APK</span>
+                </a>
                 
                 <div class="flex justify-between text-[10px] text-white/40 mt-4 px-1">
                     <div>Android 8.0+</div>
                     <div>4.9★ • 47 beta users</div>
-                    <div>Updated 2d ago</div>
                 </div>
             </div>
-            
-            <!-- Coming Soon -->
-            <div class="glass rounded-3xl p-8 neon-border opacity-60">
-                <div class="flex items-start justify-between mb-6">
-                    <div class="flex items-center gap-x-4">
-                        <div class="w-14 h-14 rounded-2xl bg-[#7b2cbf]/10 flex items-center justify-center">
-                            <i class="fa-solid fa-desktop text-4xl text-[#7b2cbf]"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-3xl">JARVIS Desktop</div>
-                            <div class="text-xs text-[#7b2cbf] font-mono">WINDOWS / LINUX • v1.0</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <p class="text-sm text-white/70 mb-6">The complete PC automation version of JARVIS with full system control, multi-monitor support, and local LLM. Coming to early supporters.</p>
-                
-                <button onclick="showToast('JARVIS Desktop private beta opens May 2026. Use contact form to join waitlist.');" 
-                        class="w-full py-4 border border-white/30 rounded-2xl text-sm hover:bg-white/5 flex items-center justify-center gap-x-2">
-                    <span>JOIN WAITLIST</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                
-                <div class="text-[10px] text-white/40 mt-4 text-center">Expected release: May 2026</div>
-            </div>
-            
-        </div>
-        
-        <div class="text-center mt-10 text-xs text-white/40">
-            All builds are signed &amp; scanned • Direct downloads • No signup required
-        </div>
-    </div>
-
-    <!-- ARSENAL / SKILLS -->
-    <div id="arsenal" class="max-w-7xl mx-auto px-8 py-20 border-t border-white/10 bg-[#0a0a0f]">
-        <div class="text-center mb-16">
-            <div class="uppercase tracking-[3px] text-sm text-[#00f3ff]">CHAPTER 03 • CAPABILITIES</div>
-            <h2 class="text-6xl font-futuristic tracking-tighter mt-2">Technical Arsenal</h2>
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- AI -->
-            <div class="glass p-9 rounded-3xl neon-border">
-                <div class="flex items-center gap-x-4 mb-8">
-                    <div class="w-12 h-12 rounded-2xl bg-[#00f3ff]/10 flex items-center justify-center">
-                        <i class="fa-solid fa-brain text-[#00f3ff] text-3xl"></i>
-                    </div>
-                    <div>
-                        <div class="font-semibold text-xl">Artificial Intelligence</div>
-                        <div class="text-xs text-white/50">EXPERIMENTAL IMPLEMENTATION</div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3 text-sm">
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#00f3ff]"></i> <span>LLM Fine-tuning</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#00f3ff]"></i> <span>Voice Synthesis</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#00f3ff]"></i> <span>Multi-agent Systems</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#00f3ff]"></i> <span>Computer Vision</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#00f3ff]"></i> <span>Autonomous Agents</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#00f3ff]"></i> <span>RAG Pipelines</span></div>
-                </div>
-            </div>
-            
-            <!-- Cyber -->
-            <div class="glass p-9 rounded-3xl neon-border">
-                <div class="flex items-center gap-x-4 mb-8">
-                    <div class="w-12 h-12 rounded-2xl bg-[#ff00aa]/10 flex items-center justify-center">
-                        <i class="fa-solid fa-shield-halved text-[#ff00aa] text-3xl"></i>
-                    </div>
-                    <div>
-                        <div class="font-semibold text-xl">Cybersecurity</div>
-                        <div class="text-xs text-white/50">ETHICAL RESEARCH</div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3 text-sm">
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#ff00aa]"></i> <span>Network Recon</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#ff00aa]"></i> <span>Packet Crafting</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#ff00aa]"></i> <span>Wireless Security</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#ff00aa]"></i> <span>Deauth Attacks</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#ff00aa]"></i> <span>OSINT Automation</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#ff00aa]"></i> <span>Vuln Analysis</span></div>
-                </div>
-            </div>
-            
-            <!-- Innovation -->
-            <div class="glass p-9 rounded-3xl neon-border">
-                <div class="flex items-center gap-x-4 mb-8">
-                    <div class="w-12 h-12 rounded-2xl bg-[#7b2cbf]/10 flex items-center justify-center">
-                        <i class="fa-solid fa-lightbulb text-[#7b2cbf] text-3xl"></i>
-                    </div>
-                    <div>
-                        <div class="font-semibold text-xl">Technology Innovation</div>
-                        <div class="text-xs text-white/50">FUTURISTIC SYSTEMS</div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3 text-sm">
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#7b2cbf]"></i> <span>Holographic UI</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#7b2cbf]"></i> <span>Neural Interfaces</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#7b2cbf]"></i> <span>Quantum Concepts</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#7b2cbf]"></i> <span>Edge AI</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#7b2cbf]"></i> <span>Prototyping</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-[#7b2cbf]"></i> <span>System Design</span></div>
-                </div>
-            </div>
-            
-            <!-- Leadership -->
-            <div class="glass p-9 rounded-3xl neon-border">
-                <div class="flex items-center gap-x-4 mb-8">
-                    <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
-                        <i class="fa-solid fa-users text-white text-3xl"></i>
-                    </div>
-                    <div>
-                        <div class="font-semibold text-xl">Communication &amp; Leadership</div>
-                        <div class="text-xs text-white/50">MENTORSHIP &amp; MEDIA</div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-3 text-sm">
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-white"></i> <span>Public Speaking</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-white"></i> <span>Podcast Hosting</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-white"></i> <span>1-on-1 Mentoring</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-white"></i> <span>Content Creation</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-white"></i> <span>Interviewing</span></div>
-                    <div class="flex items-center gap-x-3"><i class="fa-solid fa-check text-white"></i> <span>Leadership Training</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MENTORSHIP & MEDIA -->
-    <div class="max-w-7xl mx-auto px-8 py-20 border-t border-white/10">
-        <div class="grid md:grid-cols-2 gap-8">
-            
-            <!-- NDA Mentorship -->
-            <div class="glass rounded-3xl p-10 neon-border">
-                <div class="uppercase text-xs tracking-[2px] text-[#00f3ff]">IMPACT • 2018-2020</div>
-                <h3 class="text-4xl font-semibold mt-3 mb-4">NDA Aspirant Mentor</h3>
-                <p class="text-white/70">Conducted online mentoring sessions for students preparing for the National Defence Academy examination. Focus on mindset, discipline, and practical strategies.</p>
-                
-                <div class="mt-10 grid grid-cols-3 gap-4 text-center">
-                    <div>
-                        <div class="text-4xl font-mono text-[#00f3ff]">30</div>
-                        <div class="text-xs text-white/50 mt-1">STUDENTS</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-mono text-[#00f3ff]">23</div>
-                        <div class="text-xs text-white/50 mt-1">CLEARED EXAM</div>
-                    </div>
-                    <div>
-                        <div class="text-4xl font-mono text-[#00f3ff]">77%</div>
-                        <div class="text-xs text-white/50 mt-1">SUCCESS RATE</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bharwan Diaries -->
-            <div class="glass rounded-3xl p-10 neon-border flex flex-col">
-                <div>
-                    <div class="uppercase text-xs tracking-[2px] text-[#ff00aa]">MEDIA PLATFORM</div>
-                    <h3 class="text-4xl font-semibold mt-3 mb-4">Bharwan Diaries</h3>
-                    <p class="text-white/70">Raw conversations, leadership lessons, and interviews with inspiring personalities. Hosted discussions with Col. Rajeev Bharwan and many more.</p>
-                </div>
-                
-                <div class="mt-auto pt-8 flex items-center justify-between text-sm">
-                    <div>
-                        <div class="flex -space-x-2">
-                            <div class="w-7 h-7 rounded-full bg-white/20 border border-white/40"></div>
-                            <div class="w-7 h-7 rounded-full bg-white/20 border border-white/40"></div>
-                            <div class="w-7 h-7 rounded-full bg-white/20 border border-white/40"></div>
-                        </div>
-                        <div class="text-xs mt-1 text-white/50">Featured on YouTube &amp; Instagram</div>
-                    </div>
-                    
-                    <a href="https://youtube.com/@bharwandiaries" target="_blank" class="text-[#ff00aa] hover:underline flex items-center gap-x-1">
-                        VISIT <i class="fa-solid fa-external-link-alt text-xs"></i>
-                    </a>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    <!-- VISION & UPCOMING -->
-    <div id="vision" class="max-w-7xl mx-auto px-8 py-20 border-t border-white/10">
-        <div class="max-w-3xl mx-auto text-center mb-16">
-            <div class="uppercase tracking-[3px] text-sm text-[#00f3ff]">CHAPTER 04 • THE HORIZON</div>
-            <h2 class="text-6xl font-futuristic tracking-tighter mt-3">Vision for the Future</h2>
-            <p class="mt-6 text-xl text-white/70">Building technologies that expand human potential and imagination while making AI more accessible and beneficial for society.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="glass p-8 rounded-3xl neon-border group">
-                <i class="fa-solid fa-brain text-4xl text-[#00f3ff] mb-6 group-hover:scale-110 transition-transform"></i>
-                <div class="font-semibold text-xl mb-3">Neural Symbiosis</div>
-                <p class="text-white/70 text-sm">Direct brain-computer interfaces that feel like natural extensions of thought. The next step in human evolution.</p>
-            </div>
-            
-            <div class="glass p-8 rounded-3xl neon-border group">
-                <i class="fa-solid fa-globe text-4xl text-[#ff00aa] mb-6 group-hover:scale-110 transition-transform"></i>
-                <div class="font-semibold text-xl mb-3">Global AI Collective</div>
-                <p class="text-white/70 text-sm">Decentralized, ethical AI network where models collaborate across borders without central control.</p>
-            </div>
-            
-            <div class="glass p-8 rounded-3xl neon-border group">
-                <i class="fa-solid fa-rocket text-4xl text-[#7b2cbf] mb-6 group-hover:scale-110 transition-transform"></i>
-                <div class="font-semibold text-xl mb-3">Omnexa OS</div>
-                <p class="text-white/70 text-sm">A complete operating system built around AI — where every interaction is intelligent, contextual, and proactive.</p>
-            </div>
-        </div>
-        
-        <div class="mt-12 text-center">
-            <div class="inline-block px-6 py-2 border border-[#00f3ff]/50 rounded-full text-xs tracking-widest">MORE EXPERIMENTS IN THE PIPELINE</div>
         </div>
     </div>
 
     <!-- CONTACT -->
-    <div id="contact" class="max-w-7xl mx-auto px-8 py-24 border-t border-white/10 bg-[#0a0a0f]">
-        <div class="max-w-2xl mx-auto text-center">
+    <div id="contact" class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 border-t border-white/10">
+        <div class="max-w-xl mx-auto text-center">
             <div class="uppercase tracking-[3px] text-sm text-[#00f3ff]">FINAL TRANSMISSION</div>
-            <h2 class="text-6xl font-futuristic tracking-tighter mt-3 mb-6">Let's Build the Future Together</h2>
-            <p class="text-xl text-white/60">Have a wild idea? Want to collaborate on an experiment? Or just say hi?</p>
+            <h2 class="text-5xl md:text-6xl font-futuristic tracking-tighter mt-3 mb-6">Let's Build the Future Together</h2>
             
-            <div class="mt-12 flex flex-col items-center">
-                <a href="mailto:acidicskull422@gmail.com" class="group flex items-center justify-center gap-x-4 px-10 py-5 rounded-2xl border border-[#00f3ff] hover:bg-[#00f3ff]/5 transition-all neon-glow">
-                    <i class="fa-solid fa-envelope text-2xl text-[#00f3ff]"></i>
-                    <div class="text-left">
-                        <div class="text-xs text-white/50">DIRECT LINE</div>
-                        <div class="font-mono text-lg group-hover:text-[#00f3ff] transition-colors">acidicskull422@gmail.com</div>
-                    </div>
+            <a href="mailto:acidicskull422@gmail.com" class="inline-flex items-center justify-center gap-x-4 px-10 py-5 rounded-2xl border border-[#00f3ff] hover:bg-[#00f3ff]/5 transition-all neon-glow">
+                <i class="fa-solid fa-envelope text-2xl text-[#00f3ff]"></i>
+                <div class="text-left">
+                    <div class="text-xs text-white/50">DIRECT LINE</div>
+                    <div class="font-mono text-lg">acidicskull422@gmail.com</div>
+                </div>
+            </a>
+            
+            <div class="flex gap-x-6 mt-10 justify-center">
+                <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#00f3ff] hover:text-[#00f3ff] transition-all">
+                    <i class="fa-brands fa-linkedin-in text-xl"></i>
                 </a>
-                
-                <!-- Functional Contact Form -->
-                <form id="contactForm" onsubmit="handleContactSubmit(event)" class="mt-8 w-full max-w-md glass p-8 rounded-3xl neon-border">
-                    <div class="text-xs uppercase tracking-[2px] text-[#00f3ff] mb-4 text-center">SECURE TRANSMISSION</div>
-                    
-                    <div class="space-y-4">
-                        <div>
-                            <input type="text" id="name" placeholder="YOUR NAME / ALIAS" required 
-                                   class="w-full bg-black/60 border border-white/20 focus:border-[#00f3ff] px-5 py-3 rounded-2xl text-sm outline-none placeholder:text-white/40 font-mono">
-                        </div>
-                        <div>
-                            <input type="email" id="email" placeholder="YOUR TRANSMISSION FREQUENCY" required 
-                                   class="w-full bg-black/60 border border-white/20 focus:border-[#00f3ff] px-5 py-3 rounded-2xl text-sm outline-none placeholder:text-white/40 font-mono">
-                        </div>
-                        <div>
-                            <textarea id="message" rows="4" placeholder="YOUR MESSAGE / COLLAB IDEA / WILD EXPERIMENT..." required
-                                      class="w-full bg-black/60 border border-white/20 focus:border-[#00f3ff] px-5 py-3 rounded-2xl text-sm outline-none placeholder:text-white/40 font-mono resize-y"></textarea>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" 
-                            class="mt-6 w-full neon-button py-4 rounded-2xl text-sm font-semibold flex items-center justify-center gap-x-3 bg-gradient-to-r from-[#00f3ff] to-[#ff00aa] text-black hover:brightness-110">
-                        <span>TRANSMIT TO OMNEXA HQ</span>
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                    
-                    <div class="text-[10px] text-white/40 mt-3 text-center tracking-widest">ENCRYPTED • END-TO-END • NO LOGS</div>
-                </form>
-                
-                <div class="flex gap-x-6 mt-10">
-                    <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#00f3ff] hover:text-[#00f3ff] transition-all">
-                        <i class="fa-brands fa-linkedin-in text-xl"></i>
-                    </a>
-                    <a href="https://youtube.com/@bharwandiaries" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#ff00aa] hover:text-[#ff00aa] transition-all">
-                        <i class="fa-brands fa-youtube text-xl"></i>
-                    </a>
-                    <a href="https://instagram.com/o.m.n.e.x.a" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#7b2cbf] hover:text-[#7b2cbf] transition-all">
-                        <i class="fa-brands fa-instagram text-xl"></i>
-                    </a>
-                    <a href="https://github.com" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-white hover:text-white transition-all">
-                        <i class="fa-brands fa-github text-xl"></i>
-                    </a>
-                </div>
+                <a href="https://youtube.com/@bharwandiaries" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#ff00aa] hover:text-[#ff00aa] transition-all">
+                    <i class="fa-brands fa-youtube text-xl"></i>
+                </a>
+                <a href="https://instagram.com/o.m.n.e.x.a" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#7b2cbf] hover:text-[#7b2cbf] transition-all">
+                    <i class="fa-brands fa-instagram text-xl"></i>
+                </a>
             </div>
             
-            <div class="mt-16 text-[10px] text-white/30 tracking-widest">© 2026 O.M.N.E.X.A INITIATIVE • ALL RIGHTS RESERVED • BUILT WITH ❤️ AND NEON</div>
-        </div>
-    </div>
-
-    <!-- PROJECT MODAL -->
-    <div id="projectModal" onclick="if (event.target.id === 'projectModal') closeModal()" class="hidden fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4">
-        <div onclick="event.stopImmediatePropagation()" class="glass max-w-3xl w-full rounded-3xl overflow-hidden border border-[#00f3ff]/30 max-h-[90vh] overflow-y-auto">
-            
-            <div id="modalHeader" class="px-10 pt-10 pb-6 border-b border-white/10 flex justify-between items-start">
-                <div>
-                    <div id="modalTag" class="text-xs tracking-[2px]"></div>
-                    <div id="modalTitle" class="text-4xl font-semibold mt-1"></div>
-                </div>
-                <button onclick="closeModal()" class="text-3xl text-white/40 hover:text-white transition-colors">&times;</button>
-            </div>
-            
-            <div id="modalBody" class="px-10 py-10 text-white/80 leading-relaxed text-[15px]">
-                <!-- Dynamic content injected by JS -->
-            </div>
-            
-            <div class="px-10 py-6 border-t border-white/10 flex justify-end gap-x-4">
-                <button onclick="closeModal()" class="px-8 py-2.5 text-sm border border-white/30 rounded-full hover:bg-white/5">CLOSE</button>
-                <button onclick="simulateLaunch()" class="neon-button px-8 py-2.5 text-sm rounded-full bg-[#00f3ff] text-black font-medium">LAUNCH EXPERIMENT</button>
-            </div>
-            
-        </div>
-    </div>
-
-    <!-- TERMINAL -->
-    <div id="terminalModal" onclick="if (event.target.id === 'terminalModal') closeTerminal()" class="hidden fixed inset-0 z-[110] bg-black/95 flex items-center justify-center p-4">
-        <div onclick="event.stopImmediatePropagation()" class="terminal w-full max-w-4xl h-[520px] rounded-2xl overflow-hidden border border-[#00f3ff] flex flex-col">
-            
-            <!-- Terminal Header -->
-            <div class="bg-[#111] px-5 py-3 flex items-center justify-between border-b border-[#00f3ff]/30">
-                <div class="flex items-center gap-x-3">
-                    <div class="flex gap-x-1.5">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                    </div>
-                    <div class="text-xs text-[#00f3ff] font-mono">OMNEXA-TERMINAL v4.2.1 — SECURE CONNECTION</div>
-                </div>
-                <button onclick="closeTerminal()" class="text-white/50 hover:text-white text-xl leading-none">&times;</button>
-            </div>
-            
-            <div id="terminalOutput" class="flex-1 p-6 font-mono text-sm text-[#00f3ff] overflow-y-auto bg-[#050507] space-y-1">
-                <!-- JS injected lines -->
-            </div>
-            
-            <div class="border-t border-[#00f3ff]/30 px-6 py-4 flex items-center gap-x-3 bg-[#111]">
-                <span class="text-[#00f3ff] font-mono">root@omexa:~$</span>
-                <input id="terminalInput" type="text" class="flex-1 bg-transparent outline-none font-mono text-sm text-white placeholder:text-white/30" 
-                       placeholder="type 'help' or 'jarvis status'" onkeydown="handleTerminalInput(event)">
-            </div>
-            
+            <div class="mt-16 text-[10px] text-white/30 tracking-widest">© 2026 O.M.N.E.X.A INITIATIVE • ALL RIGHTS RESERVED</div>
         </div>
     </div>
 
     <script>
-        // Tailwind Script
-        function initializeTailwind() {
-            document.documentElement.style.setProperty('--accent', '#00f3ff');
-        }
-        
-        // Particle System for Hero
-        function createParticles() {
-            const container = document.getElementById('particles');
-            if (!container) return;
-            
-            for (let i = 0; i < 35; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 3.5 + 1.5;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.animationDelay = `-${Math.random() * 4}s`;
-                particle.style.opacity = Math.random() * 0.6 + 0.3;
-                
-                // Random neon color
-                const colors = ['#00f3ff', '#ff00aa', '#7b2cbf'];
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                particle.style.boxShadow = `0 0 12px ${particle.style.background}`;
-                
-                container.appendChild(particle);
-                
-                // Remove and recreate after animation
-                setTimeout(() => {
-                    if (particle.parentNode) particle.parentNode.removeChild(particle);
-                    createSingleParticle(container);
-                }, 4500);
-            }
-        }
-        
-        function createSingleParticle(container) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            const size = Math.random() * 3.5 + 1.5;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            
-            const colors = ['#00f3ff', '#ff00aa', '#7b2cbf'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.background = color;
-            particle.style.boxShadow = `0 0 12px ${color}`;
-            
-            container.appendChild(particle);
-            
-            setTimeout(() => {
-                if (particle.parentNode) particle.parentNode.removeChild(particle);
-            }, 4500);
-        }
-        
-        // Project Data
-        const projectData = {
-            jarvis: {
-                tag: "CORE SYSTEM • 2024",
-                title: "JARVIS 2.0",
-                body: `
-                    <p class="mb-6">The crown jewel of Omnexa. A fully autonomous AI personal assistant that lives on your machine and understands you better than anyone.</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <div class="uppercase text-xs tracking-widest text-[#00f3ff] mb-2">KEY CAPABILITIES</div>
-                            <ul class="space-y-2 text-sm">
-                                <li class="flex items-start gap-x-2"><span class="text-[#00f3ff]">•</span> <span>Advanced voice interaction with emotional intelligence</span></li>
-                                <li class="flex items-start gap-x-2"><span class="text-[#00f3ff]">•</span> <span>Complete PC automation (file mgmt, apps, browser control)</span></li>
-                                <li class="flex items-start gap-x-2"><span class="text-[#00f3ff]">•</span> <span>Multi-monitor &amp; multi-device sync</span></li>
-                                <li class="flex items-start gap-x-2"><span class="text-[#00f3ff]">•</span> <span>Proactive task suggestion based on context</span></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="uppercase text-xs tracking-widest text-[#00f3ff] mb-2">TECH STACK</div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 text-xs bg-white/5 rounded">Whisper + GPT-4o</span>
-                                <span class="px-3 py-1 text-xs bg-white/5 rounded">Python + FastAPI</span>
-                                <span class="px-3 py-1 text-xs bg-white/5 rounded">Electron</span>
-                                <span class="px-3 py-1 text-xs bg-white/5 rounded">Local LLM</span>
-                                <span class="px-3 py-1 text-xs bg-white/5 rounded">System Hooks</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="p-4 bg-black/60 rounded-xl border border-[#00f3ff]/20 text-xs font-mono">
-                        STATUS: <span class="text-emerald-400">OPERATIONAL</span> • UPTIME: 312 DAYS • LAST UPDATE: 3 DAYS AGO
-                    </div>
-                `
-            },
-            android: {
-                tag: "MOBILE • 2025",
-                title: "OMNEXA AI (Android)",
-                body: `
-                    <p class="mb-6">Your personal AI that lives in your pocket — smarter than any existing assistant. Built from the ground up for the Android ecosystem.</p>
-                    
-                    <div class="mb-8">
-                        <div class="uppercase text-xs tracking-widest text-[#ff00aa] mb-3">STANDOUT FEATURES</div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                            <div class="p-4 border border-white/10 rounded-2xl">• Natural, context-aware conversations that remember you</div>
-                            <div class="p-4 border border-white/10 rounded-2xl">• Controls phone settings, apps, calls &amp; messages with voice</div>
-                            <div class="p-4 border border-white/10 rounded-2xl">• Offline mode with powerful on-device models</div>
-                            <div class="p-4 border border-white/10 rounded-2xl">• Seamless sync with desktop JARVIS</div>
-                        </div>
-                    </div>
-                    
-                    <div class="text-xs px-4 py-3 bg-[#ff00aa]/10 border-l-4 border-[#ff00aa] text-[#ff00aa]">
-                        Currently in closed beta with 47 trusted testers. Public release Q2 2026.
-                    </div>
-                `
-            },
-            creator: {
-                tag: "CREATOR OS • 2025",
-                title: "CREATOR AI",
-                body: `
-                    <p class="mb-6">The ultimate AI co-pilot for content creators and influencers. It doesn't just suggest — it predicts virality and automates growth.</p>
-                    
-                    <div class="space-y-6 mb-8">
-                        <div>
-                            <div class="font-semibold mb-1 text-sm">WHAT IT DOES</div>
-                            <ul class="text-sm text-white/80 space-y-1">
-                                <li>• Analyzes your audience + trending topics in real-time</li>
-                                <li>• Generates scroll-stopping hooks, captions &amp; thumbnails</li>
-                                <li>• Predicts best posting times with 94% accuracy</li>
-                                <li>• Auto-replies to comments in your voice</li>
-                                <li>• Cross-posts optimized versions to YouTube, IG, X, TikTok</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center gap-x-4 text-xs">
-                        <div class="px-4 py-2 bg-white/5 rounded">+340% avg reach for beta users</div>
-                        <div class="px-4 py-2 bg-white/5 rounded">42 creators onboarded</div>
-                    </div>
-                `
-            },
-            trading: {
-                tag: "FINANCE • 2025",
-                title: "NEXUS TRADER",
-                body: `
-                    <p class="mb-6">An autonomous trading intelligence that reads markets like a seasoned trader — combining technical analysis, sentiment, and macro signals.</p>
-                    
-                    <div class="grid grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <div class="text-xs text-white/50 mb-1">30-DAY PERFORMANCE</div>
-                            <div class="text-4xl font-mono text-emerald-400">+47.8%</div>
-                            <div class="text-xs">vs NIFTY +12.4%</div>
-                        </div>
-                        <div class="text-xs space-y-3 pt-1">
-                            <div>Win Rate: <span class="font-mono">71%</span></div>
-                            <div>Max Drawdown: <span class="font-mono">-8.2%</span></div>
-                            <div>Sharpe Ratio: <span class="font-mono">2.8</span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="text-xs bg-black/60 p-4 rounded border border-white/10">Runs 24/7 on dedicated server with real-time data from 12 exchanges. Risk parameters fully customizable.</div>
-                `
-            },
-            recon: {
-                tag: "CYBER • 2024",
-                title: "SHADOW RECON",
-                body: `
-                    <p class="mb-6">A powerful, stealthy reconnaissance suite built specifically for Kali Linux. Designed for ethical hackers and security researchers.</p>
-                    
-                    <div class="mb-8">
-                        <div class="uppercase text-xs tracking-widest mb-3 text-[#ff00aa]">MODULES INCLUDED</div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 text-sm">
-                            <div>• Automated OSINT gathering</div>
-                            <div>• Advanced port &amp; service scanning</div>
-                            <div>• Subdomain enumeration</div>
-                            <div>• Social media footprinting</div>
-                            <div>• CVE correlation engine</div>
-                            <div>• Beautiful HTML/PDF reports</div>
-                        </div>
-                    </div>
-                    
-                    <div class="text-xs text-[#ff00aa]">Open source under GPL-3.0 • 1.2k+ GitHub stars</div>
-                `
-            },
-            wifi: {
-                tag: "DEFENSE RESEARCH • 2024",
-                title: "PHANTOM JAMMER",
-                body: `
-                    <p class="mb-6">Educational toolkit for understanding 802.11 wireless security. Includes deauthentication, beacon flooding, and evil twin demonstrations — strictly for authorized testing and learning.</p>
-                    
-                    <div class="mb-8 p-5 bg-black/60 rounded-2xl text-xs border border-white/10">
-                        <div class="font-semibold text-[#7b2cbf] mb-2">ETHICAL USE ONLY</div>
-                        <div>These tools are provided strictly for educational purposes, authorized penetration testing, and personal network security research. Always obtain explicit permission before testing any network.</div>
-                    </div>
-                    
-                    <div class="text-xs">Built with Scapy + Python. Includes real-time packet visualizer and attack logging.</div>
-                `
-            },
-            holo: {
-                tag: "HARDWARE CONCEPT • 2025",
-                title: "HOLO FORGE",
-                body: `
-                    <p class="mb-6">A working conceptual framework and prototype for creating real-life 3D holographic projections using off-the-shelf components and custom optics.</p>
-                    
-                    <div class="mb-8">
-                        <div class="uppercase text-xs tracking-widest text-[#00f3ff] mb-3">EXPLORATION AREAS</div>
-                        <div class="text-sm space-y-2">
-                            <div>• Pepper’s Ghost + advanced LED arrays for true 3D</div>
-                            <div>• Volumetric projection using fog + lasers</div>
-                            <div>• Gesture-controlled holographic interfaces</div>
-                            <div>• Integration with JARVIS for spatial computing</div>
-                        </div>
-                    </div>
-                    
-                    <div class="italic text-xs">“The future of human-computer interaction isn’t flat.” — Ayush Kumar</div>
-                `
-            },
-            cyber: {
-                tag: "RESEARCH ARCHIVE",
-                title: "Cybersecurity Learning Experiments",
-                body: `
-                    <p class="mb-6">A collection of small tools and experiments created purely for educational and research purposes to deeply understand network behavior and security concepts.</p>
-                    
-                    <div class="space-y-4 text-sm">
-                        <div class="flex gap-x-4">
-                            <div class="font-mono text-xs w-28 text-white/50 pt-0.5">NETMAP</div>
-                            <div>Automated network discovery and topology mapping</div>
-                        </div>
-                        <div class="flex gap-x-4">
-                            <div class="font-mono text-xs w-28 text-white/50 pt-0.5">DEAUTH LAB</div>
-                            <div>Controlled deauthentication attack simulator with logging</div>
-                        </div>
-                        <div class="flex gap-x-4">
-                            <div class="font-mono text-xs w-28 text-white/50 pt-0.5">PACKET CRAFT</div>
-                            <div>Custom packet generator for protocol analysis</div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 text-xs text-white/50">All experiments conducted in isolated lab environments with zero malicious intent.</div>
-                `
-            }
-        };
-        
-        function showProjectModal(projectKey) {
-            const modal = document.getElementById('projectModal');
-            const data = projectData[projectKey];
-            
-            if (!data) return;
-            
-            document.getElementById('modalTag').innerHTML = data.tag;
-            document.getElementById('modalTitle').innerHTML = data.title;
-            document.getElementById('modalBody').innerHTML = data.body;
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('projectModal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
-        
-        function simulateLaunch() {
-            const btns = document.querySelectorAll('#projectModal button');
-            const originalTexts = [];
-            
-            btns.forEach((btn, i) => {
-                originalTexts[i] = btn.innerHTML;
-                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> INITIALIZING...';
-                btn.disabled = true;
-            });
-            
-            setTimeout(() => {
-                btns.forEach((btn, i) => {
-                    btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> EXPERIMENT LAUNCHED';
-                    btn.classList.add('!bg-emerald-500', '!border-emerald-500', '!text-white');
-                });
-                
-                setTimeout(() => {
-                    closeModal();
-                    showToast("Experiment successfully launched in Omnexa Lab");
-                }, 1400);
-            }, 1650);
-        }
-        
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = `fixed bottom-8 left-1/2 -translate-x-1/2 px-8 py-3.5 rounded-2xl glass border border-[#00f3ff] text-sm flex items-center gap-x-3 z-[200]`;
-            toast.innerHTML = `
-                <i class="fa-solid fa-check-circle text-[#00f3ff]"></i>
-                <span>${message}</span>
-            `;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.style.transition = 'all 0.4s ease';
-                toast.style.opacity = '0';
-                toast.style.transform = 'translate(-50%, 20px)';
-                setTimeout(() => toast.remove(), 400);
-            }, 2800);
-        }
-        
-        function handleContactSubmit(e) {
-            e.preventDefault();
-            
-            const form = document.getElementById('contactForm');
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            
-            // Futuristic loading state
-            submitBtn.innerHTML = `<i class="fa-solid fa-satellite fa-spin mr-2"></i> TRANSMITTING...`;
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                // Success animation
-                form.style.transition = 'all 0.5s ease';
-                form.style.borderColor = '#00f3ff';
-                form.style.boxShadow = '0 0 30px #00f3ff, 0 0 60px #ff00aa';
-                
-                submitBtn.innerHTML = `<i class="fa-solid fa-check mr-2"></i> TRANSMISSION COMPLETE`;
-                submitBtn.style.background = 'linear-gradient(to right, #10b981, #34d399)';
-                
-                // Show epic toast
-                const successToast = document.createElement('div');
-                successToast.className = `fixed bottom-8 left-1/2 -translate-x-1/2 px-10 py-4 rounded-3xl glass border-2 border-[#00f3ff] text-sm flex items-center gap-x-4 z-[200] neon-glow`;
-                successToast.innerHTML = `
-                    <div class="flex items-center gap-x-4">
-                        <i class="fa-solid fa-satellite text-2xl text-[#00f3ff]"></i>
-                        <div>
-                            <div class="font-semibold text-[#00f3ff]">TRANSMISSION SUCCESSFUL</div>
-                            <div class="text-xs text-white/70">Message received at Omnexa HQ • Ayush will respond within 24h</div>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(successToast);
-                
-                setTimeout(() => {
-                    successToast.style.transition = 'all 0.6s ease';
-                    successToast.style.opacity = '0';
-                    successToast.style.transform = 'translate(-50%, 30px)';
-                    setTimeout(() => successToast.remove(), 500);
-                }, 4200);
-                
-                // Reset form
-                setTimeout(() => {
-                    form.reset();
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                    form.style.borderColor = '';
-                    form.style.boxShadow = '';
-                    
-                    showToast("Thank you. The future awaits your signal.");
-                }, 1800);
-            }, 1350);
-        }
-        
-        function fakeDownload(element, filename) {
-            const originalText = element.innerHTML;
-            element.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> PREPARING DOWNLOAD...`;
-            element.style.pointerEvents = 'none';
-            
-            setTimeout(() => {
-                element.innerHTML = `<i class="fa-solid fa-check mr-2"></i> DOWNLOADING ${filename}`;
-                element.style.background = 'linear-gradient(to right, #10b981, #34d399)';
-                element.style.color = 'black';
-                
-                setTimeout(() => {
-                    showToast(`In production: This would download ${filename} (68 MB)`);
-                    
-                    // Reset button
-                    element.innerHTML = originalText;
-                    element.style.background = '';
-                    element.style.color = '';
-                    element.style.pointerEvents = 'auto';
-                    
-                    setTimeout(() => {
-                        showToast("To add your real APK: Upload to GitHub Releases or Netlify, then update the href in index.html");
-                    }, 3200);
-                }, 1800);
-            }, 1100);
-        }
-        
-        // Terminal
-        let terminalHistory = [];
-        
-        function openTerminal() {
-            const modal = document.getElementById('terminalModal');
-            const output = document.getElementById('terminalOutput');
-            
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            if (output.children.length === 0) {
-                output.innerHTML = `
-                    <div class="text-[#00f3ff]/70">OMNEXA SECURE TERMINAL v4.2.1</div>
-                    <div class="text-white/40 text-xs mb-4">Type 'help' for available commands • Connection established from ${navigator.platform}</div>
-                    <div class="text-emerald-400">Welcome back, Ayush. All systems nominal.</div>
-                `;
-            }
-            
-            setTimeout(() => {
-                document.getElementById('terminalInput').focus();
-            }, 300);
-        }
-        
-        function closeTerminal() {
-            const modal = document.getElementById('terminalModal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
-        
-        function handleTerminalInput(e) {
-            if (e.key === 'Enter') {
-                const input = e.target;
-                const value = input.value.trim();
-                if (!value) return;
-                
-                const output = document.getElementById('terminalOutput');
-                
-                const cmdLine = document.createElement('div');
-                cmdLine.innerHTML = `<span class="text-[#00f3ff]">root@omexa:~$</span> <span class="text-white">${value}</span>`;
-                output.appendChild(cmdLine);
-                
-                processTerminalCommand(value, output);
-                
-                input.value = '';
-                output.scrollTop = output.scrollHeight;
-            }
-        }
-        
-        function processTerminalCommand(cmd, output) {
-            const lower = cmd.toLowerCase();
-            let response = '';
-            
-            if (lower === 'help') {
-                response = `
-                    <div class="text-xs pl-6 text-white/60">Available commands:</div>
-                    <div class="pl-6 text-xs space-y-0.5 mt-1">
-                        <div><span class="text-[#00f3ff]">jarvis status</span> — Check JARVIS core systems</div>
-                        <div><span class="text-[#00f3ff]">omnexa update</span> — Pull latest experiments</div>
-                        <div><span class="text-[#00f3ff]">launch [project]</span> — e.g. launch holo</div>
-                        <div><span class="text-[#00f3ff]">clear</span> — Clear terminal</div>
-                        <div><span class="text-[#00f3ff]">whoami</span> — Display user profile</div>
-                        <div><span class="text-[#00f3ff]">matrix</span> — Activate visual mode</div>
-                    </div>
-                `;
-            } 
-            else if (lower === 'jarvis status') {
-                response = `<div class="pl-6 text-emerald-400">JARVIS 2.0 — ONLINE • CPU: 14% • Memory: 2.3GB • Last command: "Play my focus playlist"</div>`;
-            } 
-            else if (lower === 'omnexa update') {
-                response = `<div class="pl-6">Pulling latest from Omnexa Labs...<br><span class="text-emerald-400">✓ 3 new experiments synced • Creator AI v2.1 ready</span></div>`;
-            } 
-            else if (lower.startsWith('launch ')) {
-                const proj = lower.split(' ')[1];
-                if (projectData[proj]) {
-                    response = `<div class="pl-6 text-[#00f3ff]">Launching ${proj.toUpperCase()}... <span class="text-emerald-400">SUCCESS</span><br><span class="text-xs text-white/50">Opening in new holographic window...</span></div>`;
-                    setTimeout(() => {
-                        closeTerminal();
-                        showProjectModal(proj);
-                    }, 900);
-                } else {
-                    response = `<div class="pl-6 text-red-400">Unknown experiment: ${proj}</div>`;
-                }
-            } 
-            else if (lower === 'clear') {
-                output.innerHTML = '';
-                return;
-            } 
-            else if (lower === 'whoami') {
-                response = `<div class="pl-6">Ayush Kumar • Founder, O.M.N.E.X.A<br>Current location: Kannauj, India • Status: Building the future</div>`;
-            } 
-            else if (lower === 'matrix') {
-                response = `<div class="pl-6 text-[#00f3ff]">Entering the Matrix... <span class="animate-pulse">▓▓▓▓▓▓▓▓</span></div>`;
-                setTimeout(() => {
-                    document.body.style.transition = 'filter 1.2s';
-                    document.body.style.filter = 'hue-rotate(280deg) saturate(1.4)';
-                    setTimeout(() => {
-                        document.body.style.filter = 'none';
-                    }, 2200);
-                }, 600);
-            } 
-            else {
-                response = `<div class="pl-6 text-red-400">Command not recognized. Type 'help' for list.</div>`;
-            }
-            
-            const respEl = document.createElement('div');
-            respEl.innerHTML = response;
-            output.appendChild(respEl);
-            output.scrollTop = output.scrollHeight;
-        }
-        
-        function initScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.transition = 'all 0.7s cubic-bezier(0.23, 1, 0.32, 1)';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-            
-            document.querySelectorAll('.glass, .project-card').forEach(el => {
-                el.style.opacity = '0.95';
-                el.style.transform = 'translateY(18px)';
-                observer.observe(el);
-            });
-        }
-        
-        function initKeyboardShortcuts() {
-            document.addEventListener('keydown', function(e) {
-                if (e.key === '?' && document.activeElement.tagName === 'BODY') {
-                    e.preventDefault();
-                    const terminal = document.getElementById('terminalModal');
-                    if (!terminal.classList.contains('hidden')) {
-                        closeTerminal();
-                    } else {
-                        openTerminal();
-                    }
-                }
-                
-                if (e.metaKey && e.key === 'k') {
-                    e.preventDefault();
-                    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-            
-            let konami = [];
-            const code = [38,38,40,40,37,39,37,39,66,65];
-            document.addEventListener('keydown', function(e) {
-                konami.push(e.keyCode);
-                if (konami.length > 10) konami.shift();
-                if (JSON.stringify(konami) === JSON.stringify(code)) {
-                    document.body.style.transition = 'filter 0.6s';
-                    document.body.style.filter = 'saturate(1.8) hue-rotate(25deg)';
-                    setTimeout(() => document.body.style.filter = '', 1800);
-                    konami = [];
-                }
-            });
-        }
-        
         function initializeWebsite() {
-            initializeTailwind();
-            createParticles();
-            initScrollAnimations();
-            initKeyboardShortcuts();
-            
-            setInterval(() => {
-                const container = document.getElementById('particles');
-                if (container) {
-                    for (let i = 0; i < 8; i++) {
-                        setTimeout(() => createSingleParticle(container), i * 70);
-                    }
+            // Particle system
+            const container = document.getElementById('particles');
+            if (container) {
+                for (let i = 0; i < 30; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    p.style.left = Math.random() * 100 + '%';
+                    p.style.top = Math.random() * 100 + '%';
+                    p.style.width = p.style.height = (Math.random() * 3 + 1.5) + 'px';
+                    p.style.background = ['#00f3ff', '#ff00aa', '#7b2cbf'][Math.floor(Math.random() * 3)];
+                    p.style.boxShadow = `0 0 10px ${p.style.background}`;
+                    container.appendChild(p);
                 }
-            }, 12000);
+            }
             
-            console.log('%c[O.M.N.E.X.A] Futuristic portfolio initialized successfully. All systems nominal.', 'color:#00f3ff; font-size:9px');
-            
-            setTimeout(() => {
-                const hint = document.createElement('div');
-                hint.className = 'fixed bottom-6 right-6 text-xs px-4 py-2 glass rounded-full border border-white/20 hidden md:flex items-center gap-x-2 text-white/50';
-                hint.innerHTML = `<span>Pro tip: Press <span class="font-mono text-white/70">?</span> to open terminal</span>`;
-                document.body.appendChild(hint);
-                
-                setTimeout(() => {
-                    if (hint.parentNode) hint.parentNode.removeChild(hint);
-                }, 5200);
-            }, 45000);
-            
-            console.log('%c[O.M.N.E.X.A] Contact email set to acidicskull422@gmail.com', 'color:#666');
+            console.log('%c[O.M.N.E.X.A] Website ready - Mobile & Download fixed!', 'color:#00f3ff');
         }
         
         window.onload = initializeWebsite;
         
-        window.omexa = {
-            launch: (proj) => showProjectModal(proj),
-            terminal: () => openTerminal(),
-            matrix: () => { 
-                document.body.style.filter = 'hue-rotate(280deg) saturate(1.6)'; 
-                setTimeout(() => document.body.style.filter = '', 1400);
-            }
-        };
+        // Simple project modal (for demo)
+        function showProjectModal(key) {
+            const titles = {
+                jarvis: "JARVIS 2.0 - Full PC Automation",
+                android: "OMNEXA AI - Android Voice Assistant",
+                creator: "CREATOR AI - Social Growth Engine"
+            };
+            alert(titles[key] || "Coming soon! Full details in next update.");
+        }
+        
+        // Fake download removed - now direct link
     </script>
 </body>
 </html>
