@@ -1,333 +1,767 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O.M.N.E.X.A | Advanced AI & Tech Lab</title>
+    <meta name="description" content="O.M.N.E.X.A | Futuristic AI Systems, Tools &amp; APKs by Ayush Kumar – JARVIS, MyChillAssistant, CreatorAI &amp; more">
+    <title>O.M.N.E.X.A | Ayush Kumar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --neon-cyan: #00f9ff; 
-            --neon-pink: #ff00aa; 
-            --neon-purple: #c026ff; 
+        :root {
+            --neon-cyan: #00f9ff;
+            --neon-pink: #ff00aa;
+            --neon-purple: #c026ff;
             --neon-green: #00ff9d;
-            --bg-dark: #030305;
-            --panel-bg: rgba(10, 10, 15, 0.7);
+            --bg-dark: #050507;
         }
         
-        body { 
-            font-family: 'Rajdhani', sans-serif; 
-            background-color: var(--bg-dark); 
-            color: #fff; 
-            overflow-x: hidden; 
-            background-image: 
-                linear-gradient(rgba(0, 249, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 249, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center center;
+        * { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
         }
-
+        
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
         
-        /* Advanced Animations */
-        .scanline {
-            width: 100%; height: 100px;
-            background: linear-gradient(0deg, rgba(0,249,255,0) 0%, rgba(0,249,255,0.1) 50%, rgba(0,249,255,0) 100%);
-            opacity: 0.1; position: fixed; bottom: 100%; left: 0;
-            animation: scanline 8s linear infinite; pointer-events: none; z-index: 100;
+        /* Enhanced Ambient Background + Particles */
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 249, 255, 0.08) 0%, transparent 70%);
+            overflow: hidden;
         }
-        @keyframes scanline { 0% { bottom: 100%; } 100% { bottom: -100px; } }
-
-        /* Cyber Panels */
-        .cyber-panel {
-            background: var(--panel-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 249, 255, 0.1);
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.25;
+            animation: floatOrb 25s infinite ease-in-out alternate;
         }
-        .cyber-panel::before {
-            content: ''; position: absolute; top: -1px; left: -1px; width: 20px; height: 20px;
-            border-top: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan);
-            transition: all 0.3s ease;
+        .orb-1 { width: 45vw; height: 45vw; background: rgba(0, 249, 255, 0.2); top: -15%; left: -15%; }
+        .orb-2 { width: 38vw; height: 38vw; background: rgba(192, 38, 255, 0.18); bottom: -20%; right: -20%; animation-delay: -8s; }
+        .orb-3 { width: 32vw; height: 32vw; background: rgba(255, 0, 170, 0.15); top: 35%; left: 35%; animation-delay: -14s; }
+        @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(12vw, 12vh) scale(1.15); } }
+        
+        /* Canvas Particles */
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        
+        /* Glassmorphism + Neon Glow */
+        .glass-card {
+            background: rgba(15, 15, 22, 0.65);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 25px -5px rgb(0 249 255);
         }
-        .cyber-panel::after {
-            content: ''; position: absolute; bottom: -1px; right: -1px; width: 20px; height: 20px;
-            border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan);
-            transition: all 0.3s ease;
+        .glass-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 40px 10px rgba(0, 249, 255, 0.3),
+                        0 25px 50px -12px rgb(192 38 255);
+            transform: translateY(-4px) scale(1.02);
         }
-        .cyber-panel:hover {
-            border-color: rgba(0, 249, 255, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 249, 255, 0.15);
-        }
-        .cyber-panel:hover::before, .cyber-panel:hover::after { width: 40px; height: 40px; }
-
+        
         /* Neon Buttons */
-        .btn-cyber {
-            background: transparent; color: var(--neon-cyan); font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px;
-            padding: 10px 24px; border: 1px solid var(--neon-cyan); position: relative;
-            overflow: hidden; transition: 0.3s; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+        .btn-neon {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.95rem;
+            color: #000;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            border-radius: 9999px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 249, 255, 0.6);
         }
-        .btn-cyber::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 249, 255, 0.4), transparent);
-            transition: 0.5s;
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine 4s linear infinite;
         }
-        .btn-cyber:hover { background: rgba(0, 249, 255, 0.1); box-shadow: 0 0 15px rgba(0, 249, 255, 0.4); }
-        .btn-cyber:hover::before { left: 100%; }
-
-        /* Badges */
-        .badge-paid {
-            background: rgba(255, 0, 170, 0.1); border: 1px solid var(--neon-pink);
-            color: var(--neon-pink); font-size: 0.7rem; padding: 2px 8px; border-radius: 4px;
-            letter-spacing: 2px; animation: pulse-pink 2s infinite; text-transform: uppercase; font-weight: bold;
-        }
-        @keyframes pulse-pink { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 170, 0.4); } 70% { box-shadow: 0 0 0 6px rgba(255, 0, 170, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 170, 0); } }
-
-        /* Glitch Text */
-        .glitch-wrapper { position: relative; }
-        .glitch-text { font-size: 4.5rem; font-weight: 900; text-transform: uppercase; position: relative; text-shadow: 0 0 20px rgba(0,249,255,0.5); }
-        .glitch-text::before, .glitch-text::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); }
-        .glitch-text::before { left: 3px; text-shadow: -2px 0 var(--neon-pink); clip: rect(24px, 550px, 90px, 0); animation: glitch-anim-2 3s infinite linear alternate-reverse; }
-        .glitch-text::after { left: -3px; text-shadow: -2px 0 var(--neon-cyan); clip: rect(85px, 550px, 140px, 0); animation: glitch-anim 2.5s infinite linear alternate-reverse; }
-        @keyframes glitch-anim { 0% { clip: rect(11px, 9999px, 86px, 0); } 20% { clip: rect(44px, 9999px, 12px, 0); } 40% { clip: rect(98px, 9999px, 76px, 0); } 60% { clip: rect(23px, 9999px, 45px, 0); } 80% { clip: rect(78px, 9999px, 34px, 0); } 100% { clip: rect(56px, 9999px, 23px, 0); } }
-        @keyframes glitch-anim-2 { 0% { clip: rect(65px, 9999px, 100px, 0); } 20% { clip: rect(10px, 9999px, 50px, 0); } 40% { clip: rect(80px, 9999px, 20px, 0); } 60% { clip: rect(30px, 9999px, 90px, 0); } 80% { clip: rect(95px, 9999px, 40px, 0); } 100% { clip: rect(45px, 9999px, 70px, 0); } }
-
-        /* Skill Tags */
-        .skill-tag {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; transition: 0.3s;
-            display: inline-flex; items-center; gap: 8px; color: #ccc;
-        }
-        .skill-tag:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 10px rgba(0,249,255,0.2); background: rgba(0,249,255,0.05); }
-
-        /* Core Orb Glow */
-        .core-glow {
-            position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,249,255,0.15) 0%, rgba(0,0,0,0) 70%);
-            top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: -1;
+        .btn-neon:hover {
+            color: #fff;
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 40px rgba(0, 249, 255, 0.9),
+                        0 0 60px rgba(192, 38, 255, 0.7);
+            transform: scale(1.08);
         }
         
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
+        @keyframes shine { 0% { left: -100%; } 100% { left: 300%; } }
         
-        @media (max-width: 768px) { .glitch-text { font-size: 3rem; } }
+        .btn-outline {
+            padding: 14px 32px;
+            border: 2px solid rgba(255,255,255,0.25);
+            border-radius: 9999px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .btn-outline:hover {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            box-shadow: 0 0 30px rgba(255, 0, 170, 0.5);
+        }
+        
+        /* Glitch + Advanced Text */
+        .glitch {
+            position: relative;
+            color: white;
+            animation: glitch-text 4s infinite linear alternate-reverse;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--neon-pink);
+            clip: rect(20px, 9999px, 80px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: 2px 0 var(--neon-cyan);
+            clip: rect(60px, 9999px, 120px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 44px, 0); }
+            10% { clip: rect(80px, 9999px, 15px, 0); }
+            20% { clip: rect(33px, 9999px, 90px, 0); }
+            30% { clip: rect(12px, 9999px, 55px, 0); }
+            40% { clip: rect(66px, 9999px, 20px, 0); }
+            50% { clip: rect(40px, 9999px, 77px, 0); }
+            60% { clip: rect(25px, 9999px, 85px, 0); }
+            70% { clip: rect(70px, 9999px, 30px, 0); }
+            80% { clip: rect(15px, 9999px, 65px, 0); }
+            90% { clip: rect(55px, 9999px, 45px, 0); }
+            100% { clip: rect(22px, 9999px, 88px, 0); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(90deg, #fff, var(--neon-cyan), var(--neon-purple), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradient-shift 6s ease infinite;
+        }
+        @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        /* Scanline effect */
+        .scanline {
+            position: relative;
+        }
+        .scanline::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(transparent 50%, rgba(0, 249, 255, 0.07) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            animation: scan 6s linear infinite;
+            z-index: 2;
+            opacity: 0.15;
+        }
+        @keyframes scan { 0% { background-position: 0 0; } 100% { background-position: 0 100%; } }
+        
+        /* Project card hover lift */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-12px) rotate(1deg);
+            box-shadow: 0 35px 60px -15px rgb(0 249 255);
+        }
+        
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #050507; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--neon-cyan), var(--neon-purple));
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <div class="scanline"></div>
+    <!-- Ambient Background + Particles Canvas -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <canvas id="particles" width="1920" height="1080"></canvas>
 
-    <!-- Top Navigation -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5 px-6 py-4">
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-50 glass-card border-b border-white/10 px-6 py-5 backdrop-blur-xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <i class="fa-solid fa-layer-group text-2xl text-[#00f9ff]"></i>
-                <span class="font-orbitron font-bold text-2xl tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-[#00f9ff] to-[#c026ff]">O.M.N.E.X.A</span>
+            <!-- Logo -->
+            <div onclick="window.scrollTo({top:0,behavior:'smooth'})" class="flex items-center gap-3 cursor-pointer group">
+                <i class="fa-solid fa-infinity text-3xl text-[#00f9ff] group-active:rotate-180 transition-transform"></i>
+                <span class="font-orbitron font-black text-3xl tracking-[4px] text-transparent bg-clip-text bg-gradient-to-r from-[#00f9ff] via-[#c026ff] to-[#ff00aa]">O.M.N.E.X.A</span>
             </div>
-            <div class="hidden md:flex gap-8 font-orbitron text-xs tracking-widest text-white/60">
-                <a href="#founder" class="hover:text-[#00f9ff] transition-colors">ARCHITECT</a>
-                <a href="#tools" class="hover:text-[#00f9ff] transition-colors">PAID TOOLS</a>
-                <a href="#future" class="hover:text-[#00f9ff] transition-colors">FUTURE LAB</a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-9 font-medium uppercase text-sm tracking-[1.5px]">
+                <a href="#about" class="hover:text-[#00f9ff] flex items-center gap-1"><i class="fa-solid fa-user text-xs"></i> ABOUT</a>
+                <a href="#expertise" class="hover:text-[#00f9ff] flex items-center gap-1"><i class="fa-solid fa-microchip text-xs"></i> EXPERTISE</a>
+                <a href="#tools" class="hover:text-[#00f9ff] flex items-center gap-1"><i class="fa-solid fa-rocket text-xs"></i> TOOLS &amp; APKs</a>
+                <a href="#lab" class="hover:text-[#00f9ff] flex items-center gap-1"><i class="fa-solid fa-flask text-xs"></i> FUTURE LAB</a>
+                <a href="#contact" class="hover:text-[#00f9ff] flex items-center gap-1"><i class="fa-solid fa-paper-plane text-xs"></i> TRANSMIT</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#tools" onclick="showPremiumModal()" class="btn-neon text-xs px-7 py-3 shadow-lg">GET PREMIUM ACCESS</a>
+                
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-3xl text-white">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card mt-3 mx-4 rounded-3xl p-6 text-center">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-4 text-lg font-medium border-b border-white/10">ABOUT THE FOUNDER</a>
+            <a href="#expertise" onclick="toggleMobileMenu()" class="block py-4 text-lg font-medium border-b border-white/10">CORE EXPERTISE</a>
+            <a href="#tools" onclick="toggleMobileMenu()" class="block py-4 text-lg font-medium border-b border-white/10">TOOLS &amp; DOWNLOADS</a>
+            <a href="#lab" onclick="toggleMobileMenu()" class="block py-4 text-lg font-medium border-b border-white/10">FUTURE LAB</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-4 text-lg font-medium">INITIATE CONTACT</a>
+            <div class="pt-4">
+                <a href="#tools" onclick="toggleMobileMenu();showPremiumModal()" class="btn-neon w-full py-4 text-sm">GET PREMIUM ACCESS</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-        <div class="core-glow"></div>
+    <!-- HERO -->
+    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative scanline">
         <div class="max-w-5xl mx-auto text-center z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#ff00aa]/30 bg-[#ff00aa]/5 mb-6">
-                <div class="w-2 h-2 rounded-full bg-[#ff00aa] animate-pulse"></div>
-                <span class="text-xs font-bold tracking-[0.2em] text-[#ff00aa] font-orbitron">SYSTEM ONLINE</span>
+            <div class="inline-flex items-center gap-2 px-6 py-2 rounded-3xl border border-[#00f9ff]/30 bg-black/40 backdrop-blur-2xl mb-8 text-[#00f9ff] text-sm font-bold tracking-[3px] uppercase">
+                <div class="w-2 h-2 bg-[#00f9ff] rounded-full animate-pulse"></div>
+                HUMAN-CENTRIC AI INITIATIVE • EST 2024
             </div>
             
-            <div class="glitch-wrapper mb-6">
-                <h1 class="glitch-text font-orbitron" data-text="ENGINEERING THE FUTURE">ENGINEERING THE FUTURE</h1>
-            </div>
+            <h1 class="font-orbitron text-6xl md:text-7xl lg:text-8xl font-black leading-none mb-6 glitch" data-text="THE FUTURE IS ALIVE">
+                THE FUTURE<br><span class="text-gradient">IS ALIVE</span>
+            </h1>
             
-            <p class="text-xl md:text-2xl text-white/60 mb-12 font-light max-w-3xl mx-auto">
-                Advanced AI capabilities, Cybersecurity protocols, and Automated tools. Direct access to premium systems built by Ayush Kumar.
+            <p class="text-2xl md:text-3xl text-white/80 max-w-2xl mx-auto mb-10 font-light">
+                O.M.N.E.X.A — Where imagination becomes executable code.<br>
+                Built by <span class="font-semibold text-[#00f9ff]">Ayush Kumar</span>.
             </p>
             
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="#tools" class="btn-cyber px-8 py-4 text-sm"><i class="fa-solid fa-terminal mr-3"></i> Initialize Tools</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Founder Section -->
-    <section id="founder" class="py-24 px-6 relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="lg:w-1/3 w-full">
-                    <div class="cyber-panel p-8 rounded-2xl relative text-center">
-                        <div class="w-32 h-32 mx-auto rounded-full border-2 border-[#00f9ff] p-1 mb-6 relative">
-                            <div class="absolute inset-0 rounded-full border border-[#c026ff] animate-[spin_4s_linear_infinite]"></div>
-                            <div class="w-full h-full rounded-full bg-gradient-to-br from-[#00f9ff]/20 to-[#c026ff]/20 flex items-center justify-center">
-                                <i class="fa-solid fa-user-astronaut text-4xl text-[#00f9ff]"></i>
-                            </div>
-                        </div>
-                        <h2 class="text-3xl font-orbitron font-bold text-white mb-2">Ayush Kumar</h2>
-                        <p class="text-[#00f9ff] font-orbitron text-sm tracking-widest mb-6">CHIEF ARCHITECT</p>
-                        <a href="mailto:acidicskull422@gmail.com" class="btn-cyber w-full text-xs"><i class="fa-solid fa-envelope mr-2"></i> DIRECT CONTACT</a>
-                    </div>
-                </div>
-                
-                <div class="lg:w-2/3 w-full space-y-8">
-                    <div>
-                        <h3 class="text-4xl font-orbitron font-bold mb-4 flex items-center gap-4">
-                            <i class="fa-solid fa-microchip text-[#ff00aa]"></i> The Mind Behind The Machine
-                        </h3>
-                        <p class="text-xl text-white/70 leading-relaxed">
-                            I am a multi-disciplinary technology creator focused on blurring the lines between science fiction and reality. My expertise spans across application architecture, artificial intelligence, and network security.
-                        </p>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-3">
-                        <div class="skill-tag"><i class="fa-solid fa-code text-[#00f9ff]"></i> Web Developer</div>
-                        <div class="skill-tag"><i class="fa-solid fa-mobile-screen text-[#00ff9d]"></i> App Developer</div>
-                        <div class="skill-tag"><i class="fa-solid fa-pen-nib text-[#c026ff]"></i> Product Designer</div>
-                        <div class="skill-tag"><i class="fa-solid fa-shield-halved text-[#ff00aa]"></i> Cybersecurity Researcher</div>
-                        <div class="skill-tag"><i class="fa-solid fa-brain text-[#00f9ff]"></i> AI & ChatGPT Expert</div>
-                        <div class="skill-tag"><i class="fa-solid fa-video text-[#c026ff]"></i> Editor & Content Creator</div>
-                        <div class="skill-tag"><i class="fa-solid fa-user-tie text-[#00ff9d]"></i> Techie & NDA Mentor (22-23)</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Paid Tools Section -->
-    <section id="tools" class="py-24 px-6 relative border-t border-white/5 bg-black/40">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <div class="inline-block px-3 py-1 rounded border border-[#00ff9d]/30 text-[#00ff9d] text-xs font-bold tracking-[0.2em] mb-4">PREMIUM SYSTEMS</div>
-                <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4">Licensed Architecture</h2>
-                <p class="text-white/60 max-w-2xl mx-auto">Exclusive, highly-advanced, fully-functional tools built for specialized tasks. All systems below require paid licensing for access and regular updates.</p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="#tools" 
+                   class="btn-neon text-lg px-10 py-6 flex items-center gap-3 text-xl">
+                    <i class="fa-solid fa-download"></i>
+                    DOWNLOAD HUB
+                </a>
+                <a href="#contact" 
+                   class="btn-outline text-lg px-10 py-6 flex items-center gap-3">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    TRANSMIT SIGNAL
+                </a>
             </div>
             
+            <div class="mt-16 flex justify-center gap-8 text-white/60 text-sm tracking-widest">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-android"></i> ANDROID APK</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-desktop"></i> PC JARVIS</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-brain"></i> AI AGENTS</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-shield-halved"></i> CYBER TOOLS</div>
+            </div>
+        </div>
+
+        <!-- Floating badge -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 hidden md:flex items-center gap-3 bg-black/60 border border-[#00f9ff]/30 rounded-3xl px-8 py-3 text-xs font-bold uppercase backdrop-blur-md">
+            <span class="text-[#00ff9d]">LIVE</span>
+            <span class="text-white/80">•</span>
+            <span>PREMIUM TOOLS AVAILABLE</span>
+            <i class="fa-solid fa-lock text-[#00f9ff]"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-flex px-4 py-2 bg-white/5 border border-[#ff00aa]/30 rounded-3xl text-[#ff00aa] text-xs font-bold tracking-widest mb-6">THE ARCHITECT</div>
+                    <h2 class="font-orbitron text-5xl lg:text-6xl font-bold mb-8 leading-none">Ayush Kumar</h2>
+                    <p class="text-xl text-white/80 leading-relaxed mb-8">
+                        Tech visionary, AI architect, and founder of O.M.N.E.X.A. 
+                        A highly curious innovator who turns science-fiction concepts into reality.
+                    </p>
+                    <p class="text-white/70 mb-10">
+                        I specialize in building human-centric intelligence systems that expand human potential. 
+                        From voice assistants and PC automation to social-growth AI and ethical cybersecurity tools — every creation is designed to be powerful, beautiful, and accessible.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-6 text-sm">
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-laptop-code text-[#00f9ff]"></i> Web &amp; App Developer</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-mobile-screen-button text-[#c026ff]"></i> Product Designer</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-brain text-[#ff00aa]"></i> AI &amp; ChatGPT Expert</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-shield-halved text-[#00ff9d]"></i> Cybersecurity Researcher</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-video text-[#ff6b00]"></i> Content Creator &amp; Editor</div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-infinity text-[#00f9ff]"></i> Futuristic Systems Architect</div>
+                    </div>
+
+                    <div class="mt-12 pt-8 border-t border-white/10 flex gap-8">
+                        <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="text-4xl hover:text-[#00f9ff]"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://youtube.com/@bharwandiaries" target="_blank" class="text-4xl hover:text-[#ff00aa]"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://instagram.com/o.m.n.e.x.a" target="_blank" class="text-4xl hover:text-[#c026ff]"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://bharwandiaries.com" target="_blank" class="flex items-center gap-2 text-lg font-medium"><i class="fa-solid fa-podcast"></i> Bharwan Diaries</a>
+                    </div>
+                </div>
+
+                <!-- Mission Card -->
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-br from-[#00f9ff] to-[#c026ff] rounded-3xl opacity-10 blur-3xl"></div>
+                    <div class="glass-card p-10 md:p-14 rounded-3xl relative">
+                        <div class="flex justify-between mb-8">
+                            <i class="fa-solid fa-microchip text-6xl text-[#00f9ff]"></i>
+                            <span class="text-xs font-bold px-5 h-fit py-2 bg-[#c026ff]/10 text-[#c026ff] rounded-3xl border border-[#c026ff]/30">O.M.N.E.X.A MISSION</span>
+                        </div>
+                        <h3 class="font-orbitron text-3xl mb-6">Building intelligence that feels alive.</h3>
+                        <p class="text-white/80 text-lg leading-relaxed">
+                            O.M.N.E.X.A is my independent AI research lab. We experiment relentlessly with futuristic systems — JARVIS-level assistants, autonomous trading agents, holographic interfaces, and next-gen cybersecurity tools.
+                        </p>
+                        <div class="mt-10 text-xs uppercase flex items-center gap-8 text-white/60">
+                            <div>CSJMU Alumnus</div>
+                            <div>Bachelor's in Computer Applications</div>
+                            <div>First Division</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise" class="py-20 px-6 bg-black/40">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="px-6 py-2 text-[#00f9ff] bg-white/5 border border-[#00f9ff]/30 rounded-3xl text-sm font-bold">SKILLS MATRIX</span>
+                <h2 class="text-5xl font-orbitron font-bold mt-4">Core Expertise</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="glass-card p-8 rounded-3xl text-center hover:scale-105">
+                    <i class="fa-solid fa-brain text-5xl text-[#c026ff] mb-4"></i>
+                    <h4 class="font-semibold text-xl">AI &amp; ChatGPT Mastery</h4>
+                    <p class="text-white/60 text-sm mt-2">Advanced prompt engineering, autonomous agents &amp; LLM orchestration</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center hover:scale-105">
+                    <i class="fa-solid fa-code text-5xl text-[#00f9ff] mb-4"></i>
+                    <h4 class="font-semibold text-xl">Web &amp; App Developer</h4>
+                    <p class="text-white/60 text-sm mt-2">Full-stack modern web + native Android &amp; cross-platform apps</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center hover:scale-105">
+                    <i class="fa-solid fa-palette text-5xl text-[#ff00aa] mb-4"></i>
+                    <h4 class="font-semibold text-xl">Product Designer</h4>
+                    <p class="text-white/60 text-sm mt-2">UI/UX for futuristic interfaces &amp; immersive experiences</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center hover:scale-105">
+                    <i class="fa-solid fa-shield-halved text-5xl text-[#00ff9d] mb-4"></i>
+                    <h4 class="font-semibold text-xl">Cybersecurity Researcher</h4>
+                    <p class="text-white/60 text-sm mt-2">Reconnaissance, ethical hacking, network security tools</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center hover:scale-105">
+                    <i class="fa-solid fa-video text-5xl text-[#ff6b00] mb-4"></i>
+                    <h4 class="font-semibold text-xl">Content Creator &amp; Editor</h4>
+                    <p class="text-white/60 text-sm mt-2">Podcasts, video editing, storytelling &amp; digital media</p>
+                </div>
+                <div class="glass-card p-8 rounded-3xl text-center hover:scale-105">
+                    <i class="fa-solid fa-robot text-5xl text-[#c026ff] mb-4"></i>
+                    <h4 class="font-semibold text-xl">Autonomous Systems</h4>
+                    <p class="text-white/60 text-sm mt-2">PC automation, trading bots &amp; intelligent agents</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLS & PROJECTS -->
+    <section id="tools" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-orbitron text-5xl font-bold text-gradient inline-block">PREMIUM TOOLS &amp; APKs</h2>
+                <p class="mt-3 text-white/70 max-w-md mx-auto">All systems are production-grade, actively maintained, and available only under paid license. Direct downloads + lifetime updates.</p>
+            </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- MyChillAssistant -->
-                <div class="cyber-panel p-8 rounded-xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fa-solid fa-mobile-screen text-4xl text-[#00f9ff]"></i>
-                        <span class="badge-paid">PAID APP</span>
+                <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 bg-[#00f9ff]/10 rounded-2xl"><i class="fa-solid fa-mobile-screen-button text-4xl text-[#00f9ff]"></i></div>
+                        <div class="flex flex-col items-end">
+                            <span class="px-4 py-1 text-xs font-bold bg-emerald-400/20 text-emerald-400 rounded-3xl">APK • LIVE</span>
+                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
+                        </div>
                     </div>
-                    <h3 class="font-orbitron text-2xl font-bold mb-3">MyChillAssistant</h3>
-                    <p class="text-white/60 text-base mb-6 flex-grow">An ultra-responsive AI voice assistant for Android (Siri alternative). Handles complex queries, automation, and maintains conversational memory natively.</p>
-                    <a href="mailto:acidicskull422@gmail.com?subject=License Inquiry: MyChillAssistant" class="btn-cyber w-full text-xs">
-                        <i class="fa-solid fa-key mr-2"></i> Request License
+                    <h3 class="font-orbitron text-3xl mt-6 mb-2">MyChillAssistant</h3>
+                    <p class="text-white/70 flex-1">Siri-level AI voice assistant for Android. Natural conversation, smart home control, task automation, personal memory, futuristic UI.</p>
+                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00f9ff]"></i> Voice-first interface</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00f9ff]"></i> Offline capabilities</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00f9ff]"></i> 50+ automations</li>
+                    </ul>
+                    <a href="./downloads/mychillassistant.apk" download class="btn-neon w-full justify-center">
+                        <i class="fa-solid fa-download mr-3"></i> DOWNLOAD APK (Premium)
                     </a>
                 </div>
 
-                <!-- Jiya -->
-                <div class="cyber-panel p-8 rounded-xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fa-solid fa-server text-4xl text-[#c026ff]"></i>
-                        <span class="badge-paid">PAID SYSTEM</span>
+                <!-- JARVIS -->
+                <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 bg-[#c026ff]/10 rounded-2xl"><i class="fa-solid fa-robot text-4xl text-[#c026ff]"></i></div>
+                        <div class="flex flex-col items-end">
+                            <span class="px-4 py-1 text-xs font-bold bg-purple-400/20 text-[#c026ff] rounded-3xl">PC • FULL SYSTEM</span>
+                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
+                        </div>
                     </div>
-                    <h3 class="font-orbitron text-2xl font-bold mb-3">Jiya OS Assistant</h3>
-                    <p class="text-white/60 text-base mb-6 flex-grow">A fully functional, real-life PC automation intelligence. Designed to execute system-level commands silently via natural voice or text input.</p>
-                    <a href="mailto:acidicskull422@gmail.com?subject=License Inquiry: Jiya PC Assistant" class="btn-cyber w-full text-xs border-[#c026ff] text-[#c026ff] hover:bg-[#c026ff]/10">
-                        <i class="fa-solid fa-key mr-2"></i> Request License
-                    </a>
+                    <h3 class="font-orbitron text-3xl mt-6 mb-2">JARVIS AI</h3>
+                    <p class="text-white/70 flex-1">The real-life Iron Man AI assistant. Full PC automation, voice control, intelligent task execution, system monitoring, deep OS integration, and contextual awareness.</p>
+                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#c026ff]"></i> Voice + gesture control</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#c026ff]"></i> Browser, files, apps automation</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#c026ff]"></i> Real-time learning</li>
+                    </ul>
+                    <button onclick="contactForTool('JARVIS AI')" class="w-full py-4 text-center font-semibold border-2 border-[#c026ff] hover:bg-[#c026ff] hover:text-black rounded-3xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
+                    </button>
                 </div>
 
                 <!-- CreatorAI -->
-                <div class="cyber-panel p-8 rounded-xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fa-solid fa-wand-magic-sparkles text-4xl text-[#ff00aa]"></i>
-                        <span class="badge-paid">PAID SAAS</span>
+                <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 bg-[#ff00aa]/10 rounded-2xl"><i class="fa-solid fa-wand-magic-sparkles text-4xl text-[#ff00aa]"></i></div>
+                        <div class="flex flex-col items-end">
+                            <span class="px-4 py-1 text-xs font-bold bg-pink-400/20 text-[#ff00aa] rounded-3xl">WEB APP</span>
+                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
+                        </div>
                     </div>
-                    <h3 class="font-orbitron text-2xl font-bold mb-3">CreatorAI Platform</h3>
-                    <p class="text-white/60 text-base mb-6 flex-grow">The ultimate tool for content creators. Generates viral hooks, analyzes social media algorithms, and schedules high-converting content automatically.</p>
-                    <a href="mailto:acidicskull422@gmail.com?subject=License Inquiry: CreatorAI" class="btn-cyber w-full text-xs border-[#ff00aa] text-[#ff00aa] hover:bg-[#ff00aa]/10">
-                        <i class="fa-solid fa-key mr-2"></i> Request License
-                    </a>
+                    <h3 class="font-orbitron text-3xl mt-6 mb-2">CreatorAI</h3>
+                    <p class="text-white/70 flex-1">Your personal AI growth engine for social media. Analyzes trends, generates viral content, schedules posts, suggests hooks &amp; thumbnails.</p>
+                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff00aa]"></i> Instagram • YouTube • X</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff00aa]"></i> Content calendar AI</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff00aa]"></i> Performance analytics</li>
+                    </ul>
+                    <button onclick="contactForTool('CreatorAI')" class="w-full py-4 text-center font-semibold border-2 border-[#ff00aa] hover:bg-[#ff00aa] hover:text-black rounded-3xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
+                    </button>
                 </div>
 
                 <!-- Trading AI Bot -->
-                <div class="cyber-panel p-8 rounded-xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fa-solid fa-chart-line text-4xl text-[#00ff9d]"></i>
-                        <span class="badge-paid">PAID BOT</span>
+                <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 bg-[#00ff9d]/10 rounded-2xl"><i class="fa-solid fa-chart-line text-4xl text-[#00ff9d]"></i></div>
+                        <div class="flex flex-col items-end">
+                            <span class="px-4 py-1 text-xs font-bold bg-emerald-400/20 text-[#00ff9d] rounded-3xl">AUTONOMOUS BOT</span>
+                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
+                        </div>
                     </div>
-                    <h3 class="font-orbitron text-2xl font-bold mb-3">TradeForge AI</h3>
-                    <p class="text-white/60 text-base mb-6 flex-grow">Autonomous, high-frequency trading bot integrated with real-time API feeds. Executes calculated positions based on advanced machine learning models.</p>
-                    <a href="mailto:acidicskull422@gmail.com?subject=License Inquiry: TradeForge AI" class="btn-cyber w-full text-xs border-[#00ff9d] text-[#00ff9d] hover:bg-[#00ff9d]/10">
-                        <i class="fa-solid fa-key mr-2"></i> Request License
-                    </a>
+                    <h3 class="font-orbitron text-3xl mt-6 mb-2">Trading AI Bot</h3>
+                    <p class="text-white/70 flex-1">Autonomous crypto &amp; stock trading intelligence. Real-time market analysis, risk management, dynamic strategy execution, 24/7 operation.</p>
+                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00ff9d]"></i> Multi-exchange support</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00ff9d]"></i> Backtesting engine</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00ff9d]"></i> Telegram alerts</li>
+                    </ul>
+                    <button onclick="contactForTool('Trading AI Bot')" class="w-full py-4 text-center font-semibold border-2 border-[#00ff9d] hover:bg-[#00ff9d] hover:text-black rounded-3xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
+                    </button>
                 </div>
 
                 <!-- KaliRecon -->
-                <div class="cyber-panel p-8 rounded-xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fa-solid fa-terminal text-4xl text-[#ff6b00]"></i>
-                        <span class="badge-paid">PAID TOOL</span>
+                <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 bg-[#ff6b00]/10 rounded-2xl"><i class="fa-solid fa-terminal text-4xl text-[#ff6b00]"></i></div>
+                        <div class="flex flex-col items-end">
+                            <span class="px-4 py-1 text-xs font-bold bg-orange-400/20 text-[#ff6b00] rounded-3xl">KALI LINUX TOOL</span>
+                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
+                        </div>
                     </div>
-                    <h3 class="font-orbitron text-2xl font-bold mb-3">KaliRecon Protocol</h3>
-                    <p class="text-white/60 text-base mb-6 flex-grow">A robust reconnaissance framework for Kali Linux. Scans, maps, and generates vulnerability reports faster than traditional Nmap integrations.</p>
-                    <a href="mailto:acidicskull422@gmail.com?subject=License Inquiry: KaliRecon" class="btn-cyber w-full text-xs border-[#ff6b00] text-[#ff6b00] hover:bg-[#ff6b00]/10">
-                        <i class="fa-solid fa-key mr-2"></i> Request License
-                    </a>
+                    <h3 class="font-orbitron text-3xl mt-6 mb-2">KaliRecon</h3>
+                    <p class="text-white/70 flex-1">Next-gen reconnaissance &amp; OSINT framework for Kali Linux. Automated footprinting, subdomain enumeration, vulnerability scanning &amp; intelligence gathering.</p>
+                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff6b00]"></i> Passive &amp; active recon</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff6b00]"></i> Beautiful reports</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff6b00]"></i> Modular &amp; extensible</li>
+                    </ul>
+                    <button onclick="contactForTool('KaliRecon')" class="w-full py-4 text-center font-semibold border-2 border-[#ff6b00] hover:bg-[#ff6b00] hover:text-black rounded-3xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
+                    </button>
                 </div>
 
                 <!-- Net Disruptor -->
-                <div class="cyber-panel p-8 rounded-xl flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <i class="fa-solid fa-wifi text-4xl text-[#ff3333]"></i>
-                        <span class="badge-paid">PAID SCRIPTS</span>
+                <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 bg-[#ff3333]/10 rounded-2xl"><i class="fa-solid fa-wifi text-4xl text-[#ff3333]"></i></div>
+                        <div class="flex flex-col items-end">
+                            <span class="px-4 py-1 text-xs font-bold bg-red-400/20 text-[#ff3333] rounded-3xl">ETHICAL • EDUCATIONAL</span>
+                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
+                        </div>
                     </div>
-                    <h3 class="font-orbitron text-2xl font-bold mb-3">Net Disruptor Suite</h3>
-                    <p class="text-white/60 text-base mb-6 flex-grow">Advanced WiFi deauthentication and network jamming scripts designed strictly for ethical hacking and authorized penetration testing.</p>
-                    <a href="mailto:acidicskull422@gmail.com?subject=License Inquiry: Net Disruptor" class="btn-cyber w-full text-xs border-[#ff3333] text-[#ff3333] hover:bg-[#ff3333]/10">
-                        <i class="fa-solid fa-key mr-2"></i> Request License
-                    </a>
+                    <h3 class="font-orbitron text-3xl mt-6 mb-2">Net Disruptor</h3>
+                    <p class="text-white/70 flex-1">Advanced WiFi deauthentication &amp; network testing toolkit. Perfect for ethical security research, penetration testing labs, and understanding wireless protocols.</p>
+                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff3333]"></i> Deauth attacks</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff3333]"></i> Evil twin simulation</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff3333]"></i> Educational scripts</li>
+                    </ul>
+                    <button onclick="contactForTool('Net Disruptor')" class="w-full py-4 text-center font-semibold border-2 border-[#ff3333] hover:bg-[#ff3333] hover:text-black rounded-3xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
+                    </button>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Future Lab Section -->
-    <section id="future" class="py-24 px-6 border-t border-white/5 relative">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-12 text-center">Upcoming Architecture</h2>
+    <!-- FUTURE LAB -->
+    <section id="lab" class="py-24 px-6 border-t border-white/10">
+        <div class="max-w-5xl mx-auto glass-card rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+            <div class="absolute top-10 right-10 text-8xl opacity-10 font-black font-orbitron">HOLO</div>
+            <h2 class="font-orbitron text-4xl md:text-5xl font-bold mb-6">THE NEXT FRONTIER IS BEING BUILT</h2>
+            <p class="max-w-xl mx-auto text-white/80 text-lg mb-12">
+                Project Holo — Real-time 3D holographic projection system. 
+                Real-life JARVIS holograms, immersive meetings, interactive digital twins, and spatial computing experiences.
+            </p>
             
-            <div class="grid lg:grid-cols-2 gap-8">
-                <div class="cyber-panel p-10 rounded-2xl border-l-4 border-l-[#00f9ff]">
-                    <div class="text-[#00f9ff] font-orbitron tracking-[0.2em] text-xs mb-4">IN DEVELOPMENT (2026/2027)</div>
-                    <h3 class="text-2xl font-bold mb-4">Project Holo: 3D Projection</h3>
-                    <p class="text-white/60 leading-relaxed">Currently engineering a conceptual framework for real-life 3D holographic projection systems. Designed to replace standard monitors with immersive, interactive light-field displays for true spatial computing.</p>
-                </div>
-                
-                <div class="cyber-panel p-10 rounded-2xl border-l-4 border-l-[#c026ff]">
-                    <div class="text-[#c026ff] font-orbitron tracking-[0.2em] text-xs mb-4">THEORETICAL PHASE</div>
-                    <h3 class="text-2xl font-bold mb-4">Omnexa Core AGI</h3>
-                    <p class="text-white/60 leading-relaxed">Researching pathways for self-iterating artificial general intelligence. The goal is to build an ecosystem where the AI can write, test, and deploy its own micro-applications without human intervention.</p>
-                </div>
+            <div class="inline-flex items-center bg-black/70 border border-white/20 rounded-3xl px-8 py-4 gap-4 text-sm uppercase font-bold">
+                <div class="w-3 h-3 bg-[#00f9ff] rounded-full animate-ping"></div>
+                ACTIVE R&amp;D • 2026 LAUNCH TARGET
             </div>
+            
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-3 gap-8 text-left text-sm max-w-2xl mx-auto">
+                <div class="flex gap-3"><i class="fa-solid fa-cube text-[#00f9ff]"></i> Spatial AI Interfaces</div>
+                <div class="flex gap-3"><i class="fa-solid fa-eye text-[#c026ff]"></i> Gesture &amp; Voice Holography</div>
+                <div class="flex gap-3"><i class="fa-solid fa-network-wired text-[#ff00aa]"></i> Multi-user AR collaboration</div>
+                <div class="flex gap-3"><i class="fa-solid fa-brain text-[#00ff9d]"></i> Neural rendering engine</div>
+                <div class="flex gap-3"><i class="fa-solid fa-satellite text-[#ff6b00]"></i> Real-time 3D streaming</div>
+                <div class="flex gap-3"><i class="fa-solid fa-lock text-[#ff3333]"></i> Secure holographic encryption</div>
+            </div>
+            
+            <p class="text-xs text-white/50 mt-16">More prototypes in development: Autonomous drone AI, brain-computer interface experiments, and quantum-inspired simulators.</p>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-8 border-t border-white/10 bg-black text-center text-white/40 font-orbitron text-xs tracking-[0.2em]">
-        <p>INITIATIVE BY AYUSH KUMAR • O.M.N.E.X.A SYSTEMS © 2026</p>
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-orbitron text-5xl font-bold mb-4">INITIATE SECURE TRANSMISSION</h2>
+            <p class="text-white/70 mb-12">Interested in any tool? Need a custom AI solution? Just tell me which system you want access to.</p>
+            
+            <div class="glass-card p-8 md:p-12 rounded-3xl">
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" id="name" placeholder="YOUR CALLSIGN / NAME" 
+                               class="bg-black/60 border border-white/20 rounded-2xl px-6 py-5 focus:border-[#00f9ff] outline-none text-white">
+                        <input type="email" id="email" placeholder="RETURN FREQUENCY (EMAIL)" 
+                               class="bg-black/60 border border-white/20 rounded-2xl px-6 py-5 focus:border-[#00f9ff] outline-none text-white">
+                    </div>
+                    <select id="tool-select" class="w-full bg-black/60 border border-white/20 rounded-2xl px-6 py-5 focus:border-[#00f9ff] outline-none text-white">
+                        <option value="">SELECT TOOL / INTEREST</option>
+                        <option value="MyChillAssistant">MyChillAssistant APK</option>
+                        <option value="JARVIS AI">JARVIS AI (PC)</option>
+                        <option value="CreatorAI">CreatorAI</option>
+                        <option value="Trading AI Bot">Trading AI Bot</option>
+                        <option value="KaliRecon">KaliRecon</option>
+                        <option value="Net Disruptor">Net Disruptor</option>
+                        <option value="Project Holo">Project Holo (Future)</option>
+                        <option value="Custom AI">Custom AI Development</option>
+                    </select>
+                    <textarea id="message" rows="5" placeholder="YOUR TRANSMISSION..." 
+                              class="w-full bg-black/60 border border-white/20 rounded-3xl px-6 py-5 focus:border-[#00f9ff] outline-none text-white"></textarea>
+                    
+                    <button type="button" onclick="sendTransmission()" 
+                            class="btn-neon w-full py-7 text-xl flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        SEND TRANSMISSION TO acidicskull422@gmail.com
+                    </button>
+                </form>
+            </div>
+            
+            <p class="text-xs text-white/40 mt-8">Or directly email <a href="mailto:acidicskull422@gmail.com" class="underline hover:text-[#00f9ff]">acidicskull422@gmail.com</a></p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 py-12 px-6 text-center text-white/40 text-xs tracking-[2px] font-medium">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <p>© 2026 O.M.N.E.X.A • ENGINEERED BY AYUSH KUMAR • THE FUTURE IS ALIVE</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white">PRIVACY PROTOCOL</a>
+                    <a href="#" class="hover:text-white">LICENSE TERMS</a>
+                    <a href="https://github.com/ayush-kumar-omneXa" target="_blank" class="hover:text-white">GITHUB REPOS</a>
+                </div>
+                <p class="text-[#00f9ff]">ALL TOOLS ARE PREMIUM • LIFETIME UPDATES INCLUDED</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- Premium Modal -->
+    <div onclick="if(event.target.id === 'premium-modal')hidePremiumModal()" id="premium-modal" class="hidden fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" class="glass-card max-w-lg w-full mx-4 rounded-3xl p-10 text-center">
+            <h3 class="font-orbitron text-4xl mb-6">PREMIUM ACCESS UNLOCKED</h3>
+            <p class="text-white/70">Choose your weapon. Every tool comes with lifetime updates, priority support, and future upgrades.</p>
+            <div class="my-8 space-y-4 text-left">
+                <div onclick="contactForTool('Any Tool')" class="cursor-pointer flex justify-between items-center p-4 border border-white/20 hover:border-[#00f9ff] rounded-2xl">MyChillAssistant APK <span class="text-emerald-400">₹4,999</span></div>
+                <div onclick="contactForTool('Any Tool')" class="cursor-pointer flex justify-between items-center p-4 border border-white/20 hover:border-[#c026ff] rounded-2xl">JARVIS AI Full System <span class="text-purple-400">₹12,999</span></div>
+                <div onclick="contactForTool('Any Tool')" class="cursor-pointer flex justify-between items-center p-4 border border-white/20 hover:border-[#ff00aa] rounded-2xl">CreatorAI Pro <span class="text-pink-400">₹7,499</span></div>
+            </div>
+            <button onclick="hidePremiumModal();contactForTool('Premium Bundle')" class="btn-neon w-full py-5">GET LIFETIME BUNDLE ACCESS</button>
+            <p class="text-xs mt-6 text-white/50">All prices are one-time. Unlimited devices. No subscription.</p>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already loaded
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu')
+            const icon = document.getElementById('mobile-menu-btn').querySelector('i')
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden')
+                menu.classList.add('flex', 'flex-col')
+                icon.classList.replace('fa-bars', 'fa-times')
+            } else {
+                menu.classList.add('hidden')
+                menu.classList.remove('flex', 'flex-col')
+                icon.classList.replace('fa-times', 'fa-bars')
+            }
+        }
+
+        // Particle system for extra futuristic feel
+        function createParticles() {
+            const canvas = document.getElementById('particles')
+            const ctx = canvas.getContext('2d')
+            
+            function resize() {
+                canvas.width = window.innerWidth
+                canvas.height = window.innerHeight
+            }
+            window.addEventListener('resize', resize)
+            resize()
+
+            const particles = []
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width
+                    this.y = Math.random() * canvas.height
+                    this.size = Math.random() * 3 + 0.5
+                    this.speedX = Math.random() * 0.6 - 0.3
+                    this.speedY = Math.random() * 0.6 - 0.3
+                    this.color = Math.random() > 0.5 ? '#00f9ff' : '#c026ff'
+                }
+                update() {
+                    this.x += this.speedX
+                    this.y += this.speedY
+                    
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1
+                }
+                draw() {
+                    ctx.fillStyle = this.color
+                    ctx.globalAlpha = 0.6
+                    ctx.beginPath()
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+                    ctx.fill()
+                }
+            }
+
+            for (let i = 0; i < 180; i++) {
+                particles.push(new Particle())
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update()
+                    particles[i].draw()
+                }
+                requestAnimationFrame(animate)
+            }
+            animate()
+        }
+
+        // Contact for specific tool
+        function contactForTool(tool) {
+            hidePremiumModal()
+            const subject = encodeURIComponent(`O.M.N.E.X.A Premium Access – ${tool}`)
+            const body = encodeURIComponent(`Hello Ayush,\n\nI am interested in purchasing ${tool}.\n\nPlease share pricing, features & demo details.\n\nBest regards,`)
+            window.location.href = `mailto:acidicskull422@gmail.com?subject=${subject}&body=${body}`
+        }
+
+        function showPremiumModal() {
+            document.getElementById('premium-modal').classList.remove('hidden')
+            document.getElementById('premium-modal').classList.add('flex')
+        }
+
+        function hidePremiumModal() {
+            const modal = document.getElementById('premium-modal')
+            modal.classList.add('hidden')
+            modal.classList.remove('flex')
+        }
+
+        // Fake transmission success
+        function sendTransmission() {
+            const form = document.getElementById('contact-form')
+            const btn = form.querySelector('button')
+            
+            const originalText = btn.innerHTML
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-3"></i> TRANSMITTING TO O.M.N.E.X.A CORE...`
+            btn.disabled = true
+            
+            setTimeout(() => {
+                alert('✅ TRANSMISSION RECEIVED!\n\nAyush will reply within 24 hours.\n\nThank you for choosing O.M.N.E.X.A.')
+                form.reset()
+                btn.innerHTML = originalText
+                btn.disabled = false
+            }, 1650)
+        }
+
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const cards = document.querySelectorAll('.project-card, .glass-card')
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1
+                        entry.target.style.transform = 'translateY(0)'
+                    }
+                })
+            }, { threshold: 0.15 })
+            
+            cards.forEach(card => {
+                card.style.opacity = 0
+                card.style.transform = 'translateY(30px)'
+                observer.observe(card)
+            })
+        }
+
+        // Initialize everything
+        window.onload = function() {
+            createParticles()
+            revealOnScroll()
+            console.log('%c🚀 O.M.N.E.X.A WEBSITE LOADED SUCCESSFULLY – BUILT FOR THE FUTURE', 'color:#00f9ff; font-family:Orbitron; font-size:13px;')
+        }
+    </script>
 </body>
 </html>
-"""
-
-with open('index.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
-
-print("Generated advanced index.html")
