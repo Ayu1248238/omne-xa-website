@@ -1,450 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="O.M.N.E.X.A by Ayush Kumar — Futuristic AI Initiative. Download MyChillAssistant v2.1.4, Jiya PC Automation, CreatorAI & more.">
-    <meta name="theme-color" content="#050507">
-    <title>O.M.N.E.X.A • Futuristic AI Initiative</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O.M.N.E.X.A | Ayush Kumar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;800&family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --neon-cyan: #00f9ff;
-            --neon-pink: #ff00aa;
-            --neon-purple: #c026ff;
-            --bg-dark: #050507;
-        }
+        :root { --neon-cyan: #00f9ff; --neon-pink: #ff00aa; --neon-purple: #c026ff; --bg-dark: #050507; }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: var(--bg-dark); color: #fff; overflow-x: hidden; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
         
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg-dark);
-            color: #e0e0ff;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+        /* Ambient Background */
+        .ambient-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: var(--bg-dark); overflow: hidden; }
+        .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; animation: float 20s infinite ease-in-out alternate; }
+        .orb-1 { width: 40vw; height: 40vw; background: rgba(0, 249, 255, 0.15); top: -10%; left: -10%; }
+        .orb-2 { width: 35vw; height: 35vw; background: rgba(192, 38, 255, 0.15); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .orb-3 { width: 30vw; height: 30vw; background: rgba(255, 0, 170, 0.1); top: 40%; left: 40%; animation-delay: -10s; }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10vw, 10vh) scale(1.2); } }
+
+        /* Glassmorphism */
+        .glass-card { background: rgba(15, 15, 20, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
+        .glass-card:hover { border-color: var(--neon-cyan); box-shadow: 0 10px 30px rgba(0, 249, 255, 0.15); transform: translateY(-5px); }
         
-        .font-display {
-            font-family: 'Space Grotesk', 'Inter', sans-serif;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-        }
+        /* Neon Buttons */
+        .btn-neon { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #000; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple)); border-radius: 50px; overflow: hidden; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(0, 249, 255, 0.4); }
+        .btn-neon:hover { box-shadow: 0 0 30px rgba(0, 249, 255, 0.7), 0 0 50px rgba(192, 38, 255, 0.5); transform: scale(1.05); color: #fff; background: transparent; border: 2px solid var(--neon-cyan); }
+        .btn-outline { padding: 0.75rem 2rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 50px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; transition: all 0.3s; }
+        .btn-outline:hover { border-color: var(--neon-pink); color: var(--neon-pink); box-shadow: 0 0 20px rgba(255, 0, 170, 0.3); }
 
-        /* Advanced Ambient Background */
-        .ambient-orbs {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            z-index: -1;
-            pointer-events: none;
-            background: var(--bg-dark);
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 20s infinite ease-in-out alternate;
-        }
-
-        .orb-1 {
-            width: 40vw; height: 40vw;
-            background: rgba(0, 249, 255, 0.15);
-            top: -10%; left: -10%;
-            animation-delay: 0s;
-        }
+        /* Glitch Effect */
+        .glitch { position: relative; color: white; }
+        .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.8; }
+        .glitch::before { left: 2px; text-shadow: -2px 0 var(--neon-pink); clip: rect(24px, 550px, 90px, 0); animation: glitch-anim 3s infinite linear alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: -2px 0 var(--neon-cyan); clip: rect(85px, 550px, 140px, 0); animation: glitch-anim 2.5s infinite linear alternate-reverse; }
+        @keyframes glitch-anim { 0% { clip: rect(10px, 9999px, 44px, 0); } 20% { clip: rect(80px, 9999px, 15px, 0); } 40% { clip: rect(33px, 9999px, 90px, 0); } 60% { clip: rect(12px, 9999px, 55px, 0); } 80% { clip: rect(66px, 9999px, 20px, 0); } 100% { clip: rect(40px, 9999px, 77px, 0); } }
         
-        .orb-2 {
-            width: 35vw; height: 35vw;
-            background: rgba(192, 38, 255, 0.15);
-            bottom: -10%; right: -10%;
-            animation-delay: -5s;
-        }
-
-        .orb-3 {
-            width: 30vw; height: 30vw;
-            background: rgba(255, 0, 170, 0.1);
-            top: 40%; left: 40%;
-            animation-delay: -10s;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10vw, 10vh) scale(1.2); }
-        }
-
-        .neon-text {
-            text-shadow: 0 0 10px rgba(0, 249, 255, 0.5), 0 0 20px rgba(0, 249, 255, 0.3);
-        }
-
-        .glass {
-            background: rgba(10, 10, 15, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .neon-button {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
-            color: #000;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 249, 255, 0.4);
-        }
-
-        .neon-button:hover {
-            box-shadow: 0 0 30px rgba(0, 249, 255, 0.6), 0 0 60px rgba(192, 38, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .section-header {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1;
-            font-weight: 800;
-            background: linear-gradient(90deg, #fff, var(--neon-cyan), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: gradient-shift 4s linear infinite;
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-
-        .project-card {
-            background: rgba(15, 15, 22, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            backdrop-filter: blur(10px);
-        }
-
-        .project-card:hover {
-            border-color: var(--neon-cyan);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 249, 255, 0.15);
-            transform: translateY(-8px) scale(1.02);
-        }
-
-        .glitch {
-            position: relative;
-        }
-
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.8;
-        }
-
-        .glitch::before {
-            left: 2px;
-            text-shadow: -2px 0 var(--neon-pink);
-            clip: rect(24px, 550px, 90px, 0);
-            animation: glitch-anim 3s infinite linear alternate-reverse;
-        }
-
-        .glitch::after {
-            left: -2px;
-            text-shadow: -2px 0 var(--neon-cyan);
-            clip: rect(85px, 550px, 140px, 0);
-            animation: glitch-anim 2.5s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim {
-            0% { clip: rect(10px, 9999px, 44px, 0); }
-            20% { clip: rect(80px, 9999px, 15px, 0); }
-            40% { clip: rect(33px, 9999px, 90px, 0); }
-            60% { clip: rect(12px, 9999px, 55px, 0); }
-            80% { clip: rect(66px, 9999px, 20px, 0); }
-            100% { clip: rect(40px, 9999px, 77px, 0); }
-        }
-
-        /* Mobile Optimizations */
-        @media (max-width: 640px) {
-            .glass { backdrop-filter: blur(12px); }
-            .orb { filter: blur(50px); }
-        }
+        /* Text Gradients */
+        .text-gradient { background: linear-gradient(90deg, #fff, var(--neon-cyan), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto; animation: gradient-shift 4s linear infinite; }
+        @keyframes gradient-shift { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 4px; }
     </style>
 </head>
-<body>
-    
+<body class="antialiased">
+
     <!-- Ambient Background -->
-    <div class="ambient-orbs">
+    <div class="ambient-bg">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
         <div class="orb orb-3"></div>
     </div>
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-x-3.5">
-                    <div class="relative w-11 h-11 group cursor-pointer" onclick="window.scrollTo(0,0)">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#00f9ff] via-[#c026ff] to-[#ff00aa] rounded-2xl group-hover:animate-spin"></div>
-                        <div class="absolute inset-[3px] bg-[#050507] rounded-2xl flex items-center justify-center">
-                            <i class="fa-solid fa-infinity text-white text-2xl group-hover:scale-110 transition-transform"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="font-display text-2xl sm:text-3xl neon-text cursor-pointer" onclick="window.scrollTo(0,0)">O.M.N.E.X.A</span>
-                    </div>
-                </div>
-
-                <div class="hidden md:flex items-center gap-x-9 text-sm font-semibold tracking-wide">
-                    <a href="#downloads" class="hover:text-[#00f9ff] transition-colors">Downloads</a>
-                    <a href="#projects" class="hover:text-[#00f9ff] transition-colors">Projects</a>
-                    <a href="#vision" class="hover:text-[#00f9ff] transition-colors">Vision</a>
-                </div>
-
-                <div class="flex items-center gap-x-4">
-                    <div class="hidden sm:flex items-center gap-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
-                        <div class="w-2 h-2 bg-[#00ff9d] rounded-full animate-pulse shadow-[0_0_8px_#00ff9d]"></div>
-                        <span class="text-[#00ff9d]">v2.1.4 LIVE</span>
-                    </div>
-                    <button id="mobile-menu-btn" class="md:hidden text-2xl text-white/80 hover:text-white p-2">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                    </button>
-                    <a href="#downloads" class="hidden md:flex px-6 py-2.5 text-sm font-bold rounded-full border border-[#00f9ff] text-[#00f9ff] hover:bg-[#00f9ff] hover:text-black transition-all shadow-[0_0_15px_rgba(0,249,255,0.2)]">
-                        GET APK
-                    </a>
-                </div>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-card border-b-0 border-white/10 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <i class="fa-solid fa-infinity text-2xl text-[#00f9ff]"></i>
+                <span class="font-orbitron font-bold text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#00f9ff] to-[#c026ff]">O.M.N.E.X.A</span>
             </div>
+            <div class="hidden md:flex gap-8 font-semibold text-sm tracking-widest uppercase">
+                <a href="#about" class="hover:text-[#00f9ff] transition-colors">About</a>
+                <a href="#projects" class="hover:text-[#00f9ff] transition-colors">Projects</a>
+                <a href="#future" class="hover:text-[#00f9ff] transition-colors">Lab</a>
+                <a href="#contact" class="hover:text-[#00f9ff] transition-colors">Contact</a>
+            </div>
+            <a href="#projects" class="hidden md:inline-flex btn-neon text-xs px-6 py-2">Get APKs</a>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <header class="relative min-h-[100dvh] flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="max-w-3xl">
-                <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-6 backdrop-blur-md">
-                    <div class="px-2 py-0.5 text-[10px] font-black bg-gradient-to-r from-[#00f9ff] to-[#c026ff] text-black rounded-full">EST 2023</div>
-                    <span class="text-xs tracking-widest text-white/70 font-medium uppercase">Human-Centric AI Lab</span>
-                </div>
-
-                <h1 class="font-display text-[3.5rem] sm:text-[5.5rem] lg:text-[7rem] leading-[0.95] tracking-tighter mb-6 glitch" data-text="THE FUTURE IS ALIVE">
-                    THE FUTURE<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#00f9ff] to-white">IS</span> 
-                    <span class="text-white">ALIVE</span>
-                </h1>
-                
-                <p class="text-xl sm:text-2xl text-white/80 mb-10 font-light leading-relaxed max-w-2xl">
-                    We don't just build tools.<br>
-                    We build <span class="text-[#00f9ff] font-semibold">living intelligence</span> designed to expand human imagination.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-5">
-                    <!-- FIXED RELATIVE URL FOR NETLIFY -->
-                    <a href="./downloads/omnexa-ai-v2.1.4.apk" 
-                       download="MyChillAssistant-v2.1.4.apk"
-                       class="neon-button flex items-center justify-center gap-x-3 px-8 py-4 rounded-full text-lg shadow-2xl">
-                        <i class="fa-solid fa-download text-xl"></i>
-                        <span>DOWNLOAD v2.1.4 APK</span>
-                    </a>
-                    
-                    <a href="#projects" class="px-8 py-4 rounded-full border border-white/20 hover:border-[#00f9ff] hover:bg-white/5 text-base font-bold flex items-center justify-center gap-x-2 transition-all">
-                        EXPLORE PROJECTS
-                    </a>
-                </div>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative">
+        <div class="max-w-4xl mx-auto text-center z-10">
+            <div class="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-6 backdrop-blur-md">
+                <span class="text-xs font-bold tracking-[0.2em] text-[#00f9ff] uppercase">Human-Centric AI Initiative</span>
+            </div>
+            <h1 class="font-orbitron text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight glitch" data-text="THE FUTURE IS ALIVE">
+                THE FUTURE <br><span class="text-gradient">IS ALIVE</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-white/70 mb-10 font-light max-w-2xl mx-auto">
+                Transforming imaginative technological ideas into functional systems. We build intelligence designed to expand human potential.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="#projects" class="btn-neon w-full sm:w-auto"><i class="fa-solid fa-download mr-3"></i> Download Hub</a>
+                <a href="#about" class="btn-outline w-full sm:w-auto">Explore Vision</a>
             </div>
         </div>
+    </section>
 
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center animate-bounce">
-            <div class="text-[10px] tracking-[3px] text-white/40 mb-2 font-medium">SCROLL</div>
-            <i class="fa-solid fa-chevron-down text-white/40"></i>
-        </div>
-    </header>
-
-    <!-- DOWNLOADS SECTION -->
-    <section id="downloads" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-24">
-        <div class="text-center mb-16">
-            <div class="inline px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-black tracking-widest mb-4">VERIFIED BUILDS</div>
-            <h2 class="section-header">Download Center</h2>
-            <p class="mt-4 text-white/60">Direct downloads hosted on Netlify & GitHub.</p>
-        </div>
-
-        <div class="max-w-3xl mx-auto">
-            <div class="glass rounded-[2rem] p-6 sm:p-10 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
-                
-                <div class="flex flex-col md:flex-row gap-8 items-center md:items-start relative z-10">
-                    <div class="w-28 h-28 rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.3)] shrink-0 group-hover:scale-105 transition-transform duration-500">
-                        <i class="fa-solid fa-mobile-screen text-[3.5rem] text-black"></i>
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="inline-block px-3 py-1 rounded border border-[#ff00aa]/30 text-[#ff00aa] text-xs font-bold tracking-widest uppercase mb-2">The Creator</div>
+                    <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-6">Ayush Kumar</h2>
+                    <p class="text-xl text-white/80 leading-relaxed">
+                        Founder of O.M.N.E.X.A and highly curious technology enthusiast. I specialize in Artificial Intelligence, futuristic systems, and creative problem solving.
+                    </p>
+                    <div class="space-y-4 text-white/60">
+                        <p><i class="fa-solid fa-graduation-cap text-[#00f9ff] mr-3"></i> CSJMU Alumnus | Foundation in analytical thinking</p>
+                        <p><i class="fa-solid fa-microphone-lines text-[#c026ff] mr-3"></i> Founder of <span class="text-white font-semibold">Bharwan Diaries</span> (Podcasts & Leadership)</p>
+                        <p><i class="fa-solid fa-shield-halved text-[#ff00aa] mr-3"></i> NDA Mentor (2022-2023) | Guiding future leaders</p>
                     </div>
-                    
-                    <div class="flex-1 text-center md:text-left">
-                        <div class="flex flex-col md:flex-row items-center gap-3 mb-3">
-                            <h3 class="text-3xl font-display">MyChillAssistant</h3>
-                            <span class="px-3 py-1 text-xs font-black bg-emerald-400/20 text-emerald-400 border border-emerald-400/30 rounded-full">v2.1.4</span>
-                        </div>
-                        
-                        <p class="text-white/70 leading-relaxed mb-6">Your advanced AI voice companion for Android. Natural conversations, fluid UI, and a personality that genuinely feels alive.</p>
-                        
-                        <div class="flex flex-wrap justify-center md:justify-start items-center gap-4 text-sm mb-8 text-white/50">
-                            <span class="flex items-center gap-2 text-emerald-400"><i class="fa-solid fa-check"></i> 48 MB APK</span>
-                            <span>•</span>
-                            <span>Android 8.0+</span>
-                            <span>•</span>
-                            <span>Safe & Verified</span>
-                        </div>
-                        
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <!-- FIXED RELATIVE URL -->
-                            <a href="./downloads/omnexa-ai-v2.1.4.apk" 
-                               download
-                               class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black text-center py-4 rounded-full font-bold transition-colors flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-download"></i> DOWNLOAD DIRECT
-                            </a>
-                            <!-- FALLBACK GITHUB RELEASE URL -->
-                            <a href="https://github.com/Ayu1248238/omne-xa-website/releases/download/mychillassistant/app-release.apk" 
-                               class="flex-1 border border-white/20 hover:border-emerald-400 hover:text-emerald-400 text-center py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2">
-                                <i class="fa-brands fa-github"></i> GITHUB MIRROR
-                            </a>
-                        </div>
+                    <div class="pt-6 flex gap-6">
+                        <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="text-2xl hover:text-[#00f9ff] transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://youtube.com/@bharwandiaries?si=QIrAWKV4HZqg5b0_" target="_blank" class="text-2xl hover:text-[#ff00aa] transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://instagram.com/o.m.n.e.x.a?igsh=MWY5NTY5OXNtbnU1dw==" target="_blank" class="text-2xl hover:text-[#c026ff] transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#00f9ff] to-[#ff00aa] rounded-3xl blur-3xl opacity-20"></div>
+                    <div class="glass-card p-10 rounded-3xl relative">
+                        <i class="fa-solid fa-microchip text-5xl text-[#00f9ff] mb-6"></i>
+                        <h3 class="text-2xl font-bold mb-4 font-orbitron">The Mission</h3>
+                        <p class="text-white/70 leading-relaxed">
+                            To build human-centric AI systems that enhance human capability and imagination. Technology should empower people, and I continuously work on learning, experimenting, and bringing futuristic concepts closer to reality.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS GRID -->
-    <section id="projects" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-24">
-        <div class="mb-16">
-            <h2 class="section-header">Live Experiments</h2>
-            <p class="mt-4 text-white/60 max-w-2xl text-lg">Systems built to bridge the gap between imagination and reality.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-orbitron font-bold text-gradient inline-block mb-4">Live Projects & Downloads</h2>
+                <p class="text-white/60">Verified APKs and tools directly from the O.M.N.E.X.A lab.</p>
+            </div>
             
-            <!-- JIYA (Updated from JARVIS) -->
-            <div class="project-card rounded-3xl p-8 group">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-[#00f9ff]/10 rounded-2xl">
-                        <i class="fa-solid fa-microchip text-3xl text-[#00f9ff]"></i>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- MyChillAssistant -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-4 bg-[#00f9ff]/10 rounded-xl"><i class="fa-solid fa-mobile-screen text-3xl text-[#00f9ff]"></i></div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#00f9ff]/20 text-[#00f9ff] rounded border border-[#00f9ff]/30">APK LIVE</span>
                     </div>
-                    <span class="px-3 py-1 text-xs font-mono border border-[#00f9ff]/30 text-[#00f9ff] rounded-full">v3.8.2</span>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3">MyChillAssistant</h3>
+                    <p class="text-white/60 text-sm mb-6 flex-grow">AI voice assistant like Siri for Android. Features natural conversation, smart automation, and a personalized futuristic feel.</p>
+                    <a href="./downloads/mychillassistant.apk" download class="w-full text-center py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#00f9ff] hover:text-[#00f9ff] transition-colors font-semibold text-sm">
+                        <i class="fa-solid fa-download mr-2"></i> Download APK
+                    </a>
                 </div>
-                <h3 class="font-display text-2xl mb-3">Jiya System</h3>
-                <p class="text-white/60 text-sm leading-relaxed mb-6">Fully functional PC automation and intelligence assistant. Voice control, silent execution, and natural LLM conversation.</p>
-                <div class="pt-4 border-t border-white/10 flex justify-between text-xs text-white/40">
-                    <span>Python • LangChain</span>
-                    <span class="text-[#00f9ff]">PC Desktop</span>
-                </div>
-            </div>
 
-            <!-- CreatorAI -->
-            <div class="project-card rounded-3xl p-8 group">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-[#c026ff]/10 rounded-2xl">
-                        <i class="fa-solid fa-wand-magic-sparkles text-3xl text-[#c026ff]"></i>
+                <!-- Jiya -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-4 bg-[#c026ff]/10 rounded-xl"><i class="fa-solid fa-robot text-3xl text-[#c026ff]"></i></div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#c026ff]/20 text-[#c026ff] rounded border border-[#c026ff]/30">PC SYSTEM</span>
                     </div>
-                    <span class="px-3 py-1 text-xs font-mono border border-[#c026ff]/30 text-[#c026ff] rounded-full">v1.9.4</span>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3">Jiya AI</h3>
+                    <p class="text-white/60 text-sm mb-6 flex-grow">A fully functional real-life AI assistant with complete PC automation, intelligent task handling, and deep OS integration.</p>
+                    <a href="#" class="w-full text-center py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#c026ff] hover:text-[#c026ff] transition-colors font-semibold text-sm">
+                        <i class="fa-brands fa-github mr-2"></i> View Source
+                    </a>
                 </div>
-                <h3 class="font-display text-2xl mb-3">CreatorAI</h3>
-                <p class="text-white/60 text-sm leading-relaxed mb-6">AI growth engine. Generates content, analyzes performance, and predicts viral trends for modern digital creators.</p>
-                <div class="pt-4 border-t border-white/10 flex justify-between text-xs text-white/40">
-                    <span>Next.js • GPT-4o</span>
-                    <span class="text-[#c026ff]">Web App</span>
-                </div>
-            </div>
 
-            <!-- KaliRecon -->
-            <div class="project-card rounded-3xl p-8 group">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="p-3 bg-orange-500/10 rounded-2xl">
-                        <i class="fa-solid fa-network-wired text-3xl text-orange-500"></i>
+                <!-- CreatorAI -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-4 bg-[#ff00aa]/10 rounded-xl"><i class="fa-solid fa-wand-magic-sparkles text-3xl text-[#ff00aa]"></i></div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#ff00aa]/20 text-[#ff00aa] rounded border border-[#ff00aa]/30">WEB APP</span>
                     </div>
-                    <span class="px-3 py-1 text-xs font-mono border border-orange-500/30 text-orange-500 rounded-full">v2.7.3</span>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3">CreatorAI</h3>
+                    <p class="text-white/60 text-sm mb-6 flex-grow">Advanced AI tool designed to help creators grow on social media through content analysis and intelligent generation.</p>
+                    <a href="#" class="w-full text-center py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#ff00aa] hover:text-[#ff00aa] transition-colors font-semibold text-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> Launch App
+                    </a>
                 </div>
-                <h3 class="font-display text-2xl mb-3">KaliRecon</h3>
-                <p class="text-white/60 text-sm leading-relaxed mb-6">Educational cybersecurity toolkit. OSINT mapping, ethical vulnerability scanning, and automated reporting.</p>
-                <div class="pt-4 border-t border-white/10 flex justify-between text-xs text-white/40">
-                    <span>Bash • Python</span>
-                    <span class="text-orange-500">Linux Script</span>
-                </div>
-            </div>
 
+                <!-- TradeForge AI Bot -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-4 bg-[#00ff9d]/10 rounded-xl"><i class="fa-solid fa-chart-line text-3xl text-[#00ff9d]"></i></div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#00ff9d]/20 text-[#00ff9d] rounded border border-[#00ff9d]/30">BOT</span>
+                    </div>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3">Trading AI Bot</h3>
+                    <p class="text-white/60 text-sm mb-6 flex-grow">Autonomous trading intelligence capable of analyzing market trends and executing strategies dynamically.</p>
+                    <a href="#" class="w-full text-center py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#00ff9d] hover:text-[#00ff9d] transition-colors font-semibold text-sm">
+                        <i class="fa-brands fa-github mr-2"></i> Get Script
+                    </a>
+                </div>
+
+                <!-- KaliRecon -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-4 bg-[#ff6b00]/10 rounded-xl"><i class="fa-solid fa-terminal text-3xl text-[#ff6b00]"></i></div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#ff6b00]/20 text-[#ff6b00] rounded border border-[#ff6b00]/30">LINUX</span>
+                    </div>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3">KaliRecon</h3>
+                    <p class="text-white/60 text-sm mb-6 flex-grow">Advanced reconnaissance and intelligence gathering tool developed specifically for Kali Linux environments.</p>
+                    <a href="#" class="w-full text-center py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#ff6b00] hover:text-[#ff6b00] transition-colors font-semibold text-sm">
+                        <i class="fa-solid fa-download mr-2"></i> Download Tool
+                    </a>
+                </div>
+
+                <!-- PhantomWiFi / Jammer -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="p-4 bg-[#ff3333]/10 rounded-xl"><i class="fa-solid fa-wifi text-3xl text-[#ff3333]"></i></div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#ff3333]/20 text-[#ff3333] rounded border border-[#ff3333]/30">ETHICAL</span>
+                    </div>
+                    <h3 class="font-orbitron text-2xl font-bold mb-3">Net Disruptor</h3>
+                    <p class="text-white/60 text-sm mb-6 flex-grow">WiFi deauthentication and network jamming scripts for educational cybersecurity experiments and testing.</p>
+                    <a href="#" class="w-full text-center py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#ff3333] hover:text-[#ff3333] transition-colors font-semibold text-sm">
+                        <i class="fa-brands fa-github mr-2"></i> View Scripts
+                    </a>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-white/10 mt-20 bg-black/50 backdrop-blur-lg">
-        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-gradient-to-br from-[#00f9ff] to-[#c026ff] rounded-lg flex items-center justify-center text-black">
-                        <i class="fa-solid fa-infinity text-sm"></i>
-                    </div>
-                    <span class="font-display text-xl font-bold">O.M.N.E.X.A</span>
-                </div>
-                
-                <div class="text-white/40 text-sm text-center md:text-left">
-                    Initiative by Ayush Kumar • Based in Uttar Pradesh, India
-                </div>
-                
-                <div class="flex gap-4">
-                    <a href="https://github.com/Ayu1248238" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-[#00f9ff] hover:border-[#00f9ff] transition-all"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-[#00f9ff] hover:border-[#00f9ff] transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://youtube.com/@bharwandiaries" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-[#ff00aa] hover:border-[#ff00aa] transition-all"><i class="fa-brands fa-youtube"></i></a>
-                </div>
+    <!-- Upcoming / Future Lab -->
+    <section id="future" class="py-24 px-6 border-t border-white/5">
+        <div class="max-w-5xl mx-auto glass-card rounded-[2rem] p-10 md:p-16 text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#c026ff] rounded-full blur-[120px] opacity-20 -mr-20 -mt-20 pointer-events-none"></div>
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold mb-6">In the Lab: The Next Frontier</h2>
+            <p class="text-white/70 mb-10 max-w-2xl mx-auto">
+                Exploring the boundaries of what's possible. Currently conceptualizing real-life 3D holographic projection systems to revolutionize communication and digital experiences.
+            </p>
+            <div class="inline-flex items-center gap-4 bg-black/50 border border-white/10 rounded-full px-6 py-3">
+                <div class="w-3 h-3 rounded-full bg-[#00f9ff] animate-pulse shadow-[0_0_10px_#00f9ff]"></div>
+                <span class="text-sm font-bold tracking-widest uppercase">Project Holo: Active R&D</span>
             </div>
         </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 border-t border-white/10 relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-8">Initiate Contact</h2>
+            <p class="text-white/60 mb-10">Whether you want to collaborate on future tech or discuss AI integrations, the network is open.</p>
+            
+            <div class="glass-card p-2 rounded-full inline-flex mx-auto mb-12 flex-wrap justify-center">
+                <a href="mailto:acidicskull422@gmail.com" class="flex items-center gap-4 px-8 py-4 rounded-full hover:bg-white/5 transition-colors text-sm sm:text-base break-all">
+                    <i class="fa-solid fa-envelope text-[#00f9ff] text-xl"></i>
+                    <span class="font-mono">acidicskull422@gmail.com</span>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
+                <input type="text" placeholder="Designation / Name" class="w-full bg-black/50 border border-white/20 rounded-xl px-6 py-4 focus:outline-none focus:border-[#00f9ff] transition-colors text-white">
+                <input type="email" placeholder="Return Address (Email)" class="w-full bg-black/50 border border-white/20 rounded-xl px-6 py-4 focus:outline-none focus:border-[#00f9ff] transition-colors text-white">
+                <textarea placeholder="Your Transmission..." rows="4" class="w-full md:col-span-2 bg-black/50 border border-white/20 rounded-xl px-6 py-4 focus:outline-none focus:border-[#00f9ff] transition-colors text-white"></textarea>
+                <button class="btn-neon md:col-span-2 w-full mt-2">Send Transmission <i class="fa-solid fa-paper-plane ml-2"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/10 bg-black text-center text-white/40 text-xs tracking-widest uppercase">
+        <p>© 2026 O.M.N.E.X.A | Engineered by Ayush Kumar | The Future is Alive</p>
     </footer>
 
-    <script>
-        // Smooth Mobile Menu
-        const btn = document.getElementById('mobile-menu-btn');
-        btn.addEventListener('click', () => {
-            const menu = document.createElement('div');
-            menu.className = 'fixed inset-0 bg-black/95 z-[200] flex flex-col p-6 backdrop-blur-xl animate-[fadeIn_0.2s_ease-out]';
-            menu.innerHTML = `
-                <div class="flex justify-between items-center mb-12">
-                    <span class="font-display text-2xl font-black neon-text">O.M.N.E.X.A</span>
-                    <button class="text-3xl text-white hover:text-[#00f9ff] transition-colors"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-                <div class="flex flex-col text-3xl font-display gap-y-6">
-                    <a href="#downloads" class="hover:text-[#00f9ff] transition-colors">Downloads</a>
-                    <a href="#projects" class="hover:text-[#00f9ff] transition-colors">Projects</a>
-                    <a href="#vision" class="hover:text-[#00f9ff] transition-colors">Vision</a>
-                </div>
-            `;
-            document.body.appendChild(menu);
-            document.body.style.overflow = 'hidden';
-            
-            menu.querySelector('button').onclick = () => {
-                menu.remove();
-                document.body.style.overflow = 'auto';
-            };
-            menu.querySelectorAll('a').forEach(a => a.onclick = () => {
-                menu.remove();
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Navbar blur on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(5, 5, 7, 0.8)';
-            } else {
-                nav.style.background = 'rgba(10, 10, 15, 0.6)';
-            }
-        });
-    </script>
 </body>
 </html>
