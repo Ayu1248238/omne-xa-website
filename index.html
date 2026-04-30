@@ -3,199 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="O.M.N.E.X.A by Ayush Kumar — Futuristic AI Initiative. Download MyChillAssistant v2.1.4, JARVIS PC Automation, CreatorAI &amp; more.">
+    <meta name="description" content="O.M.N.E.X.A by Ayush Kumar — Futuristic AI Initiative. Download MyChillAssistant v2.1.4, Jiya PC Automation, CreatorAI & more.">
     <meta name="theme-color" content="#050507">
     <title>O.M.N.E.X.A • Futuristic AI Initiative</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;family=Orbitron:wght@500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;800&family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;family=Orbitron:wght@500;600&amp;display=swap');
-        
         :root {
             --neon-cyan: #00f9ff;
             --neon-pink: #ff00aa;
             --neon-purple: #c026ff;
+            --bg-dark: #050507;
         }
         
         body {
-            font-family: 'Inter', system_ui, sans-serif;
-            background: #050507;
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-dark);
             color: #e0e0ff;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
         .font-display {
             font-family: 'Space Grotesk', 'Inter', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -0.04em;
         }
+
+        /* Advanced Ambient Background */
+        .ambient-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+            background: var(--bg-dark);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+
+        .orb-1 {
+            width: 40vw; height: 40vw;
+            background: rgba(0, 249, 255, 0.15);
+            top: -10%; left: -10%;
+            animation-delay: 0s;
+        }
         
-        .font-orbitron {
-            font-family: 'Orbitron', 'Inter', sans-serif;
-            font-weight: 600;
-            letter-spacing: 1px;
+        .orb-2 {
+            width: 35vw; height: 35vw;
+            background: rgba(192, 38, 255, 0.15);
+            bottom: -10%; right: -10%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 30vw; height: 30vw;
+            background: rgba(255, 0, 170, 0.1);
+            top: 40%; left: 40%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10vw, 10vh) scale(1.2); }
         }
 
         .neon-text {
-            text-shadow: 
-                0 0 10px #00f9ff,
-                0 0 20px #00f9ff,
-                0 0 40px #ff00aa;
+            text-shadow: 0 0 10px rgba(0, 249, 255, 0.5), 0 0 20px rgba(0, 249, 255, 0.3);
         }
 
         .glass {
-            background: rgba(15, 15, 20, 0.92);
-            backdrop-filter: blur(28px);
-            border: 1px solid rgba(0, 249, 255, 0.15);
+            background: rgba(10, 10, 15, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         .neon-button {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #00f9ff, #c026ff);
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
             color: #000;
             font-weight: 800;
             letter-spacing: 0.5px;
-            box-shadow: 
-                0 0 25px #00f9ff,
-                0 0 50px rgba(192, 38, 255, 0.5);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 249, 255, 0.4);
         }
 
         .neon-button:hover {
-            box-shadow: 
-                0 0 40px #00f9ff,
-                0 0 80px #c026ff;
-            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 249, 255, 0.6), 0 0 60px rgba(192, 38, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .section-header {
-            font-size: clamp(3rem, 8vw, 5rem);
-            line-height: 0.95;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1;
             font-weight: 800;
-            background: linear-gradient(90deg, #ffffff, #00f9ff, #ffffff);
+            background: linear-gradient(90deg, #fff, var(--neon-cyan), #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient-shift 6s ease infinite;
+            background-size: 200% auto;
+            animation: gradient-shift 4s linear infinite;
         }
 
         @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 200% 50%; }
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
 
         .project-card {
-            position: relative;
-            overflow: hidden;
-            background: #0a0a0f;
-            border: 1px solid rgba(0, 249, 255, 0.12);
+            background: rgba(15, 15, 22, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
         }
 
         .project-card:hover {
-            border-color: #00f9ff;
-            box-shadow: 
-                0 0 40px rgba(0, 249, 255, 0.2),
-                0 30px 60px rgba(0, 0, 0, 0.7);
-            transform: translateY(-8px);
-        }
-
-        .futuristic-grid {
-            background-image: 
-                linear-gradient(rgba(0, 249, 255, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 249, 255, 0.04) 1px, transparent 1px);
-            background-size: 50px 50px;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 249, 255, 0.15);
+            transform: translateY(-8px) scale(1.02);
         }
 
         .glitch {
-            animation: glitch 1.2s infinite;
+            position: relative;
         }
 
-        @keyframes glitch {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-        }
-
-        .scanline {
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
             position: absolute;
-            top: -100%;
+            top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent 40%,
-                rgba(0, 249, 255, 0.03) 50%,
-                transparent 60%
-            );
-            animation: scan 2.5s linear infinite;
-            pointer-events: none;
+            opacity: 0.8;
         }
 
-        .modal {
-            animation: modal-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--neon-pink);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
         }
 
-        .stat-value {
-            font-variant-numeric: tabular-nums;
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--neon-cyan);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
         }
 
-        .apk-glow {
-            box-shadow: 
-                0 0 30px #10b981,
-                0 0 60px rgba(16, 185, 129, 0.4);
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 44px, 0); }
+            20% { clip: rect(80px, 9999px, 15px, 0); }
+            40% { clip: rect(33px, 9999px, 90px, 0); }
+            60% { clip: rect(12px, 9999px, 55px, 0); }
+            80% { clip: rect(66px, 9999px, 20px, 0); }
+            100% { clip: rect(40px, 9999px, 77px, 0); }
         }
 
-        .mobile-tap {
-            -webkit-tap-highlight-color: rgba(0, 249, 255, 0.3);
-        }
-
-        .premium-shadow {
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+        /* Mobile Optimizations */
+        @media (max-width: 640px) {
+            .glass { backdrop-filter: blur(12px); }
+            .orb { filter: blur(50px); }
         }
     </style>
 </head>
-<body class="bg-[#050507] text-[#e0e0ff]">
+<body>
     
+    <!-- Ambient Background -->
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
     <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                
                 <div class="flex items-center gap-x-3.5">
-                    <div class="relative w-11 h-11">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#00f9ff] via-[#c026ff] to-[#ff00aa] rounded-2xl"></div>
+                    <div class="relative w-11 h-11 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#00f9ff] via-[#c026ff] to-[#ff00aa] rounded-2xl group-hover:animate-spin"></div>
                         <div class="absolute inset-[3px] bg-[#050507] rounded-2xl flex items-center justify-center">
-                            <i class="fa-solid fa-infinity text-white text-3xl"></i>
+                            <i class="fa-solid fa-infinity text-white text-2xl group-hover:scale-110 transition-transform"></i>
                         </div>
                     </div>
                     <div>
-                        <span class="font-display text-[28px] sm:text-3xl font-black tracking-tighter neon-text">O.M.N.E.X.A</span>
+                        <span class="font-display text-2xl sm:text-3xl neon-text cursor-pointer" onclick="window.scrollTo(0,0)">O.M.N.E.X.A</span>
                     </div>
                 </div>
 
-                <div class="hidden md:flex items-center gap-x-9 text-sm font-semibold">
-                    <a href="#downloads" class="hover:text-[#00f9ff] nav-link">Downloads</a>
-                    <a href="#projects" class="hover:text-[#00f9ff] nav-link">Projects</a>
-                    <a href="#upcoming" class="hover:text-[#00f9ff] nav-link">Future</a>
-                    <a href="#vision" class="hover:text-[#00f9ff] nav-link">Vision</a>
+                <div class="hidden md:flex items-center gap-x-9 text-sm font-semibold tracking-wide">
+                    <a href="#downloads" class="hover:text-[#00f9ff] transition-colors">Downloads</a>
+                    <a href="#projects" class="hover:text-[#00f9ff] transition-colors">Projects</a>
+                    <a href="#vision" class="hover:text-[#00f9ff] transition-colors">Vision</a>
                 </div>
 
-                <div class="flex items-center gap-x-3">
-                    <div class="hidden sm:flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/5 border border-white/10 text-xs font-mono">
-                        <div class="w-2 h-2 bg-[#00ff9d] rounded-full animate-pulse"></div>
-                        <span class="tracking-[2px] text-[#00ff9d]">v2.1.4 LIVE</span>
+                <div class="flex items-center gap-x-4">
+                    <div class="hidden sm:flex items-center gap-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
+                        <div class="w-2 h-2 bg-[#00ff9d] rounded-full animate-pulse shadow-[0_0_8px_#00ff9d]"></div>
+                        <span class="text-[#00ff9d]">v2.1.4 LIVE</span>
                     </div>
-                    
-                    <button id="mobile-menu-btn" class="md:hidden w-11 h-11 flex items-center justify-center text-xl mobile-tap">
-                        <i class="fa-solid fa-bars"></i>
+                    <button id="mobile-menu-btn" class="md:hidden text-2xl text-white/80 hover:text-white p-2">
+                        <i class="fa-solid fa-bars-staggered"></i>
                     </button>
-                    
-                    <a href="#downloads" class="hidden md:block px-7 py-2.5 text-sm font-black rounded-3xl border border-[#00f9ff] text-[#00f9ff] hover:bg-[#00f9ff] hover:text-black">
+                    <a href="#downloads" class="hidden md:flex px-6 py-2.5 text-sm font-bold rounded-full border border-[#00f9ff] text-[#00f9ff] hover:bg-[#00f9ff] hover:text-black transition-all shadow-[0_0_15px_rgba(0,249,255,0.2)]">
                         GET APK
                     </a>
                 </div>
@@ -204,197 +229,92 @@
     </nav>
 
     <!-- HERO -->
-    <header class="relative min-h-[100dvh] flex items-center pt-20 overflow-hidden">
-        <div class="absolute inset-0 futuristic-grid"></div>
-        
-        <!-- Enhanced Floating Elements -->
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-[18%] left-[8%] w-5 h-5 bg-[#00f9ff] rounded-full animate-[ping_3.5s_ease-in-out_infinite] shadow-[0_0_40px_#00f9ff]"></div>
-            <div class="absolute top-[42%] right-[12%] w-4 h-4 bg-[#ff00aa] rounded-full animate-[ping_4s_ease-in-out_infinite_800ms] shadow-[0_0_35px_#ff00aa]"></div>
-            <div class="absolute bottom-[25%] left-[18%] w-6 h-6 bg-[#c026ff] rounded-full animate-[ping_4.5s_ease-in-out_infinite_1500ms] shadow-[0_0_45px_#c026ff]"></div>
-        </div>
-
-        <div class="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-[860px]">
-                
-                <div class="inline-flex items-center gap-x-2 px-5 py-1.5 rounded-full border border-white/15 bg-white/5 mb-8">
-                    <div class="px-3 py-px text-[10px] font-black bg-gradient-to-r from-[#00f9ff] to-[#c026ff] text-black rounded-full tracking-[1.5px]">EST 2023</div>
-                    <span class="text-xs tracking-[2.5px] text-white/70 font-medium">HUMAN-CENTRIC AI • EXPERIMENTAL LAB</span>
+    <header class="relative min-h-[100dvh] flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-6 backdrop-blur-md">
+                    <div class="px-2 py-0.5 text-[10px] font-black bg-gradient-to-r from-[#00f9ff] to-[#c026ff] text-black rounded-full">EST 2023</div>
+                    <span class="text-xs tracking-widest text-white/70 font-medium uppercase">Human-Centric AI Lab</span>
                 </div>
 
-                <h1 class="font-display text-[64px] sm:text-[82px] lg:text-[100px] leading-[0.9] font-black tracking-tighter mb-6 glitch">
+                <h1 class="font-display text-[3.5rem] sm:text-[5.5rem] lg:text-[7rem] leading-[0.95] tracking-tighter mb-6 glitch" data-text="THE FUTURE IS ALIVE">
                     THE FUTURE<br>
-                    <span class="bg-gradient-to-r from-white via-[#00f9ff] to-white bg-clip-text text-transparent">IS</span> 
-                    <span class="neon-text">ALIVE</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#00f9ff] to-white">IS</span> 
+                    <span class="text-white">ALIVE</span>
                 </h1>
                 
-                <p class="max-w-[520px] text-2xl sm:text-[27px] text-white/85 mb-10 tracking-tight leading-tight">
-                    We don't build tools.<br>
-                    We build <span class="text-[#00f9ff] font-semibold">living intelligence</span>.
+                <p class="text-xl sm:text-2xl text-white/80 mb-10 font-light leading-relaxed max-w-2xl">
+                    We don't just build tools.<br>
+                    We build <span class="text-[#00f9ff] font-semibold">living intelligence</span> designed to expand human imagination.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://raw.githubusercontent.com/Ayu1248238/omne-xa-website/main/downloads/omnexta-ai-v2.1.4.apk" 
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <!-- FIXED RELATIVE URL FOR NETLIFY -->
+                    <a href="./downloads/omnexa-ai-v2.1.4.apk" 
                        download="MyChillAssistant-v2.1.4.apk"
-                       target="_blank"
-                       class="neon-button group flex items-center justify-center gap-x-3 px-10 py-[19px] rounded-3xl text-lg font-black shadow-2xl mobile-tap">
-                        <i class="fa-solid fa-download text-2xl group-active:scale-90 transition"></i>
+                       class="neon-button flex items-center justify-center gap-x-3 px-8 py-4 rounded-full text-lg shadow-2xl">
+                        <i class="fa-solid fa-download text-xl"></i>
                         <span>DOWNLOAD v2.1.4 APK</span>
                     </a>
                     
-                    <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
-                            class="px-9 py-[19px] rounded-3xl border border-white/30 hover:border-white text-base font-bold flex items-center justify-center gap-x-2 mobile-tap">
-                        <span>EXPLORE PROJECTS</span>
-                    </button>
-                </div>
-                
-                <div class="mt-9 flex items-center gap-x-5 text-sm">
-                    <div class="flex -space-x-3">
-                        <div class="w-8 h-8 rounded-full border-[3px] border-[#050507] bg-gradient-to-br from-[#00f9ff] to-[#c026ff]"></div>
-                        <div class="w-8 h-8 rounded-full border-[3px] border-[#050507] bg-gradient-to-br from-[#ff00aa] to-[#c026ff]"></div>
-                        <div class="w-8 h-8 rounded-full border-[3px] border-[#050507] bg-gradient-to-br from-[#00ff9d] to-[#10b981]"></div>
-                    </div>
-                    <div>
-                        <span class="font-semibold text-white">31,400+</span> 
-                        <span class="text-white/60">users worldwide</span>
-                    </div>
+                    <a href="#projects" class="px-8 py-4 rounded-full border border-white/20 hover:border-[#00f9ff] hover:bg-white/5 text-base font-bold flex items-center justify-center gap-x-2 transition-all">
+                        EXPLORE PROJECTS
+                    </a>
                 </div>
             </div>
         </div>
 
-        <div class="absolute bottom-9 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center">
-            <div class="text-[10px] tracking-[4px] text-white/50 mb-2 font-medium">SCROLL TO BEGIN JOURNEY</div>
-            <div class="w-px h-11 bg-gradient-to-b from-transparent via-white/60 to-transparent"></div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center animate-bounce">
+            <div class="text-[10px] tracking-[3px] text-white/40 mb-2 font-medium">SCROLL</div>
+            <i class="fa-solid fa-chevron-down text-white/40"></i>
         </div>
     </header>
 
     <!-- DOWNLOADS SECTION -->
-    <section id="downloads" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div class="text-center mb-12">
-            <div class="inline px-4 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-black tracking-[2px]">LIVE • v2.1.4</div>
-            <h2 class="text-5xl sm:text-6xl font-black tracking-tighter mt-3">Download Center</h2>
-            <p class="mt-3 text-lg text-white/70">Direct • Verified • No signup required</p>
+    <section id="downloads" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-24">
+        <div class="text-center mb-16">
+            <div class="inline px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-black tracking-widest mb-4">VERIFIED BUILDS</div>
+            <h2 class="section-header">Download Center</h2>
+            <p class="mt-4 text-white/60">Direct downloads hosted on Netlify & GitHub.</p>
         </div>
 
-        <!-- Main APK Card -->
-        <div class="max-w-[620px] mx-auto mb-8">
-            <div class="glass rounded-3xl p-8 sm:p-10 border border-emerald-400/30 relative overflow-hidden premium-shadow">
-                <div class="scanline"></div>
+        <div class="max-w-3xl mx-auto">
+            <div class="glass rounded-[2rem] p-6 sm:p-10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
                 
-                <div class="flex flex-col sm:flex-row gap-7">
-                    <div class="flex-shrink-0">
-                        <div class="w-[92px] h-[92px] rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center apk-glow">
-                            <i class="fa-solid fa-mobile-alt text-[52px] text-black"></i>
-                        </div>
+                <div class="flex flex-col md:flex-row gap-8 items-center md:items-start relative z-10">
+                    <div class="w-28 h-28 rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-[0_0_30px_rgba(16,185,129,0.3)] shrink-0 group-hover:scale-105 transition-transform duration-500">
+                        <i class="fa-solid fa-mobile-screen text-[3.5rem] text-black"></i>
                     </div>
                     
-                    <div class="flex-1 pt-1">
-                        <div class="flex items-center gap-x-3 mb-2">
-                            <h3 class="text-[28px] font-black">MyChillAssistant</h3>
-                            <div class="px-3 py-1 text-xs font-black bg-emerald-400 text-black rounded-full">v2.1.4</div>
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="flex flex-col md:flex-row items-center gap-3 mb-3">
+                            <h3 class="text-3xl font-display">MyChillAssistant</h3>
+                            <span class="px-3 py-1 text-xs font-black bg-emerald-400/20 text-emerald-400 border border-emerald-400/30 rounded-full">v2.1.4</span>
                         </div>
                         
-                        <p class="text-[15px] text-white/75 leading-snug mb-6">Advanced AI voice assistant for Android. Natural conversations, smart automation, and a personality that feels alive.</p>
+                        <p class="text-white/70 leading-relaxed mb-6">Your advanced AI voice companion for Android. Natural conversations, fluid UI, and a personality that genuinely feels alive.</p>
                         
-                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm mb-7">
-                            <div class="flex items-center gap-x-1.5 text-emerald-400 font-medium">
-                                <i class="fa-solid fa-check-circle"></i>
-                                <span>48 MB</span>
-                            </div>
-                            <div class="text-white/40">•</div>
-                            <div class="text-white/70">Android 8.0+</div>
-                            <div class="text-white/40">•</div>
-                            <div class="text-white/70">31k+ installs</div>
+                        <div class="flex flex-wrap justify-center md:justify-start items-center gap-4 text-sm mb-8 text-white/50">
+                            <span class="flex items-center gap-2 text-emerald-400"><i class="fa-solid fa-check"></i> 48 MB APK</span>
+                            <span>•</span>
+                            <span>Android 8.0+</span>
+                            <span>•</span>
+                            <span>Safe & Verified</span>
                         </div>
                         
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <a href="https://raw.githubusercontent.com/Ayu1248238/omne-xa-website/main/downloads/omnexta-ai-v2.1.4.apk" 
-                               download="MyChillAssistant-v2.1.4.apk"
-                               target="_blank"
-                               class="flex-1 neon-button text-center py-[17px] text-base font-black rounded-3xl flex items-center justify-center gap-x-2 mobile-tap">
-                                <i class="fa-solid fa-download"></i>
-                                <span>DOWNLOAD APK NOW</span>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <!-- FIXED RELATIVE URL -->
+                            <a href="./downloads/omnexa-ai-v2.1.4.apk" 
+                               download
+                               class="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black text-center py-4 rounded-full font-bold transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-download"></i> DOWNLOAD DIRECT
                             </a>
-                            
-                            <button onclick="showInstallGuide()" 
-                                    class="flex-1 sm:flex-none px-7 py-[17px] border border-white/30 hover:bg-white/5 rounded-3xl text-sm font-bold mobile-tap">
-                                INSTALL GUIDE
-                            </button>
-                        </div>
-                        
-                        <div class="mt-4 text-center text-[10px] text-white/50">Direct from GitHub • SHA-256 verified • Safe</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quick Downloads -->
-        <div class="max-w-[620px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div onclick="showProjectModal(0)" class="glass p-5 rounded-2xl border border-white/10 hover:border-[#00f9ff]/50 cursor-pointer text-center">
-                <div class="text-xs text-white/50">DESKTOP</div>
-                <div class="font-black text-lg mt-1">JARVIS v3.8.2</div>
-                <div class="text-[10px] text-white/50 mt-0.5">287 MB • Full Automation</div>
-            </div>
-            <div onclick="showProjectModal(2)" class="glass p-5 rounded-2xl border border-white/10 hover:border-[#c026ff]/50 cursor-pointer text-center">
-                <div class="text-xs text-white/50">WEB</div>
-                <div class="font-black text-lg mt-1">CreatorAI v1.9.4</div>
-                <div class="text-[10px] text-white/50 mt-0.5">PWA • Instant Access</div>
-            </div>
-            <div onclick="showProjectModal(4)" class="glass p-5 rounded-2xl border border-white/10 hover:border-orange-400/50 cursor-pointer text-center">
-                <div class="text-xs text-white/50">KALI LINUX</div>
-                <div class="font-black text-lg mt-1">KaliRecon v2.7.3</div>
-                <div class="text-[10px] text-white/50 mt-0.5">Open Source</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 border-t border-white/10">
-        <div class="grid md:grid-cols-12 gap-x-8 items-center">
-            <div class="md:col-span-7">
-                <div class="uppercase tracking-[3.5px] text-xs mb-3 text-[#00f9ff] font-medium">THE INITIATIVE</div>
-                <h2 class="section-header mb-7">OMNEXA</h2>
-                
-                <div class="max-w-[560px] text-[17px] text-white/75 leading-relaxed">
-                    An independent experimental AI laboratory founded by Ayush Kumar. 
-                    We create systems that feel alive — intelligent, empathetic, and built to expand human imagination.
-                </div>
-                
-                <div class="mt-9 flex flex-wrap gap-x-12 gap-y-7">
-                    <div>
-                        <div class="stat-value text-[42px] font-black text-white" data-target="31400">0</div>
-                        <div class="text-xs tracking-[1.5px] text-white/50 -mt-1">TOTAL DOWNLOADS</div>
-                    </div>
-                    <div>
-                        <div class="stat-value text-[42px] font-black text-white" data-target="14">0</div>
-                        <div class="text-xs tracking-[1.5px] text-white/50 -mt-1">ACTIVE EXPERIMENTS</div>
-                    </div>
-                    <div>
-                        <div class="stat-value text-[42px] font-black text-white" data-target="31">0</div>
-                        <div class="text-xs tracking-[1.5px] text-white/50 -mt-1">COUNTRIES REACHED</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="md:col-span-5 mt-10 md:mt-0">
-                <div class="glass rounded-3xl p-8 border border-white/10">
-                    <div class="flex gap-6">
-                        <div class="w-[74px] h-[74px] rounded-2xl bg-gradient-to-br from-[#00f9ff] to-[#c026ff] flex-shrink-0 flex items-center justify-center">
-                            <i class="fa-solid fa-user-astronaut text-[38px] text-black"></i>
-                        </div>
-                        <div class="pt-1">
-                            <div class="font-black text-[26px]">Ayush Kumar</div>
-                            <div class="text-[#00f9ff] text-sm tracking-wide">Founder &amp; Chief Visionary</div>
-                            
-                            <div class="mt-5 text-[13.5px] text-white/70 leading-snug">
-                                "Technology should expand human imagination. Every system I build brings us closer to that reality."
-                            </div>
-                            
-                            <div class="flex gap-x-5 mt-6">
-                                <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="text-white/60 hover:text-[#00f9ff]"><i class="fa-brands fa-linkedin-in fa-xl"></i></a>
-                                <a href="https://youtube.com/@bharwandiaries" target="_blank" class="text-white/60 hover:text-[#00f9ff]"><i class="fa-brands fa-youtube fa-xl"></i></a>
-                                <a href="https://instagram.com/o.m.n.e.x.a" target="_blank" class="text-white/60 hover:text-[#00f9ff]"><i class="fa-brands fa-instagram fa-xl"></i></a>
-                            </div>
+                            <!-- FALLBACK GITHUB RELEASE URL -->
+                            <a href="https://github.com/Ayu1248238/omne-xa-website/releases/download/mychillassistant/app-release.apk" 
+                               class="flex-1 border border-white/20 hover:border-emerald-400 hover:text-emerald-400 text-center py-4 rounded-full font-bold transition-all flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-github"></i> GITHUB MIRROR
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -402,625 +322,129 @@
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-20 bg-[#0a0a0f]">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-11">
-            <div>
-                <div class="text-xs tracking-[3.5px] text-[#ff00aa] font-medium">LIVE EXPERIMENTS</div>
-                <h2 class="text-5xl sm:text-6xl font-black tracking-tighter">Projects</h2>
-            </div>
-            <div class="text-sm text-white/50 mt-2 sm:mt-0">Tap any card to view details &amp; download</div>
+    <!-- PROJECTS GRID -->
+    <section id="projects" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-24">
+        <div class="mb-16">
+            <h2 class="section-header">Live Experiments</h2>
+            <p class="mt-4 text-white/60 max-w-2xl text-lg">Systems built to bridge the gap between imagination and reality.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <!-- JARVIS -->
-            <div onclick="showProjectModal(0)" class="project-card rounded-3xl p-7 cursor-pointer mobile-tap">
-                <div class="flex justify-between mb-6">
-                    <div>
-                        <span class="px-3.5 py-1 text-xs font-mono bg-[#00f9ff]/10 text-[#00f9ff] rounded-xl">v3.8.2</span>
-                        <div class="font-display text-[29px] mt-4">JARVIS</div>
+            <!-- JIYA (Updated from JARVIS) -->
+            <div class="project-card rounded-3xl p-8 group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 bg-[#00f9ff]/10 rounded-2xl">
+                        <i class="fa-solid fa-microchip text-3xl text-[#00f9ff]"></i>
                     </div>
-                    <i class="fa-solid fa-robot text-4xl text-[#00f9ff]"></i>
+                    <span class="px-3 py-1 text-xs font-mono border border-[#00f9ff]/30 text-[#00f9ff] rounded-full">v3.8.2</span>
                 </div>
-                <p class="text-sm text-white/70">Fully functional real-life JARVIS with complete PC automation, voice control, and intelligent task execution.</p>
-                <div class="mt-6 flex items-center justify-between text-xs">
-                    <div class="text-white/50">Python • LLM • System</div>
-                    <div class="text-emerald-400 font-medium">14.2k downloads</div>
-                </div>
-            </div>
-
-            <!-- MyChillAssistant -->
-            <div onclick="showProjectModal(1)" class="project-card rounded-3xl p-7 cursor-pointer border border-emerald-400/40 mobile-tap">
-                <div class="flex justify-between mb-6">
-                    <div>
-                        <span class="px-3.5 py-1 text-xs font-mono bg-emerald-400/10 text-emerald-400 rounded-xl">v2.1.4</span>
-                        <div class="font-display text-[29px] mt-4">MyChillAssistant</div>
-                    </div>
-                    <i class="fa-solid fa-mobile-alt text-4xl text-emerald-400"></i>
-                </div>
-                <p class="text-sm text-white/70">Siri-like AI voice assistant for Android with natural conversations, smart home control, and a chill personality.</p>
-                <div class="mt-6 flex items-center justify-between text-xs">
-                    <div class="text-white/50">Kotlin • Whisper • Gemini</div>
-                    <div class="text-emerald-400 font-medium">31.4k downloads</div>
+                <h3 class="font-display text-2xl mb-3">Jiya System</h3>
+                <p class="text-white/60 text-sm leading-relaxed mb-6">Fully functional PC automation and intelligence assistant. Voice control, silent execution, and natural LLM conversation.</p>
+                <div class="pt-4 border-t border-white/10 flex justify-between text-xs text-white/40">
+                    <span>Python • LangChain</span>
+                    <span class="text-[#00f9ff]">PC Desktop</span>
                 </div>
             </div>
 
             <!-- CreatorAI -->
-            <div onclick="showProjectModal(2)" class="project-card rounded-3xl p-7 cursor-pointer mobile-tap">
-                <div class="flex justify-between mb-6">
-                    <div>
-                        <span class="px-3.5 py-1 text-xs font-mono bg-[#c026ff]/10 text-[#c026ff] rounded-xl">v1.9.4</span>
-                        <div class="font-display text-[29px] mt-4">CreatorAI</div>
+            <div class="project-card rounded-3xl p-8 group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 bg-[#c026ff]/10 rounded-2xl">
+                        <i class="fa-solid fa-wand-magic-sparkles text-3xl text-[#c026ff]"></i>
                     </div>
-                    <i class="fa-solid fa-chart-line text-4xl text-[#c026ff]"></i>
+                    <span class="px-3 py-1 text-xs font-mono border border-[#c026ff]/30 text-[#c026ff] rounded-full">v1.9.4</span>
                 </div>
-                <p class="text-sm text-white/70">AI growth engine for creators. Generates viral content, analyzes performance, and optimizes posting times across platforms.</p>
-                <div class="mt-6 flex items-center justify-between text-xs">
-                    <div class="text-white/50">Next.js • GPT-4o • Analytics</div>
-                    <div class="text-emerald-400 font-medium">22.4k downloads</div>
-                </div>
-            </div>
-
-            <!-- TradeForge -->
-            <div onclick="showProjectModal(3)" class="project-card rounded-3xl p-7 cursor-pointer mobile-tap">
-                <div class="flex justify-between mb-6">
-                    <div>
-                        <span class="px-3.5 py-1 text-xs font-mono bg-emerald-400/10 text-emerald-400 rounded-xl">v4.1.0</span>
-                        <div class="font-display text-[29px] mt-4">TradeForge AI</div>
-                    </div>
-                    <i class="fa-solid fa-chart-area text-4xl text-emerald-400"></i>
-                </div>
-                <p class="text-sm text-white/70">Autonomous trading intelligence with real-time sentiment, risk management, and backtested strategies.</p>
-                <div class="mt-6 flex items-center justify-between text-xs">
-                    <div class="text-white/50">Python • TensorFlow • CCXT</div>
-                    <div class="text-emerald-400 font-medium">3.1k downloads</div>
+                <h3 class="font-display text-2xl mb-3">CreatorAI</h3>
+                <p class="text-white/60 text-sm leading-relaxed mb-6">AI growth engine. Generates content, analyzes performance, and predicts viral trends for modern digital creators.</p>
+                <div class="pt-4 border-t border-white/10 flex justify-between text-xs text-white/40">
+                    <span>Next.js • GPT-4o</span>
+                    <span class="text-[#c026ff]">Web App</span>
                 </div>
             </div>
 
             <!-- KaliRecon -->
-            <div onclick="showProjectModal(4)" class="project-card rounded-3xl p-7 cursor-pointer mobile-tap">
-                <div class="flex justify-between mb-6">
-                    <div>
-                        <span class="px-3.5 py-1 text-xs font-mono bg-orange-400/10 text-orange-400 rounded-xl">v2.7.3</span>
-                        <div class="font-display text-[29px] mt-4">KaliRecon</div>
+            <div class="project-card rounded-3xl p-8 group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="p-3 bg-orange-500/10 rounded-2xl">
+                        <i class="fa-solid fa-network-wired text-3xl text-orange-500"></i>
                     </div>
-                    <i class="fa-solid fa-network-wired text-4xl text-orange-400"></i>
+                    <span class="px-3 py-1 text-xs font-mono border border-orange-500/30 text-orange-500 rounded-full">v2.7.3</span>
                 </div>
-                <p class="text-sm text-white/70">Powerful reconnaissance toolkit for Kali Linux. OSINT, vulnerability mapping, and professional reporting.</p>
-                <div class="mt-6 flex items-center justify-between text-xs">
-                    <div class="text-white/50">Bash • Nmap • Shodan</div>
-                    <div class="text-emerald-400 font-medium">5.8k downloads</div>
+                <h3 class="font-display text-2xl mb-3">KaliRecon</h3>
+                <p class="text-white/60 text-sm leading-relaxed mb-6">Educational cybersecurity toolkit. OSINT mapping, ethical vulnerability scanning, and automated reporting.</p>
+                <div class="pt-4 border-t border-white/10 flex justify-between text-xs text-white/40">
+                    <span>Bash • Python</span>
+                    <span class="text-orange-500">Linux Script</span>
                 </div>
             </div>
 
-            <!-- PhantomWiFi -->
-            <div onclick="showProjectModal(5)" class="project-card rounded-3xl p-7 cursor-pointer mobile-tap">
-                <div class="flex justify-between mb-6">
-                    <div>
-                        <span class="px-3.5 py-1 text-xs font-mono bg-red-400/10 text-red-400 rounded-xl">v1.3.8</span>
-                        <div class="font-display text-[29px] mt-4">PhantomWiFi</div>
-                    </div>
-                    <i class="fa-solid fa-wifi text-4xl text-red-400"></i>
-                </div>
-                <p class="text-sm text-white/70">Advanced WiFi security testing suite. Deauthentication, handshake capture, and educational modules.</p>
-                <div class="mt-6 flex items-center justify-between text-xs">
-                    <div class="text-white/50">Python • Scapy • Aircrack</div>
-                    <div class="text-emerald-400 font-medium">9.3k downloads</div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- UPCOMING -->
-    <section id="upcoming" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div class="text-center mb-12">
-            <div class="inline px-4 py-1 rounded-full bg-white/5 text-xs tracking-[2.5px] font-medium">IN THE LAB</div>
-            <h2 class="text-5xl sm:text-6xl font-black tracking-tighter mt-3">Next Wave</h2>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-5">
-            <div class="glass p-8 rounded-3xl border border-white/10">
-                <div class="flex justify-between">
-                    <i class="fa-solid fa-cube text-3xl text-[#00f9ff]"></i>
-                    <span class="text-xs px-3 py-1 bg-white/10 rounded-full self-start">Q2 2026</span>
-                </div>
-                <div class="mt-9">
-                    <div class="font-black text-[27px]">HOLO v2</div>
-                    <div class="text-white/70 mt-3 text-[15px]">Real-time 3D holographic projection with multi-user spatial AI and gesture control.</div>
-                </div>
-            </div>
-            
-            <div class="glass p-8 rounded-3xl border border-white/10">
-                <div class="flex justify-between">
-                    <i class="fa-solid fa-brain text-3xl text-[#ff00aa]"></i>
-                    <span class="text-xs px-3 py-1 bg-white/10 rounded-full self-start">Q3 2026</span>
-                </div>
-                <div class="mt-9">
-                    <div class="font-black text-[27px]">NEURA CORE</div>
-                    <div class="text-white/70 mt-3 text-[15px]">Modular framework for building persistent, emotionally-aware digital companions.</div>
-                </div>
-            </div>
-            
-            <div class="glass p-8 rounded-3xl border border-white/10">
-                <div class="flex justify-between">
-                    <i class="fa-solid fa-globe text-3xl text-[#c026ff]"></i>
-                    <span class="text-xs px-3 py-1 bg-white/10 rounded-full self-start">2027</span>
-                </div>
-                <div class="mt-9">
-                    <div class="font-black text-[27px]">OMNEXA OS</div>
-                    <div class="text-white/70 mt-3 text-[15px]">A complete AI-native operating system with spatial computing and self-evolving apps.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VISION -->
-    <section id="vision" class="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-24 text-center border-t border-white/10">
-        <div class="text-[#ff00aa] text-xs tracking-[3.5px] font-medium">THE NORTH STAR</div>
-        <h2 class="text-[39px] sm:text-[47px] font-black tracking-tighter leading-none mt-5">
-            I build technologies that expand human potential and imagination while making AI accessible and beneficial for everyone.
-        </h2>
-        <div class="mt-8 text-sm text-white/60">— Ayush Kumar, Founder</div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pb-20">
-        <div class="glass rounded-[2.75rem] p-8 sm:p-12 border border-white/10">
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div>
-                    <div class="uppercase tracking-[3.5px] text-xs mb-4 text-[#00f9ff] font-medium">LET'S BUILD THE FUTURE</div>
-                    <h2 class="text-5xl sm:text-6xl font-black tracking-tighter leading-none">Ready to collaborate?</h2>
-                    
-                    <div class="mt-9 space-y-6">
-                        <a href="mailto:acidicskull422@gmail.com" class="flex items-center gap-x-4 group">
-                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-[#00f9ff] group-hover:text-black">
-                                <i class="fa-solid fa-envelope text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs text-white/50">Direct email</div>
-                                <div class="font-mono text-[#00f9ff]">acidicskull422@gmail.com</div>
-                            </div>
-                        </a>
-                        
-                        <div class="flex items-center gap-x-4">
-                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
-                                <i class="fa-solid fa-map-marker-alt text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs text-white/50">Based in</div>
-                                <div>Kannauj District, Uttar Pradesh, India</div>
-                            </div>
-                        </div>
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 mt-20 bg-black/50 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-[#00f9ff] to-[#c026ff] rounded-lg flex items-center justify-center text-black">
+                        <i class="fa-solid fa-infinity text-sm"></i>
                     </div>
+                    <span class="font-display text-xl font-bold">O.M.N.E.X.A</span>
                 </div>
                 
-                <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-5">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-xs tracking-widest block mb-1.5 text-white/60">YOUR NAME</label>
-                            <input type="text" required class="w-full bg-white/5 border border-white/20 focus:border-[#00f9ff] px-5 py-[15px] rounded-2xl outline-none text-white placeholder:text-white/40" placeholder="Alex Rivera">
-                        </div>
-                        <div>
-                            <label class="text-xs tracking-widest block mb-1.5 text-white/60">EMAIL ADDRESS</label>
-                            <input type="email" required class="w-full bg-white/5 border border-white/20 focus:border-[#00f9ff] px-5 py-[15px] rounded-2xl outline-none text-white placeholder:text-white/40" placeholder="you@domain.com">
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label class="text-xs tracking-widest block mb-1.5 text-white/60">MESSAGE</label>
-                        <textarea required rows="4" class="w-full resize-y bg-white/5 border border-white/20 focus:border-[#00f9ff] px-5 py-4 rounded-3xl outline-none text-white placeholder:text-white/40" placeholder="I'm building something in AI and would love to explore collaboration..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="w-full neon-button py-[17px] rounded-3xl font-black text-lg flex items-center justify-center gap-x-3 mobile-tap">
-                        <span>SEND TRANSMISSION</span>
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="mt-12 flex flex-col md:flex-row justify-between items-center text-xs text-white/50 px-1">
-            <div>© 2026 O.M.N.E.X.A • All experiments are for educational and research purposes</div>
-            <div class="flex gap-x-6 mt-4 md:mt-0">
-                <a href="#" class="hover:text-white">Privacy</a>
-                <a href="#" class="hover:text-white">Ethics</a>
-                <a href="https://github.com/Ayu1248238/omne-xa-website" class="hover:text-white">GitHub</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECT MODAL -->
-    <div id="project-modal" onclick="if (event.target.id === 'project-modal') hideProjectModal()" class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 sm:p-6">
-        <div onclick="event.stopImmediatePropagation()" class="modal max-w-xl w-full glass border border-white/20 rounded-3xl overflow-hidden max-h-[92dvh] overflow-y-auto">
-            
-            <div class="px-6 sm:px-8 py-5 border-b border-white/10 flex items-center justify-between sticky top-0 bg-[#0f0f14]/95 backdrop-blur">
-                <div class="flex items-center gap-x-4">
-                    <div id="modal-icon" class="w-12 h-12 flex-shrink-0 rounded-2xl flex items-center justify-center text-3xl"></div>
-                    <div>
-                        <div id="modal-title" class="font-display text-2xl sm:text-3xl"></div>
-                        <div id="modal-version" class="text-xs font-mono text-white/50"></div>
-                    </div>
-                </div>
-                <button onclick="hideProjectModal()" class="text-4xl leading-none text-white/60 hover:text-white w-10 h-10 flex items-center justify-center">&times;</button>
-            </div>
-            
-            <div class="p-6 sm:p-8">
-                <div id="modal-description" class="text-[15px] leading-relaxed text-white/80"></div>
-                
-                <div class="mt-7 grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                        <div class="text-xs text-white/50 mb-1.5">TECH STACK</div>
-                        <div id="modal-tech" class="flex flex-wrap gap-2"></div>
-                    </div>
-                    <div>
-                        <div class="text-xs text-white/50 mb-1.5">STATUS</div>
-                        <div id="modal-status" class="font-semibold"></div>
-                    </div>
+                <div class="text-white/40 text-sm text-center md:text-left">
+                    Initiative by Ayush Kumar • Based in Uttar Pradesh, India
                 </div>
                 
-                <div class="mt-8 pt-6 border-t border-white/10">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div>
-                            <div class="font-semibold">Download Latest Build</div>
-                            <div class="text-xs text-white/50"><span id="modal-download-version"></span> • <span id="modal-size"></span></div>
-                        </div>
-                        
-                        <button onclick="handleProjectDownload()" class="px-8 py-3.5 bg-gradient-to-r from-[#00f9ff] to-[#c026ff] text-black font-black rounded-2xl flex items-center justify-center gap-x-2 text-sm mobile-tap">
-                            <i class="fa-solid fa-download"></i>
-                            <span id="modal-download-btn-text">DOWNLOAD</span>
-                        </button>
-                    </div>
-                    <div class="mt-3 text-[10px] text-white/40">All files are code-signed and verified.</div>
+                <div class="flex gap-4">
+                    <a href="https://github.com/Ayu1248238" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-[#00f9ff] hover:border-[#00f9ff] transition-all"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-[#00f9ff] hover:border-[#00f9ff] transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://youtube.com/@bharwandiaries" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:text-[#ff00aa] hover:border-[#ff00aa] transition-all"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Install Guide Modal -->
-    <div id="install-modal" onclick="if (event.target.id === 'install-modal') hideInstallModal()" class="hidden fixed inset-0 bg-black/90 z-[110] flex items-center justify-center p-4">
-        <div onclick="event.stopImmediatePropagation()" class="modal max-w-md w-full glass border border-white/20 rounded-3xl p-7">
-            <div class="flex justify-between items-start">
-                <div>
-                    <div class="font-black text-2xl">Install Guide</div>
-                    <div class="text-emerald-400 text-sm">MyChillAssistant v2.1.4</div>
-                </div>
-                <button onclick="hideInstallModal()" class="text-3xl text-white/60 hover:text-white">&times;</button>
-            </div>
-            
-            <div class="mt-6 text-sm space-y-5 text-white/80">
-                <div class="flex gap-4">
-                    <div class="font-mono text-xs bg-white/10 w-6 h-6 flex items-center justify-center rounded flex-shrink-0 mt-0.5">1</div>
-                    <div>Tap the <span class="font-semibold">"DOWNLOAD APK NOW"</span> button above.</div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="font-mono text-xs bg-white/10 w-6 h-6 flex items-center justify-center rounded flex-shrink-0 mt-0.5">2</div>
-                    <div>Go to <span class="font-semibold">Settings → Security → Install unknown apps</span> and enable it for your browser.</div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="font-mono text-xs bg-white/10 w-6 h-6 flex items-center justify-center rounded flex-shrink-0 mt-0.5">3</div>
-                    <div>Open the downloaded file and tap <span class="font-semibold">Install</span>.</div>
-                </div>
-                <div class="flex gap-4">
-                    <div class="font-mono text-xs bg-white/10 w-6 h-6 flex items-center justify-center rounded flex-shrink-0 mt-0.5">4</div>
-                    <div>Launch the app and enjoy your new AI companion!</div>
-                </div>
-            </div>
-            
-            <div class="mt-7 text-center">
-                <button onclick="hideInstallModal()" class="text-sm px-8 py-3 border border-white/30 rounded-2xl hover:bg-white/5">GOT IT, THANKS</button>
-            </div>
-        </div>
-    </div>
+    </footer>
 
     <script>
-        function initTailwind() {
-            document.documentElement.style.setProperty('--accent', '#00f9ff');
-        }
-        
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-value');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const duration = 1700;
-                const startTime = performance.now();
-                
-                function update(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    
-                    const current = Math.floor(target * eased);
-                    counter.textContent = current.toLocaleString();
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    } else {
-                        counter.textContent = target.toLocaleString();
-                    }
-                }
-                
-                const observer = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting) {
-                        requestAnimationFrame(update);
-                        observer.disconnect();
-                    }
-                }, { threshold: 0.6 });
-                
-                observer.observe(counter);
-            });
-        }
-        
-        function initMobileMenu() {
-            const btn = document.getElementById('mobile-menu-btn');
-            
-            btn.addEventListener('click', () => {
-                const menu = document.createElement('div');
-                menu.className = 'fixed inset-0 bg-black/95 z-[200] flex flex-col p-6 md:hidden';
-                menu.innerHTML = `
-                    <div class="flex justify-between items-center mb-10">
-                        <div class="flex items-center gap-x-3">
-                            <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#00f9ff] via-[#c026ff] to-[#ff00aa]"></div>
-                            <span class="font-display text-3xl font-black">O.M.N.E.X.A</span>
-                        </div>
-                        <button class="text-4xl text-white/80">×</button>
-                    </div>
-                    
-                    <div class="flex flex-col text-2xl gap-y-1 font-light">
-                        <a href="#downloads" class="py-4 px-2 border-b border-white/10">Downloads</a>
-                        <a href="#projects" class="py-4 px-2 border-b border-white/10">Projects</a>
-                        <a href="#upcoming" class="py-4 px-2 border-b border-white/10">What's Next</a>
-                        <a href="#vision" class="py-4 px-2 border-b border-white/10">Vision</a>
-                        <a href="#contact" class="py-4 px-2">Contact</a>
-                    </div>
-                    
-                    <div class="mt-auto pt-8">
-                        <a href="https://raw.githubusercontent.com/Ayu1248238/omne-xa-website/main/downloads/omnexta-ai-v2.1.4.apk" 
-                           download="MyChillAssistant-v2.1.4.apk"
-                           target="_blank"
-                           class="block w-full text-center neon-button py-4 rounded-3xl font-black text-lg">DOWNLOAD APK v2.1.4</a>
-                    </div>
-                `;
-                
-                document.body.appendChild(menu);
-                menu.querySelector('button').onclick = () => menu.remove();
-                menu.querySelectorAll('a').forEach(a => a.onclick = () => menu.remove());
-            });
-        }
-        
-        const projects = [
-            {
-                id: 0, title: "JARVIS", version: "3.8.2 STABLE", icon: "fa-robot", color: "#00f9ff",
-                description: "A fully functional, real-life JARVIS with complete PC automation. Voice-activated commands, intelligent task execution, system monitoring, application control, and natural conversation.",
-                tech: ["Python 3.12", "Whisper + TTS", "LangChain", "System Hooks", "FastAPI"],
-                status: "Production Ready • 14,200+ downloads",
-                downloadVersion: "3.8.2", size: "287 MB (Windows + Linux)", type: "pc",
-                downloadUrl: "https://github.com/Ayu1248238/omne-xa-website/releases"
-            },
-            {
-                id: 1, title: "MyChillAssistant", version: "2.1.4 ANDROID", icon: "fa-mobile-alt", color: "#10b981",
-                description: "The ultimate chill AI voice assistant for Android. Natural voice conversations, proactive suggestions, smart home integration, music control, calendar management, and a personality that actually matches your vibe.",
-                tech: ["Kotlin", "Whisper.cpp", "Gemini 2.0", "Jetpack Compose", "Wear OS"],
-                status: "Live on 31,400+ devices",
-                downloadVersion: "2.1.4", size: "48 MB APK", type: "apk",
-                downloadUrl: "https://raw.githubusercontent.com/Ayu1248238/omne-xa-website/main/downloads/omnexta-ai-v2.1.4.apk"
-            },
-            {
-                id: 2, title: "CreatorAI", version: "1.9.4 LIVE", icon: "fa-chart-line", color: "#c026ff",
-                description: "Your personal AI growth strategist. It studies your audience, generates high-performing content, writes scroll-stopping captions, predicts viral potential, and even suggests the perfect time to post.",
-                tech: ["Next.js 15", "GPT-4o + Claude 3.5", "Analytics API", "Instagram/TikTok/X", "Supabase"],
-                status: "SaaS • Free tier available",
-                downloadVersion: "1.9.4", size: "Web App (PWA)", type: "web",
-                downloadUrl: "#"
-            },
-            {
-                id: 3, title: "TradeForge AI", version: "4.1.0 BETA", icon: "fa-chart-area", color: "#10b981",
-                description: "Autonomous trading intelligence with real-time market sentiment from news & social, multi-timeframe analysis, dynamic risk management, and fully backtested strategies.",
-                tech: ["Python", "TensorFlow", "CCXT", "Alpaca / Bybit", "PostgreSQL"],
-                status: "Closed Beta • 3,100+ users",
-                downloadVersion: "4.1.0", size: "Desktop App (Windows/macOS)", type: "desktop",
-                downloadUrl: "https://github.com/Ayu1248238/omne-xa-website/releases"
-            },
-            {
-                id: 4, title: "KaliRecon", version: "2.7.3 KALI", icon: "fa-network-wired", color: "#f59e0b",
-                description: "The most beautiful and powerful reconnaissance toolkit for Kali Linux. Combines Nmap, Shodan, theHarvester, and custom AI to map networks, discover assets, identify vulnerabilities.",
-                tech: ["Bash + Python", "Nmap + Masscan", "Shodan API", "ReportLab", "Rich CLI"],
-                status: "Open Source • 5,800+ stars",
-                downloadVersion: "2.7.3", size: "12 MB (GitHub)", type: "script",
-                downloadUrl: "https://github.com/Ayu1248238/omne-xa-website"
-            },
-            {
-                id: 5, title: "PhantomWiFi", version: "1.3.8 ETHICAL", icon: "fa-wifi", color: "#ef4444",
-                description: "Advanced WiFi security testing framework. Includes intelligent deauthentication, targeted jamming simulation, WPA handshake capture, evil twin detection, and beautiful educational modules.",
-                tech: ["Python 3", "Scapy", "Aircrack-ng", "Bettercap", "PyQt6 GUI"],
-                status: "Educational Use Only",
-                downloadVersion: "1.3.8", size: "19 MB (Scripts + GUI)", type: "script",
-                downloadUrl: "https://github.com/Ayu1248238/omne-xa-website"
-            }
-        ];
-        
-        let currentProject = null;
-        
-        function showProjectModal(projectIndex) {
-            const project = projects[projectIndex];
-            currentProject = project;
-            
-            const modal = document.getElementById('project-modal');
-            
-            document.getElementById('modal-icon').innerHTML = `<i class="fa-solid ${project.icon}" style="color: ${project.color}"></i>`;
-            document.getElementById('modal-icon').style.background = `rgba(255,255,255,0.06)`;
-            document.getElementById('modal-icon').style.border = `1px solid ${project.color}30`;
-            
-            document.getElementById('modal-title').innerHTML = project.title;
-            document.getElementById('modal-version').innerHTML = project.version;
-            document.getElementById('modal-description').innerHTML = project.description;
-            
-            const techContainer = document.getElementById('modal-tech');
-            techContainer.innerHTML = '';
-            project.tech.forEach(tech => {
-                const tag = document.createElement('span');
-                tag.className = 'px-3 py-1 text-xs bg-white/10 rounded-full';
-                tag.textContent = tech;
-                techContainer.appendChild(tag);
-            });
-            
-            document.getElementById('modal-status').innerHTML = project.status;
-            document.getElementById('modal-download-version').innerHTML = project.downloadVersion;
-            document.getElementById('modal-size').innerHTML = project.size;
-            
-            const btnText = document.getElementById('modal-download-btn-text');
-            btnText.innerHTML = (project.type === 'apk') ? 'DOWNLOAD APK' : 
-                               (project.type === 'web') ? 'OPEN WEB APP' : 'GET BUILD';
-            
-            modal.style.display = 'flex';
+        // Smooth Mobile Menu
+        const btn = document.getElementById('mobile-menu-btn');
+        btn.addEventListener('click', () => {
+            const menu = document.createElement('div');
+            menu.className = 'fixed inset-0 bg-black/95 z-[200] flex flex-col p-6 backdrop-blur-xl animate-[fadeIn_0.2s_ease-out]';
+            menu.innerHTML = `
+                <div class="flex justify-between items-center mb-12">
+                    <span class="font-display text-2xl font-black neon-text">O.M.N.E.X.A</span>
+                    <button class="text-3xl text-white hover:text-[#00f9ff] transition-colors"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="flex flex-col text-3xl font-display gap-y-6">
+                    <a href="#downloads" class="hover:text-[#00f9ff] transition-colors">Downloads</a>
+                    <a href="#projects" class="hover:text-[#00f9ff] transition-colors">Projects</a>
+                    <a href="#vision" class="hover:text-[#00f9ff] transition-colors">Vision</a>
+                </div>
+            `;
+            document.body.appendChild(menu);
             document.body.style.overflow = 'hidden';
-        }
-        
-        function hideProjectModal() {
-            document.getElementById('project-modal').style.display = 'none';
-            document.body.style.overflow = 'visible';
-        }
-        
-        function handleProjectDownload() {
-            if (!currentProject) return;
-            hideProjectModal();
             
-            if (currentProject.type === 'apk' && currentProject.downloadUrl) {
-                const link = document.createElement('a');
-                link.href = currentProject.downloadUrl;
-                link.download = `MyChillAssistant-${currentProject.downloadVersion}.apk`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                setTimeout(() => {
-                    showToast("Download started! If it fails, try the GitHub link below.");
-                }, 600);
-            } else if (currentProject.type === 'web') {
-                window.open('https://creatorai.omnexta.dev', '_blank');
+            menu.querySelector('button').onclick = () => {
+                menu.remove();
+                document.body.style.overflow = 'auto';
+            };
+            menu.querySelectorAll('a').forEach(a => a.onclick = () => {
+                menu.remove();
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Navbar blur on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(5, 5, 7, 0.8)';
             } else {
-                window.open(currentProject.downloadUrl, '_blank');
+                nav.style.background = 'rgba(10, 10, 15, 0.6)';
             }
-        }
-        
-        function showInstallGuide() {
-            document.getElementById('install-modal').style.display = 'flex';
-        }
-        
-        function hideInstallModal() {
-            document.getElementById('install-modal').style.display = 'none';
-        }
-        
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-500 text-black px-6 py-3.5 rounded-3xl flex items-center gap-x-3 shadow-2xl z-[200] text-sm font-medium';
-            toast.innerHTML = `<i class="fa-solid fa-check-circle text-xl"></i> <span>${message}</span>`;
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.style.transition = 'all 0.4s ease';
-                toast.style.opacity = '0';
-                toast.style.transform = 'translate(-50%, 20px)';
-                setTimeout(() => toast.remove(), 400);
-            }, 2800);
-        }
-        
-        function submitContactForm(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = `<span class="flex items-center justify-center gap-x-2"><i class="fa-solid fa-spinner fa-spin"></i> TRANSMITTING...</span>`;
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = `<span class="flex items-center justify-center gap-x-2"><i class="fa-solid fa-check"></i> TRANSMISSION RECEIVED</span>`;
-                btn.style.background = 'linear-gradient(45deg, #10b981, #34d399)';
-                
-                setTimeout(() => {
-                    const form = document.getElementById('contact-form');
-                    form.reset();
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                    
-                    const success = document.createElement('div');
-                    success.className = 'text-center py-4 text-emerald-400 text-sm font-medium';
-                    success.innerHTML = `Thank you! Ayush will reply from <span class="font-mono">acidicskull422@gmail.com</span> shortly.`;
-                    form.parentNode.appendChild(success);
-                    setTimeout(() => success.remove(), 4800);
-                }, 1650);
-            }, 1250);
-        }
-        
-        function initKeyboard() {
-            document.addEventListener('keydown', (e) => {
-                if (e.key === '/' && document.activeElement.tagName === 'BODY') {
-                    e.preventDefault();
-                    document.getElementById('downloads').scrollIntoView({ behavior: 'smooth' });
-                }
-                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-                    e.preventDefault();
-                    document.getElementById('downloads').scrollIntoView({ behavior: 'smooth' });
-                }
-                if (e.key === 'Escape') {
-                    document.querySelectorAll('.fixed.inset-0').forEach(m => m.style.display = 'none');
-                    document.body.style.overflow = 'visible';
-                }
-            });
-            
-            // Konami code
-            let konami = [];
-            const secret = [38,38,40,40,37,39,37,39,66,65];
-            document.addEventListener('keyup', (e) => {
-                konami.push(e.keyCode);
-                if (konami.length > 10) konami.shift();
-                if (JSON.stringify(konami) === JSON.stringify(secret)) {
-                    document.body.style.transition = 'filter 0.4s';
-                    document.body.style.filter = 'hue-rotate(290deg) saturate(1.8)';
-                    setTimeout(() => document.body.style.filter = '', 2100);
-                    konami = [];
-                }
-            });
-        }
-        
-        function initScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.transition = 'all 0.7s cubic-bezier(0.23, 1, 0.32, 1)';
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.12 });
-            
-            document.querySelectorAll('.project-card, section > div.glass').forEach(el => {
-                el.style.opacity = '0.12';
-                el.style.transform = 'translateY(35px)';
-                observer.observe(el);
-            });
-        }
-        
-        function initializeWebsite() {
-            initTailwind();
-            initMobileMenu();
-            initKeyboard();
-            initScrollAnimations();
-            animateCounters();
-            
-            // Make logo clickable
-            const logo = document.querySelector('.font-display');
-            if (logo) {
-                logo.style.cursor = 'pointer';
-                logo.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
-            console.log('%c[O.M.N.E.X.A] Ultra-advanced website initialized. APK link active.', 'color:#00f9ff; font-size:10px');
-        }
-        
-        window.onload = initializeWebsite;
+        });
     </script>
 </body>
 </html>
