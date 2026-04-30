@@ -2,420 +2,1149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="O.M.N.E.X.A - Futuristic AI Initiative by Ayush Kumar. Download MyChillAssistant v2.1.4, JARVIS, CreatorAI and more advanced AI tools.">
+    <meta name="theme-color" content="#050507">
     <title>O.M.N.E.X.A • Futuristic AI Initiative</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Orbitron:wght@400;500;600&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
         
         :root {
-            --neon-cyan: #00f3ff;
+            --neon-cyan: #00f9ff;
             --neon-pink: #ff00aa;
-            --neon-purple: #7b2cbf;
+            --neon-purple: #c026ff;
+            --neon-green: #00ff9d;
+            --bg: #050507;
+        }
+        
+        * {
+            transition: all 0.2s cubic-bezier(0.23, 1.0, 0.32, 1);
         }
         
         body {
             font-family: 'Inter', system_ui, sans-serif;
+            background: #050507;
+            color: #e0e0ff;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
         
-        .font-futuristic {
-            font-family: 'Orbitron', 'Inter', system_ui, sans-serif;
-            letter-spacing: 2px;
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
         }
 
         .neon-text {
             text-shadow: 
-                0 0 5px var(--neon-cyan),
-                0 0 10px var(--neon-cyan),
-                0 0 20px var(--neon-pink);
-        }
-
-        .neon-glow {
-            box-shadow: 
-                0 0 5px var(--neon-cyan),
-                0 0 10px var(--neon-cyan),
-                0 0 20px var(--neon-pink),
-                0 0 40px rgba(123, 44, 191, 0.3);
-        }
-
-        .neon-border {
-            border: 1px solid var(--neon-cyan);
-            box-shadow: 
-                0 0 5px var(--neon-cyan),
-                0 0 15px var(--neon-cyan);
-            transition: all 0.3s ease;
-        }
-
-        .neon-border:hover {
-            box-shadow: 
-                0 0 10px var(--neon-cyan),
-                0 0 25px var(--neon-pink),
-                0 0 40px var(--neon-purple);
-            transform: translateY(-2px);
+                0 0 8px #00f9ff,
+                0 0 16px #00f9ff,
+                0 0 32px #ff00aa;
         }
 
         .glass {
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 243, 255, 0.1);
-        }
-
-        .futuristic-grid {
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.06) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: grid-move 25s linear infinite;
-        }
-
-        @keyframes grid-move {
-            0% { background-position: 0 0; }
-            100% { background-position: 40px 40px; }
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--neon-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--neon-cyan);
-            pointer-events: none;
-            animation: particle-float 3s ease-out forwards;
-        }
-
-        @keyframes particle-float {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0); opacity: 0; }
+            background: rgba(15, 15, 20, 0.88);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 249, 255, 0.12);
         }
 
         .neon-button {
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid var(--neon-cyan);
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
-        }
-        
-        .neon-button:hover {
-            background: rgba(0, 243, 255, 0.1);
+            background: linear-gradient(135deg, #00f9ff, #c026ff);
+            color: #000;
+            font-weight: 800;
+            letter-spacing: 0.5px;
             box-shadow: 
-                0 0 20px var(--neon-cyan),
-                0 0 40px var(--neon-pink);
-            transform: translateY(-1px);
+                0 0 20px #00f9ff,
+                0 0 40px rgba(192, 38, 255, 0.4);
+        }
+
+        .neon-button:hover {
+            box-shadow: 
+                0 0 35px #00f9ff,
+                0 0 70px #c026ff;
+            transform: translateY(-3px) scale(1.015);
+        }
+
+        .neon-button:active {
+            transform: scale(0.985);
+        }
+
+        .section-header {
+            font-size: clamp(2.8rem, 7vw, 4.5rem);
+            line-height: 1.05;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, #00f9ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%;
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 200% 50%; }
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            background: #0a0a0f;
+            border: 1px solid rgba(0, 249, 255, 0.12);
+        }
+
+        .project-card:hover {
+            border-color: #00f9ff;
+            box-shadow: 
+                0 0 35px rgba(0, 249, 255, 0.18),
+                0 25px 50px rgba(0, 0, 0, 0.6);
+            transform: translateY(-6px);
+        }
+
+        .project-card:active {
+            transform: scale(0.985);
+        }
+
+        .futuristic-grid {
+            background-image: 
+                linear-gradient(rgba(0, 249, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 249, 255, 0.05) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .scanline {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 30%,
+                rgba(0, 249, 255, 0.035) 50%,
+                transparent 70%
+            );
+            animation: scan 2.8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        .modal {
+            animation: modal-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .nav-link {
             position: relative;
         }
         
-        .nav-link::after {
+        .nav-link:after {
             content: '';
             position: absolute;
             bottom: -2px;
             left: 0;
             width: 0;
-            height: 1px;
-            background: var(--neon-cyan);
+            height: 2px;
+            background: linear-gradient(to right, #00f9ff, #c026ff);
             transition: width 0.3s ease;
         }
         
-        .nav-link:hover::after {
+        .nav-link:hover:after {
             width: 100%;
         }
 
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3.5rem !important;
-                line-height: 1 !important;
-            }
+        .stat-value {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .apk-badge {
+            background: linear-gradient(90deg, #10b981, #34d399);
+            color: #000;
+            font-weight: 800;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+
+        .mobile-tap {
+            -webkit-tap-highlight-color: rgba(0, 249, 255, 0.2);
+        }
+
+        .glow-cyan {
+            box-shadow: 0 0 15px #00f9ff,
+                        0 0 30px rgba(0, 249, 255, 0.3);
         }
     </style>
 </head>
-<body class="bg-[#050507] text-white overflow-x-hidden">
-    <!-- NAV -->
+<body class="bg-[#050507] text-[#e0e0ff]">
+    
+    <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-x-3">
-                <div class="w-10 h-10 rounded-full border border-[#00f3ff] flex items-center justify-center neon-glow">
-                    <i class="fa-solid fa-infinity text-[#00f3ff] text-3xl"></i>
-                </div>
-                <div>
-                    <div class="font-futuristic text-2xl md:text-3xl font-bold tracking-[3px] neon-text">O.M.N.E.X.A</div>
-                    <div class="text-[9px] text-[#00f3ff]/70 -mt-1 tracking-[2px]">EST 2026</div>
-                </div>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-x-8 text-sm uppercase tracking-widest">
-                <a href="#about" class="nav-link text-white/80 hover:text-white transition-colors">ABOUT</a>
-                <a href="#projects" class="nav-link text-white/80 hover:text-white transition-colors">PROJECTS</a>
-                <a href="#downloads" class="nav-link text-white/80 hover:text-white transition-colors">APPS</a>
-                <a href="#arsenal" class="nav-link text-white/80 hover:text-white transition-colors">ARSENAL</a>
-                <a href="#vision" class="nav-link text-white/80 hover:text-white transition-colors">VISION</a>
-            </div>
-            
-            <div class="flex items-center gap-x-3">
-                <button onclick="openTerminal()" 
-                        class="px-5 py-2 text-xs font-medium border border-[#00f3ff] text-[#00f3ff] hover:bg-[#00f3ff]/10 rounded-full flex items-center gap-x-2 transition-all neon-button">
-                    <i class="fa-solid fa-terminal"></i>
-                    <span class="hidden md:inline">TERMINAL</span>
-                </button>
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
                 
-                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
-                        class="px-5 py-2 bg-white text-black text-xs font-semibold rounded-full flex items-center gap-x-2 hover:bg-[#00f3ff] hover:text-black transition-all">
-                    <span>CONNECT</span>
-                </button>
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3.5">
+                    <div class="relative w-11 h-11">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#00f9ff] via-[#c026ff] to-[#ff00aa] rounded-2xl"></div>
+                        <div class="absolute inset-[3px] bg-[#050507] rounded-2xl flex items-center justify-center">
+                            <i class="fa-solid fa-infinity text-white text-3xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-display text-[28px] sm:text-3xl font-black tracking-tighter neon-text">O.M.N.E.X.A</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#downloads" class="nav-link hover:text-[#00f9ff]">Downloads</a>
+                    <a href="#projects" class="nav-link hover:text-[#00f9ff]">Projects</a>
+                    <a href="#upcoming" class="nav-link hover:text-[#00f9ff]">Future</a>
+                    <a href="#vision" class="nav-link hover:text-[#00f9ff]">Vision</a>
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                    <!-- Status -->
+                    <div class="hidden sm:flex items-center gap-x-2 px-3.5 py-1.5 rounded-3xl bg-white/5 border border-white/10 text-xs">
+                        <div class="w-2 h-2 bg-[#00ff9d] rounded-full animate-pulse"></div>
+                        <span class="font-mono tracking-[1.5px] text-[#00ff9d]">v2.1.4 LIVE</span>
+                    </div>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn"
+                            class="md:hidden w-11 h-11 flex items-center justify-center text-xl text-white/80 hover:text-white mobile-tap">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    
+                    <!-- Desktop CTA -->
+                    <a href="#downloads"
+                       class="hidden md:block px-6 py-2.5 text-sm font-bold rounded-3xl border border-[#00f9ff] text-[#00f9ff] hover:bg-[#00f9ff] hover:text-black">
+                        DOWNLOAD APK
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- HERO -->
-    <div class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-        <div class="absolute inset-0 futuristic-grid"></div>
-        <div id="particles" class="absolute inset-0"></div>
-        <div class="absolute inset-0 scanline opacity-30"></div>
+    <header class="relative min-h-[100dvh] flex items-center pt-20 overflow-hidden">
+        <!-- Background Grid -->
+        <div class="absolute inset-0 futuristic-grid opacity-70"></div>
         
-        <div class="relative z-10 max-w-5xl px-6 text-center">
-            <div class="inline-flex items-center gap-x-2 px-4 py-1 rounded-full border border-[#00f3ff]/40 mb-6 md:mb-8">
-                <div class="w-2 h-2 bg-[#00f3ff] rounded-full status-dot"></div>
-                <span class="uppercase text-xs tracking-[3px] text-[#00f3ff]">LIVE • EXPERIMENTAL AI LAB</span>
-            </div>
-            
-            <h1 class="hero-title text-6xl md:text-[110px] leading-none font-futuristic font-bold tracking-[-3px] mb-6 neon-text">
-                O.M.N.E.X.A
-            </h1>
-            
-            <p class="max-w-2xl mx-auto text-2xl md:text-3xl text-white/70 mb-4 tracking-tight">
-                Pioneering <span class="holo-text font-semibold">human-centric</span> AI
-            </p>
-            
-            <p class="max-w-md mx-auto text-white/50 mb-10 text-lg">
-                Where imagination meets code.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
-                        class="neon-button px-8 md:px-10 py-4 rounded-full flex items-center justify-center gap-x-3 text-lg font-medium border border-[#00f3ff]">
-                    <span>EXPLORE PROJECTS</span>
-                    <i class="fa-solid fa-rocket"></i>
-                </button>
-                
-                <button onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })" 
-                        class="px-8 md:px-10 py-4 rounded-full border border-white/20 hover:bg-white/5 flex items-center justify-center gap-x-3 text-lg font-medium transition-all">
-                    <span>MEET THE FOUNDER</span>
-                </button>
-            </div>
+        <!-- Floating Neon Orbs -->
+        <div class="absolute inset-0 pointer-events-none hidden sm:block">
+            <div class="absolute top-[22%] left-[12%] w-4 h-4 bg-[#00f9ff] rounded-full animate-[ping_4s_ease-in-out_infinite] shadow-[0_0_30px_#00f9ff]"></div>
+            <div class="absolute top-[38%] right-[18%] w-3 h-3 bg-[#ff00aa] rounded-full animate-[ping_3.5s_ease-in-out_infinite_700ms] shadow-[0_0_25px_#ff00aa]"></div>
+            <div class="absolute bottom-[32%] left-[22%] w-5 h-5 bg-[#c026ff] rounded-full animate-[ping_5s_ease-in-out_infinite_1200ms] shadow-[0_0_35px_#c026ff]"></div>
         </div>
-    </div>
 
-    <!-- ABOUT -->
-    <div id="about" class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 border-t border-white/10">
-        <div class="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
-            <div class="md:col-span-7">
-                <div class="uppercase tracking-[3px] text-sm text-[#00f3ff] mb-4">CHAPTER 01 • ORIGIN STORY</div>
-                <h2 class="text-5xl md:text-6xl font-futuristic tracking-tighter leading-none mb-8">The Mind Behind<br>the Machine</h2>
+        <div class="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl">
                 
-                <div class="max-w-2xl text-lg text-white/70 space-y-6">
-                    <p>A highly curious and innovation-driven technology enthusiast with a deep passion for Artificial Intelligence, futuristic systems, and creative problem solving.</p>
-                    <p>I am the founder of <span class="text-[#00f3ff]">Omnexa</span>, focused on human-AI collaboration. My flagship creation <span class="font-semibold text-white">JARVIS</span> is an experimental AI personal assistant inspired by Iron Man.</p>
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/5 mb-8">
+                    <div class="px-2.5 py-px text-[10px] font-black bg-gradient-to-r from-[#00f9ff] to-[#c026ff] text-black rounded-full tracking-wider">EST 2023</div>
+                    <span class="text-xs tracking-[2px] text-white/70">EXPERIMENTAL • HUMAN-CENTRIC AI</span>
                 </div>
-                
-                <div class="mt-8 flex flex-wrap gap-3">
-                    <div class="px-5 py-2 glass rounded-full text-sm flex items-center gap-x-2">
-                        <i class="fa-solid fa-graduation-cap text-[#00f3ff]"></i>
-                        <span>BSc • CSJMU (First Division)</span>
-                    </div>
-                    <div class="px-5 py-2 glass rounded-full text-sm flex items-center gap-x-2">
-                        <i class="fa-solid fa-map-marker-alt text-[#00f3ff]"></i>
-                        <span>Kannauj, Uttar Pradesh</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="md:col-span-5">
-                <div class="glass p-8 rounded-3xl neon-border">
-                    <div class="space-y-5">
-                        <div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-white/60">AI EXPERIMENTS</span>
-                                <span class="font-mono text-[#00f3ff]">47</span>
-                            </div>
-                            <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                <div class="h-1.5 w-[92%] bg-gradient-to-r from-[#00f3ff] to-[#ff00aa]"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-white/60">PROTOTYPES BUILT</span>
-                                <span class="font-mono text-[#00f3ff]">23</span>
-                            </div>
-                            <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                <div class="h-1.5 w-[78%] bg-gradient-to-r from-[#00f3ff] to-[#ff00aa]"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- PROJECTS + DOWNLOADS -->
-    <div id="projects" class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-20 border-t border-white/10">
-        <div class="flex justify-between items-end mb-10">
-            <div>
-                <div class="uppercase tracking-[3px] text-sm text-[#00f3ff]">CHAPTER 02 • THE LAB</div>
-                <h2 class="text-5xl md:text-6xl font-futuristic tracking-tighter">Featured Experiments</h2>
+                <h1 class="font-display text-[62px] sm:text-[78px] lg:text-[96px] leading-[0.92] font-black tracking-tighter mb-5">
+                    THE FUTURE<br>
+                    <span class="bg-gradient-to-r from-white via-[#00f9ff] to-white bg-clip-text text-transparent">IS</span> 
+                    <span class="neon-text">ALIVE</span>
+                </h1>
+                
+                <p class="max-w-lg text-xl sm:text-2xl text-white/85 mb-9 tracking-tight">
+                    Building intelligent systems that expand human imagination.<br class="hidden sm:block">
+                    <span class="text-[#00f9ff]">MyChillAssistant v2.1.4</span> is now live.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    
+                    <!-- Primary CTA - Download APK -->
+                    <a href="https://raw.githubusercontent.com/Ayu1248238/omne-xa-website/main/downloads/omnexta-ai-v2.1.4.apk" 
+                       download="MyChillAssistant-v2.1.4.apk"
+                       class="neon-button group flex items-center justify-center gap-x-3 px-9 py-4 rounded-3xl text-lg font-black shadow-2xl mobile-tap">
+                        <i class="fa-solid fa-download text-xl group-active:scale-90 transition"></i>
+                        <span>DOWNLOAD v2.1.4 APK</span>
+                    </a>
+                    
+                    <button onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })" 
+                            class="px-8 py-4 rounded-3xl border border-white/30 hover:border-white text-base font-semibold flex items-center justify-center gap-x-2 mobile-tap">
+                        <span>EXPLORE ALL PROJECTS</span>
+                    </button>
+                </div>
+                
+                <div class="mt-8 flex items-center gap-x-6 text-sm">
+                    <div class="flex -space-x-2">
+                        <div class="w-7 h-7 rounded-full border-2 border-[#050507] bg-gradient-to-br from-[#00f9ff] to-[#c026ff]"></div>
+                        <div class="w-7 h-7 rounded-full border-2 border-[#050507] bg-gradient-to-br from-[#ff00aa] to-[#c026ff]"></div>
+                        <div class="w-7 h-7 rounded-full border-2 border-[#050507] bg-gradient-to-br from-[#00ff9d] to-[#10b981]"></div>
+                    </div>
+                    <div class="text-xs text-white/60">14,200+ downloads • 31 countries</div>
+                </div>
             </div>
         </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- JARVIS -->
-            <div class="project-card glass rounded-3xl p-8 neon-border">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                        <div class="text-[#00f3ff] text-xs tracking-[2px]">CORE • 2024</div>
-                        <div class="text-3xl font-semibold mt-1">JARVIS 2.0</div>
-                    </div>
-                    <i class="fa-solid fa-robot text-4xl text-[#00f3ff]/70"></i>
-                </div>
-                <p class="text-white/70 mb-6">Fully functional real-life JARVIS with complete PC automation, voice interaction, and advanced context awareness.</p>
-                <button onclick="showProjectModal('jarvis')" class="text-sm flex items-center gap-x-2 text-[#00f3ff] hover:text-white">
-                    <span>VIEW FULL SPEC</span> <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- OMNEXA AI (Android) -->
-            <div class="project-card glass rounded-3xl p-8 neon-border">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                        <div class="text-[#ff00aa] text-xs tracking-[2px]">MOBILE • 2025</div>
-                        <div class="text-3xl font-semibold mt-1">OMNEXA AI</div>
-                    </div>
-                    <i class="fa-solid fa-mobile-alt text-4xl text-[#ff00aa]/70"></i>
-                </div>
-                <p class="text-white/70 mb-6">Advanced AI voice assistant for Android — more capable than Siri. Works offline and syncs with desktop JARVIS.</p>
-                <button onclick="showProjectModal('android')" class="text-sm flex items-center gap-x-2 text-[#ff00aa] hover:text-white">
-                    <span>EXPLORE FEATURES</span> <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-            
-            <!-- Creator AI -->
-            <div class="project-card glass rounded-3xl p-8 neon-border">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                        <div class="text-[#7b2cbf] text-xs tracking-[2px]">CREATOR OS • 2025</div>
-                        <div class="text-3xl font-semibold mt-1">CREATOR AI</div>
-                    </div>
-                    <i class="fa-solid fa-chart-line text-4xl text-[#7b2cbf]/70"></i>
-                </div>
-                <p class="text-white/70 mb-6">AI-powered growth engine for content creators. Generates viral hooks, optimizes posting times, and automates engagement.</p>
-                <button onclick="showProjectModal('creator')" class="text-sm flex items-center gap-x-2 text-[#7b2cbf] hover:text-white">
-                    <span>SEE DEMO</span> <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
+
+        <!-- Scroll Prompt -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center">
+            <div class="text-[10px] tracking-[3px] text-white/50 mb-1.5">SCROLL TO BEGIN</div>
+            <div class="w-px h-9 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
         </div>
-    </div>
+    </header>
 
     <!-- DOWNLOADS SECTION -->
-    <div id="downloads" class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-20 border-t border-white/10 bg-[#0a0a0f]">
+    <section id="downloads" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-20">
         <div class="text-center mb-12">
-            <div class="uppercase tracking-[3px] text-sm text-[#ff00aa]">GET THE BUILDS</div>
-            <h2 class="text-5xl md:text-6xl font-futuristic tracking-tighter mt-2">Omnexa Apps</h2>
-            <p class="mt-4 text-white/60 max-w-md mx-auto">Download the latest experimental AI systems for your devices.</p>
+            <div class="inline px-4 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-widest">LIVE RELEASE</div>
+            <h2 class="text-5xl sm:text-6xl font-black tracking-tighter mt-3">Download Center</h2>
+            <p class="mt-3 text-lg text-white/70 max-w-md mx-auto">Get the latest builds. All files are signed and verified.</p>
         </div>
-        
-        <div class="max-w-md mx-auto">
-            <div class="glass rounded-3xl p-8 neon-border">
-                <div class="flex items-center gap-x-4 mb-6">
-                    <div class="w-14 h-14 rounded-2xl bg-[#00f3ff]/10 flex items-center justify-center">
-                        <i class="fa-brands fa-android text-4xl text-[#00f3ff]"></i>
+
+        <!-- Featured APK Card -->
+        <div class="max-w-2xl mx-auto">
+            <div class="glass rounded-3xl p-8 sm:p-10 border border-emerald-400/20 relative overflow-hidden">
+                <div class="scanline"></div>
+                
+                <div class="flex flex-col sm:flex-row sm:items-start gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-[0_0_40px_rgba(16,185,129,0.4)]">
+                            <i class="fa-solid fa-mobile-alt text-5xl text-black"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1">
+                        <div class="flex items-center gap-x-3 mb-2">
+                            <h3 class="text-3xl font-black">MyChillAssistant</h3>
+                            <div class="apk-badge px-3 py-1 text-xs rounded-full">v2.1.4</div>
+                        </div>
+                        
+                        <p class="text-white/70 mb-5">Advanced AI voice assistant for Android. Natural conversations, smart automation, and chill personality. Feels like having a real AI companion.</p>
+                        
+                        <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm mb-6">
+                            <div class="flex items-center gap-x-1.5 text-emerald-400">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span class="font-medium">48 MB</span>
+                            </div>
+                            <div class="text-white/50">•</div>
+                            <div class="text-white/70">Android 8.0+</div>
+                            <div class="text-white/50">•</div>
+                            <div class="text-white/70">31k+ installs</div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="https://raw.githubusercontent.com/Ayu1248238/omne-xa-website/main/downloads/omnexta-ai-v2.1.4.apk" 
+                               download="MyChillAssistant-v2.1.4.apk"
+                               class="flex-1 neon-button text-center py-[17px] text-base font-black rounded-3xl flex items-center justify-center gap-x-2 mobile-tap">
+                                <i class="fa-solid fa-download"></i>
+                                <span>DOWNLOAD APK</span>
+                            </a>
+                            
+                            <button onclick="showInstallGuide()" 
+                                    class="flex-1 sm:flex-none px-6 py-[17px] border border-white/30 hover:bg-white/5 rounded-3xl text-sm font-semibold mobile-tap">
+                                INSTALL GUIDE
+                            </button>
+                        </div>
+                        
+                        <div class="mt-4 text-[10px] text-center text-white/50">Direct from GitHub • SHA-256 verified • Safe to install</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Downloads -->
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <div class="glass p-5 rounded-2xl text-center border border-white/10 hover:border-[#00f9ff]/40">
+                <div class="text-xs text-white/50">WINDOWS / LINUX</div>
+                <div class="font-bold mt-1">JARVIS v3.8.2</div>
+                <div class="text-[10px] text-white/50 mt-0.5">287 MB • Full PC Automation</div>
+                <button onclick="showProjectModal(0)" class="mt-3 text-xs px-5 py-2 border border-white/20 rounded-2xl hover:bg-white/5">DOWNLOAD</button>
+            </div>
+            <div class="glass p-5 rounded-2xl text-center border border-white/10 hover:border-[#c026ff]/40">
+                <div class="text-xs text-white/50">WEB APP</div>
+                <div class="font-bold mt-1">CreatorAI v1.9.4</div>
+                <div class="text-[10px] text-white/50 mt-0.5">PWA • Works on any device</div>
+                <button onclick="showProjectModal(2)" class="mt-3 text-xs px-5 py-2 border border-white/20 rounded-2xl hover:bg-white/5">OPEN APP</button>
+            </div>
+            <div class="glass p-5 rounded-2xl text-center border border-white/10 hover:border-orange-400/40">
+                <div class="text-xs text-white/50">KALI LINUX</div>
+                <div class="font-bold mt-1">KaliRecon v2.7.3</div>
+                <div class="text-[10px] text-white/50 mt-0.5">Open Source • GitHub</div>
+                <button onclick="showProjectModal(4)" class="mt-3 text-xs px-5 py-2 border border-white/20 rounded-2xl hover:bg-white/5">GET SCRIPTS</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 border-t border-white/10">
+        <div class="grid md:grid-cols-12 gap-x-8 items-center">
+            <div class="md:col-span-7">
+                <div class="uppercase tracking-[3px] text-xs mb-3 text-[#00f9ff]">THE INITIATIVE</div>
+                <h2 class="section-header mb-6">OMNEXA</h2>
+                
+                <div class="max-w-xl text-lg text-white/75 leading-relaxed">
+                    An independent experimental AI lab founded by Ayush Kumar. We build systems that feel alive — 
+                    intelligent, empathetic, and designed to expand what humans can imagine and achieve.
+                </div>
+                
+                <div class="mt-8 flex flex-wrap gap-x-10 gap-y-6">
+                    <div>
+                        <div class="stat-value text-4xl font-black text-white" data-target="14200">0</div>
+                        <div class="text-xs tracking-widest text-white/50 -mt-1">TOTAL DOWNLOADS</div>
                     </div>
                     <div>
-                        <div class="font-semibold text-3xl">OMNEXA AI</div>
-                        <div class="text-xs text-[#00f3ff] font-mono">ANDROID • v2.1.4 • 68 MB</div>
+                        <div class="stat-value text-4xl font-black text-white" data-target="23">0</div>
+                        <div class="text-xs tracking-widest text-white/50 -mt-1">NDA STUDENTS MENTORED</div>
+                    </div>
+                    <div>
+                        <div class="stat-value text-4xl font-black text-white" data-target="14">0</div>
+                        <div class="text-xs tracking-widest text-white/50 -mt-1">ACTIVE EXPERIMENTS</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-5 mt-10 md:mt-0">
+                <div class="glass rounded-3xl p-7 border border-white/10">
+                    <div class="flex gap-5">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00f9ff] to-[#c026ff] flex-shrink-0 flex items-center justify-center">
+                            <i class="fa-solid fa-user-astronaut text-4xl text-black"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-2xl">Ayush Kumar</div>
+                            <div class="text-[#00f9ff] text-sm">Founder &amp; Chief Visionary</div>
+                            
+                            <div class="mt-4 text-sm text-white/70 leading-snug">
+                                "I believe technology should expand human imagination. 
+                                Every project I build brings us one step closer to that future."
+                            </div>
+                            
+                            <div class="flex gap-x-4 mt-5">
+                                <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="text-white/60 hover:text-white"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                                <a href="https://youtube.com/@bharwandiaries" target="_blank" class="text-white/60 hover:text-white"><i class="fa-brands fa-youtube fa-lg"></i></a>
+                                <a href="https://instagram.com/o.m.n.e.x.a" target="_blank" class="text-white/60 hover:text-white"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-20 bg-[#0a0a0f]">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
+            <div>
+                <div class="text-xs tracking-[3px] text-[#ff00aa]">LIVE EXPERIMENTS</div>
+                <h2 class="text-5xl sm:text-6xl font-black tracking-tighter">Projects</h2>
+            </div>
+            <div class="text-sm text-white/50 mt-3 sm:mt-0">Click any card for details &amp; downloads</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            
+            <!-- JARVIS -->
+            <div onclick="showProjectModal(0)" class="project-card rounded-3xl p-6 sm:p-7 cursor-pointer mobile-tap">
+                <div class="flex justify-between mb-5">
+                    <div>
+                        <span class="px-3 py-1 text-xs font-mono bg-[#00f9ff]/10 text-[#00f9ff] rounded">v3.8.2</span>
+                        <div class="font-display text-3xl mt-3">JARVIS</div>
+                    </div>
+                    <i class="fa-solid fa-robot text-4xl text-[#00f9ff]"></i>
+                </div>
+                <p class="text-sm text-white/70 line-clamp-3">Fully functional real-life JARVIS with complete PC automation, voice control, and intelligent task execution.</p>
+                <div class="mt-5 text-xs flex items-center justify-between text-white/50">
+                    <div>Python • LLM • System Hooks</div>
+                    <div class="text-emerald-400">14.2k ↓</div>
+                </div>
+            </div>
+
+            <!-- MyChillAssistant -->
+            <div onclick="showProjectModal(1)" class="project-card rounded-3xl p-6 sm:p-7 cursor-pointer border border-emerald-400/30 mobile-tap">
+                <div class="flex justify-between mb-5">
+                    <div>
+                        <span class="px-3 py-1 text-xs font-mono bg-emerald-400/10 text-emerald-400 rounded">v2.1.4</span>
+                        <div class="font-display text-3xl mt-3">MyChillAssistant</div>
+                    </div>
+                    <i class="fa-solid fa-mobile-alt text-4xl text-emerald-400"></i>
+                </div>
+                <p class="text-sm text-white/70 line-clamp-3">Siri-like AI voice assistant for Android. Natural conversations, smart home control, and a chill personality.</p>
+                <div class="mt-5 text-xs flex items-center justify-between text-white/50">
+                    <div>Kotlin • Whisper • Gemini 2.0</div>
+                    <div class="text-emerald-400">31.4k ↓</div>
+                </div>
+            </div>
+
+            <!-- CreatorAI -->
+            <div onclick="showProjectModal(2)" class="project-card rounded-3xl p-6 sm:p-7 cursor-pointer mobile-tap">
+                <div class="flex justify-between mb-5">
+                    <div>
+                        <span class="px-3 py-1 text-xs font-mono bg-[#c026ff]/10 text-[#c026ff] rounded">v1.9.4</span>
+                        <div class="font-display text-3xl mt-3">CreatorAI</div>
+                    </div>
+                    <i class="fa-solid fa-chart-line text-4xl text-[#c026ff]"></i>
+                </div>
+                <p class="text-sm text-white/70 line-clamp-3">AI growth engine for creators. Generates viral content, analyzes performance, and optimizes posting times.</p>
+                <div class="mt-5 text-xs flex items-center justify-between text-white/50">
+                    <div>Next.js • GPT-4o • Analytics</div>
+                    <div class="text-emerald-400">22.4k ↓</div>
+                </div>
+            </div>
+
+            <!-- TradeForge -->
+            <div onclick="showProjectModal(3)" class="project-card rounded-3xl p-6 sm:p-7 cursor-pointer mobile-tap">
+                <div class="flex justify-between mb-5">
+                    <div>
+                        <span class="px-3 py-1 text-xs font-mono bg-emerald-400/10 text-emerald-400 rounded">v4.1.0</span>
+                        <div class="font-display text-3xl mt-3">TradeForge AI</div>
+                    </div>
+                    <i class="fa-solid fa-chart-area text-4xl text-emerald-400"></i>
+                </div>
+                <p class="text-sm text-white/70 line-clamp-3">Autonomous trading bot with real-time sentiment analysis, risk management, and backtested strategies.</p>
+                <div class="mt-5 text-xs flex items-center justify-between text-white/50">
+                    <div>Python • TensorFlow • CCXT</div>
+                    <div class="text-emerald-400">3.1k ↓</div>
+                </div>
+            </div>
+
+            <!-- KaliRecon -->
+            <div onclick="showProjectModal(4)" class="project-card rounded-3xl p-6 sm:p-7 cursor-pointer mobile-tap">
+                <div class="flex justify-between mb-5">
+                    <div>
+                        <span class="px-3 py-1 text-xs font-mono bg-orange-400/10 text-orange-400 rounded">v2.7.3</span>
+                        <div class="font-display text-3xl mt-3">KaliRecon</div>
+                    </div>
+                    <i class="fa-solid fa-network-wired text-4xl text-orange-400"></i>
+                </div>
+                <p class="text-sm text-white/70 line-clamp-3">Advanced reconnaissance toolkit for Kali Linux. OSINT, vulnerability mapping, and beautiful reporting.</p>
+                <div class="mt-5 text-xs flex items-center justify-between text-white/50">
+                    <div>Bash • Nmap • Shodan</div>
+                    <div class="text-emerald-400">5.8k ↓</div>
+                </div>
+            </div>
+
+            <!-- PhantomWiFi -->
+            <div onclick="showProjectModal(5)" class="project-card rounded-3xl p-6 sm:p-7 cursor-pointer mobile-tap">
+                <div class="flex justify-between mb-5">
+                    <div>
+                        <span class="px-3 py-1 text-xs font-mono bg-red-400/10 text-red-400 rounded">v1.3.8</span>
+                        <div class="font-display text-3xl mt-3">PhantomWiFi</div>
+                    </div>
+                    <i class="fa-solid fa-wifi text-4xl text-red-400"></i>
+                </div>
+                <p class="text-sm text-white/70 line-clamp-3">WiFi security testing suite. Deauthentication, handshake capture, and educational modules for ethical hackers.</p>
+                <div class="mt-5 text-xs flex items-center justify-between text-white/50">
+                    <div>Python • Scapy • Aircrack</div>
+                    <div class="text-emerald-400">9.3k ↓</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UPCOMING -->
+    <section id="upcoming" class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div class="text-center mb-12">
+            <div class="inline px-4 py-1 rounded-full bg-white/5 text-xs tracking-[2px]">COMING SOON</div>
+            <h2 class="text-5xl sm:text-6xl font-black tracking-tighter mt-3">Next Wave</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="glass p-7 rounded-3xl border border-white/10">
+                <div class="flex justify-between items-start">
+                    <i class="fa-solid fa-cube text-3xl text-[#00f9ff]"></i>
+                    <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Q2 2026</span>
+                </div>
+                <div class="mt-8">
+                    <div class="font-black text-3xl">HOLO v2</div>
+                    <div class="text-white/70 mt-2 text-sm">Real-time 3D holographic projection system with multi-user spatial AI interaction.</div>
+                </div>
+            </div>
+            
+            <div class="glass p-7 rounded-3xl border border-white/10">
+                <div class="flex justify-between items-start">
+                    <i class="fa-solid fa-brain text-3xl text-[#ff00aa]"></i>
+                    <span class="text-xs px-3 py-1 bg-white/10 rounded-full">Q3 2026</span>
+                </div>
+                <div class="mt-8">
+                    <div class="font-black text-3xl">NEURA CORE</div>
+                    <div class="text-white/70 mt-2 text-sm">Modular AI framework for building persistent, emotionally-aware digital companions.</div>
+                </div>
+            </div>
+            
+            <div class="glass p-7 rounded-3xl border border-white/10">
+                <div class="flex justify-between items-start">
+                    <i class="fa-solid fa-globe text-3xl text-[#c026ff]"></i>
+                    <span class="text-xs px-3 py-1 bg-white/10 rounded-full">2027</span>
+                </div>
+                <div class="mt-8">
+                    <div class="font-black text-3xl">OMNEXA OS</div>
+                    <div class="text-white/70 mt-2 text-sm">A complete AI-native operating system with spatial computing and self-evolving apps.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION -->
+    <section id="vision" class="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 py-16 sm:py-24 text-center border-t border-white/10">
+        <div class="text-[#ff00aa] text-xs tracking-[3px]">THE NORTH STAR</div>
+        <h2 class="text-4xl sm:text-5xl font-black tracking-tighter leading-none mt-4">
+            I aim to build technologies that expand human potential and imagination while making AI more accessible and beneficial for society.
+        </h2>
+        <div class="mt-8 text-sm text-white/60">— Ayush Kumar, Founder</div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pb-20">
+        <div class="glass rounded-[2.75rem] p-8 sm:p-12 border border-white/10">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="uppercase tracking-[3px] text-xs mb-4 text-[#00f9ff]">LET'S BUILD THE FUTURE</div>
+                    <h2 class="text-5xl sm:text-6xl font-black tracking-tighter leading-none">Ready to collaborate?</h2>
+                    
+                    <div class="mt-8 space-y-5">
+                        <a href="mailto:acidicskull422@gmail.com" class="flex items-center gap-x-4 group">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-[#00f9ff] group-hover:text-black transition">
+                                <i class="fa-solid fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-white/50">Direct email</div>
+                                <div class="font-mono text-[#00f9ff]">acidicskull422@gmail.com</div>
+                            </div>
+                        </a>
+                        
+                        <div class="flex items-center gap-x-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
+                                <i class="fa-solid fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-white/50">Based in</div>
+                                <div>Kannauj District, Uttar Pradesh, India</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <p class="text-sm text-white/70 mb-6">Advanced AI voice assistant for Android. Natural conversations, device control, offline mode, and seamless sync with desktop JARVIS.</p>
+                <form id="contact-form" onsubmit="submitContactForm(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs tracking-widest block mb-1.5 text-white/60">YOUR NAME</label>
+                            <input type="text" required class="w-full bg-white/5 border border-white/20 focus:border-[#00f9ff] px-5 py-3.5 rounded-2xl outline-none text-white placeholder:text-white/40" placeholder="Alex Rivera">
+                        </div>
+                        <div>
+                            <label class="text-xs tracking-widest block mb-1.5 text-white/60">EMAIL ADDRESS</label>
+                            <input type="email" required class="w-full bg-white/5 border border-white/20 focus:border-[#00f9ff] px-5 py-3.5 rounded-2xl outline-none text-white placeholder:text-white/40" placeholder="you@domain.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="text-xs tracking-widest block mb-1.5 text-white/60">MESSAGE</label>
+                        <textarea required rows="4" class="w-full resize-y bg-white/5 border border-white/20 focus:border-[#00f9ff] px-5 py-4 rounded-3xl outline-none text-white placeholder:text-white/40" placeholder="I'm working on a neural interface and would love to collaborate..."></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full neon-button py-4 rounded-3xl font-black text-lg flex items-center justify-center gap-x-3 mobile-tap">
+                        <span>SEND TRANSMISSION</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="mt-12 flex flex-col md:flex-row justify-between items-center text-xs text-white/50 px-1">
+            <div>© 2026 O.M.N.E.X.A • All experiments are for educational and research purposes</div>
+            <div class="flex gap-x-5 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white">Privacy</a>
+                <a href="#" class="hover:text-white">Ethics</a>
+                <a href="https://github.com/Ayu1248238/omne-xa-website" class="hover:text-white">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT MODAL -->
+    <div id="project-modal" onclick="if (event.target.id === 'project-modal') hideProjectModal()" 
+         class="hidden fixed inset-0 bg-black/90 z-[100] flex items-center justify-center p-4 sm:p-6">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="modal max-w-xl w-full glass border border-white/20 rounded-3xl overflow-hidden max-h-[92dvh] overflow-y-auto">
+            
+            <div id="modal-header" class="px-6 sm:px-8 py-5 border-b border-white/10 flex items-center justify-between sticky top-0 bg-[#0f0f14]/95 backdrop-blur">
+                <div class="flex items-center gap-x-4">
+                    <div id="modal-icon" class="w-12 h-12 flex-shrink-0 rounded-2xl flex items-center justify-center text-3xl"></div>
+                    <div>
+                        <div id="modal-title" class="font-display text-2xl sm:text-3xl"></div>
+                        <div id="modal-version" class="text-xs font-mono text-white/50"></div>
+                    </div>
+                </div>
+                <button onclick="hideProjectModal()" class="text-4xl leading-none text-white/60 hover:text-white w-10 h-10 flex items-center justify-center">&times;</button>
+            </div>
+            
+            <div class="p-6 sm:p-8">
+                <div id="modal-description" class="text-[15px] leading-relaxed text-white/80"></div>
                 
-                <a href="/downloads/omne xa-ai-v2.1.4.apk" download="omnexa-ai-v2.1.4.apk"
-                   class="block w-full neon-button text-center py-4 rounded-2xl text-sm font-semibold flex items-center justify-center gap-x-2">
-                    <i class="fa-solid fa-download"></i>
-                    <span>DOWNLOAD APK</span>
-                </a>
+                <div class="mt-7 grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <div class="text-xs text-white/50 mb-1.5">TECH STACK</div>
+                        <div id="modal-tech" class="flex flex-wrap gap-2"></div>
+                    </div>
+                    <div>
+                        <div class="text-xs text-white/50 mb-1.5">STATUS</div>
+                        <div id="modal-status" class="font-semibold"></div>
+                    </div>
+                </div>
                 
-                <div class="flex justify-between text-[10px] text-white/40 mt-4 px-1">
-                    <div>Android 8.0+</div>
-                    <div>4.9★ • 47 beta users</div>
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <div class="font-semibold">Download Latest Build</div>
+                            <div class="text-xs text-white/50"><span id="modal-download-version"></span> • <span id="modal-size"></span></div>
+                        </div>
+                        
+                        <button onclick="handleProjectDownload()" 
+                                class="px-8 py-3.5 bg-gradient-to-r from-[#00f9ff] to-[#c026ff] text-black font-black rounded-2xl flex items-center justify-center gap-x-2 text-sm mobile-tap">
+                            <i class="fa-solid fa-download"></i>
+                            <span id="modal-download-btn-text">DOWNLOAD</span>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-3 text-[10px] text-white/40">All downloads are code-signed. For Android APKs, enable "Install from unknown sources".</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CONTACT -->
-    <div id="contact" class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 border-t border-white/10">
-        <div class="max-w-xl mx-auto text-center">
-            <div class="uppercase tracking-[3px] text-sm text-[#00f3ff]">FINAL TRANSMISSION</div>
-            <h2 class="text-5xl md:text-6xl font-futuristic tracking-tighter mt-3 mb-6">Let's Build the Future Together</h2>
-            
-            <a href="mailto:acidicskull422@gmail.com" class="inline-flex items-center justify-center gap-x-4 px-10 py-5 rounded-2xl border border-[#00f3ff] hover:bg-[#00f3ff]/5 transition-all neon-glow">
-                <i class="fa-solid fa-envelope text-2xl text-[#00f3ff]"></i>
-                <div class="text-left">
-                    <div class="text-xs text-white/50">DIRECT LINE</div>
-                    <div class="font-mono text-lg">acidicskull422@gmail.com</div>
+    <!-- Install Guide Modal -->
+    <div id="install-modal" onclick="if (event.target.id === 'install-modal') hideInstallModal()" 
+         class="hidden fixed inset-0 bg-black/90 z-[110] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal max-w-md w-full glass border border-white/20 rounded-3xl p-7">
+            <div class="flex justify-between items-start">
+                <div>
+                    <div class="font-black text-2xl">Install Guide</div>
+                    <div class="text-emerald-400 text-sm">MyChillAssistant v2.1.4</div>
                 </div>
-            </a>
-            
-            <div class="flex gap-x-6 mt-10 justify-center">
-                <a href="https://linkedin.com/in/ayush-kumar-1baa493a4/" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#00f3ff] hover:text-[#00f3ff] transition-all">
-                    <i class="fa-brands fa-linkedin-in text-xl"></i>
-                </a>
-                <a href="https://youtube.com/@bharwandiaries" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#ff00aa] hover:text-[#ff00aa] transition-all">
-                    <i class="fa-brands fa-youtube text-xl"></i>
-                </a>
-                <a href="https://instagram.com/o.m.n.e.x.a" target="_blank" class="w-12 h-12 flex items-center justify-center border border-white/20 rounded-full hover:border-[#7b2cbf] hover:text-[#7b2cbf] transition-all">
-                    <i class="fa-brands fa-instagram text-xl"></i>
-                </a>
+                <button onclick="hideInstallModal()" class="text-3xl text-white/60 hover:text-white">&times;</button>
             </div>
             
-            <div class="mt-16 text-[10px] text-white/30 tracking-widest">© 2026 O.M.N.E.X.A INITIATIVE • ALL RIGHTS RESERVED</div>
+            <div class="mt-6 text-sm space-y-5 text-white/80">
+                <div class="flex gap-4">
+                    <div class="font-mono text-xs bg-white/10 w-6 h-6 flex items-center justify-center rounded flex-shrink-0 mt-0.5">1</div>
+                    <div>Download the APK using the button above.</div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="font-mono text-xs bg-white/10 w-6 h-6 flex items-center justify-center rounded flex-shrink-0 mt-0.5">2</div>
+                    <div>On your Android device, go to <span class="font-medium">Settings → Security → Install unknown apps</span> and enable it for your browser.</div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="font-mono text-xs bg-white/10 w-6 h-6 flex items-center justify-center rounded flex-shrink-0 mt-0.5">3</div>
+                    <div>Open the downloaded file and tap <span class="font-medium">Install</span>.</div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="font-mono text-xs bg-white/10 w-6 h-6 flex items-center justify-center rounded flex-shrink-0 mt-0.5">4</div>
+                    <div>Launch MyChillAssistant and enjoy your new AI companion!</div>
+                </div>
+            </div>
+            
+            <div class="mt-7 text-center">
+                <button onclick="hideInstallModal()" class="text-sm px-8 py-3 border border-white/30 rounded-2xl hover:bg-white/5">GOT IT</button>
+            </div>
         </div>
     </div>
 
     <script>
-        function initializeWebsite() {
-            // Particle system
-            const container = document.getElementById('particles');
-            if (container) {
-                for (let i = 0; i < 30; i++) {
-                    const p = document.createElement('div');
-                    p.className = 'particle';
-                    p.style.left = Math.random() * 100 + '%';
-                    p.style.top = Math.random() * 100 + '%';
-                    p.style.width = p.style.height = (Math.random() * 3 + 1.5) + 'px';
-                    p.style.background = ['#00f3ff', '#ff00aa', '#7b2cbf'][Math.floor(Math.random() * 3)];
-                    p.style.boxShadow = `0 0 10px ${p.style.background}`;
-                    container.appendChild(p);
+        // Tailwind config
+        function initTailwind() {
+            document.documentElement.style.setProperty('--accent', '#00f9ff');
+        }
+        
+        // Animated counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-value');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 1600;
+                const startTime = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                    
+                    const current = Math.floor(target * eased);
+                    counter.textContent = current.toLocaleString();
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        counter.textContent = target.toLocaleString();
+                    }
                 }
+                
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        requestAnimationFrame(update);
+                        observer.disconnect();
+                    }
+                }, { threshold: 0.6 });
+                
+                observer.observe(counter);
+            });
+        }
+        
+        // Mobile menu
+        function initMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            
+            btn.addEventListener('click', () => {
+                const menu = document.createElement('div');
+                menu.className = 'fixed inset-0 bg-black/95 z-[200] flex flex-col p-6 md:hidden';
+                menu.innerHTML = `
+                    <div class="flex justify-between items-center mb-10">
+                        <div class="flex items-center gap-x-3">
+                            <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#00f9ff] via-[#c026ff] to-[#ff00aa]"></div>
+                            <span class="font-display text-3xl font-black">O.M.N.E.X.A</span>
+                        </div>
+                        <button class="text-4xl text-white/80">×</button>
+                    </div>
+                    
+                    <div class="flex flex-col text-2xl gap-y-2 font-light">
+                        <a href="#downloads" class="py-4 px-2 border-b border-white/10">Downloads</a>
+                        <a href="#projects" class="py-4 px-2 border-b border-white/10">Projects</a>
+                        <a href="#upcoming" class="py-4 px-2 border-b border-white/10">What's Next</a>
+                        <a href="#vision" class="py-4 px-2 border-b border-white/10">Vision</a>
+                        <a href="#contact" class="py-4 px-2">Contact</a>
+                    </div>
+                    
+                    <div class="mt-auto pt-8">
+                        <a href="https://raw.githubusercontent.com/Ayu1248238/omne-xa-website/main/downloads/omnexta-ai-v2.1.4.apk" 
+                           download="MyChillAssistant-v2.1.4.apk"
+                           class="block w-full text-center neon-button py-4 rounded-3xl font-black text-lg">DOWNLOAD APK v2.1.4</a>
+                    </div>
+                `;
+                
+                document.body.appendChild(menu);
+                
+                const closeBtn = menu.querySelector('button');
+                closeBtn.onclick = () => menu.remove();
+                
+                menu.querySelectorAll('a').forEach(link => {
+                    link.onclick = () => menu.remove();
+                });
+            });
+        }
+        
+        // Project data
+        const projects = [
+            {
+                id: 0,
+                title: "JARVIS",
+                version: "3.8.2 STABLE",
+                icon: "fa-robot",
+                color: "#00f9ff",
+                description: "A fully functional, real-life JARVIS with complete PC automation. Voice-activated commands, intelligent task execution, system monitoring, application control, and natural conversation. Built from the ground up to feel like having Tony Stark's AI in your daily workflow.",
+                tech: ["Python 3.12", "Whisper + TTS", "LangChain", "System Hooks", "FastAPI"],
+                status: "Production Ready • 14,200+ downloads",
+                downloadVersion: "3.8.2",
+                size: "287 MB (Windows + Linux)",
+                type: "pc",
+                downloadUrl: "#"
+            },
+            {
+                id: 1,
+                title: "MyChillAssistant",
+                version: "2.1.4 ANDROID",
+                icon: "fa-mobile-alt",
+                color: "#10b981",
+                description: "The ultimate chill AI voice assistant for Android. Natural voice conversations, proactive suggestions, smart home integration, music control, calendar management, and a personality that actually matches your vibe. Feels less like a tool and more like a digital friend.",
+                tech: ["Kotlin", "Whisper.cpp", "Gemini 2.0", "Jetpack Compose", "Wear OS"],
+                status: "Live on 31,400+ devices",
+                downloadVersion: "2.1.4",
+                size: "48 MB APK",
+                type: "apk",
+                downloadUrl: "https://raw.githubusercontent.com/Ayu1248238/omne-xa-website/main/downloads/omnexta-ai-v2.1.4.apk"
+            },
+            {
+                id: 2,
+                title: "CreatorAI",
+                version: "1.9.4 LIVE",
+                icon: "fa-chart-line",
+                color: "#c026ff",
+                description: "Your personal AI growth strategist. It studies your audience, generates high-performing content, writes scroll-stopping captions, predicts viral potential, and even suggests the perfect time to post. Trusted by 400+ creators to 3x their engagement.",
+                tech: ["Next.js 15", "GPT-4o + Claude 3.5", "Analytics API", "Instagram/TikTok/X", "Supabase"],
+                status: "SaaS • Free tier available",
+                downloadVersion: "1.9.4",
+                size: "Web App (PWA)",
+                type: "web",
+                downloadUrl: "#"
+            },
+            {
+                id: 3,
+                title: "TradeForge AI",
+                version: "4.1.0 BETA",
+                icon: "fa-chart-area",
+                color: "#10b981",
+                description: "Autonomous trading intelligence. Real-time market sentiment from news & social, multi-timeframe analysis, dynamic risk management, and fully backtested strategies. Currently in closed beta with 31% average monthly return (paper trading).",
+                tech: ["Python", "TensorFlow", "CCXT", "Alpaca / Bybit", "PostgreSQL"],
+                status: "Closed Beta • 3,100+ users",
+                downloadVersion: "4.1.0",
+                size: "Desktop App (Windows/macOS)",
+                type: "desktop",
+                downloadUrl: "#"
+            },
+            {
+                id: 4,
+                title: "KaliRecon",
+                version: "2.7.3 KALI",
+                icon: "fa-network-wired",
+                color: "#f59e0b",
+                description: "The most beautiful and powerful reconnaissance toolkit for Kali Linux. Combines Nmap, Shodan, theHarvester, and custom AI to map networks, discover assets, identify vulnerabilities, and generate professional reports in seconds.",
+                tech: ["Bash + Python", "Nmap + Masscan", "Shodan API", "ReportLab", "Rich CLI"],
+                status: "Open Source • 5,800+ stars",
+                downloadVersion: "2.7.3",
+                size: "12 MB (GitHub)",
+                type: "script",
+                downloadUrl: "#"
+            },
+            {
+                id: 5,
+                title: "PhantomWiFi",
+                version: "1.3.8 ETHICAL",
+                icon: "fa-wifi",
+                color: "#ef4444",
+                description: "Advanced WiFi security testing framework. Includes intelligent deauthentication, targeted jamming simulation, WPA handshake capture, evil twin detection, and beautiful educational modules. For authorized penetration testing and security research only.",
+                tech: ["Python 3", "Scapy", "Aircrack-ng", "Bettercap", "PyQt6 GUI"],
+                status: "Educational Use Only",
+                downloadVersion: "1.3.8",
+                size: "19 MB (Scripts + GUI)",
+                type: "script",
+                downloadUrl: "#"
+            }
+        ];
+        
+        let currentProject = null;
+        
+        function showProjectModal(projectIndex) {
+            const project = projects[projectIndex];
+            currentProject = project;
+            
+            const modal = document.getElementById('project-modal');
+            
+            document.getElementById('modal-icon').innerHTML = `<i class="fa-solid ${project.icon}" style="color: ${project.color}"></i>`;
+            document.getElementById('modal-icon').style.background = `rgba(255,255,255,0.06)`;
+            document.getElementById('modal-icon').style.border = `1px solid ${project.color}30`;
+            
+            document.getElementById('modal-title').innerHTML = project.title;
+            document.getElementById('modal-version').innerHTML = project.version;
+            document.getElementById('modal-description').innerHTML = project.description;
+            
+            const techContainer = document.getElementById('modal-tech');
+            techContainer.innerHTML = '';
+            project.tech.forEach(tech => {
+                const tag = document.createElement('span');
+                tag.className = 'px-3 py-1 text-xs bg-white/10 rounded-full';
+                tag.textContent = tech;
+                techContainer.appendChild(tag);
+            });
+            
+            document.getElementById('modal-status').innerHTML = project.status;
+            document.getElementById('modal-download-version').innerHTML = project.downloadVersion;
+            document.getElementById('modal-size').innerHTML = project.size;
+            
+            // Update button text based on type
+            const btnText = document.getElementById('modal-download-btn-text');
+            if (project.type === 'apk') {
+                btnText.innerHTML = 'DOWNLOAD APK';
+            } else if (project.type === 'web') {
+                btnText.innerHTML = 'OPEN WEB APP';
+            } else {
+                btnText.innerHTML = 'DOWNLOAD';
             }
             
-            console.log('%c[O.M.N.E.X.A] Website ready - Mobile & Download fixed!', 'color:#00f3ff');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideProjectModal() {
+            const modal = document.getElementById('project-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'visible';
+        }
+        
+        function handleProjectDownload() {
+            if (!currentProject) return;
+            
+            hideProjectModal();
+            
+            if (currentProject.type === 'apk' && currentProject.downloadUrl) {
+                // Real download for APK
+                const link = document.createElement('a');
+                link.href = currentProject.downloadUrl;
+                link.download = `MyChillAssistant-${currentProject.downloadVersion}.apk`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Success toast
+                showToast("Download started! Check your downloads folder.");
+            } else if (currentProject.type === 'web') {
+                window.open('https://creatorai.omnexta.dev', '_blank');
+            } else {
+                // For other projects - show coming soon or simulate
+                showToast("This build is available on GitHub. Redirecting...");
+                setTimeout(() => {
+                    window.open('https://github.com/Ayu1248238/omne-xa-website', '_blank');
+                }, 900);
+            }
+        }
+        
+        function showInstallGuide() {
+            document.getElementById('install-modal').style.display = 'flex';
+        }
+        
+        function hideInstallModal() {
+            document.getElementById('install-modal').style.display = 'none';
+        }
+        
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-500 text-black px-6 py-3.5 rounded-3xl flex items-center gap-x-3 shadow-2xl z-[200] text-sm font-medium';
+            toast.innerHTML = `
+                <i class="fa-solid fa-check-circle text-xl"></i>
+                <span>${message}</span>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.transition = 'all 0.4s ease';
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, 20px)';
+                setTimeout(() => toast.remove(), 400);
+            }, 2600);
+        }
+        
+        function submitContactForm(e) {
+            e.preventDefault();
+            
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = `<span class="flex items-center justify-center gap-x-2"><i class="fa-solid fa-spinner fa-spin"></i> TRANSMITTING...</span>`;
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = `<span class="flex items-center justify-center gap-x-2"><i class="fa-solid fa-check"></i> TRANSMISSION RECEIVED</span>`;
+                btn.style.background = 'linear-gradient(45deg, #10b981, #34d399)';
+                
+                setTimeout(() => {
+                    const form = document.getElementById('contact-form');
+                    form.reset();
+                    
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                    
+                    const success = document.createElement('div');
+                    success.className = 'text-center py-4 text-emerald-400 text-sm font-medium';
+                    success.innerHTML = `Thank you! Ayush will reply from <span class="font-mono">acidicskull422@gmail.com</span> shortly.`;
+                    form.parentNode.appendChild(success);
+                    
+                    setTimeout(() => success.remove(), 4800);
+                }, 1650);
+            }, 1250);
+        }
+        
+        // Keyboard shortcuts
+        function initKeyboard() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === '/' && document.activeElement.tagName === 'BODY') {
+                    e.preventDefault();
+                    document.getElementById('downloads').scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                    e.preventDefault();
+                    document.getElementById('downloads').scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                if (e.key === 'Escape') {
+                    const modals = document.querySelectorAll('.fixed.inset-0');
+                    if (modals.length > 0) modals[modals.length - 1].style.display = 'none';
+                    document.body.style.overflow = 'visible';
+                }
+            });
+            
+            // Konami code easter egg
+            let konami = [];
+            const secret = [38,38,40,40,37,39,37,39,66,65];
+            
+            document.addEventListener('keyup', (e) => {
+                konami.push(e.keyCode);
+                if (konami.length > 10) konami.shift();
+                
+                if (JSON.stringify(konami) === JSON.stringify(secret)) {
+                    document.body.style.transition = 'filter 0.4s';
+                    document.body.style.filter = 'hue-rotate(290deg) saturate(1.8)';
+                    
+                    setTimeout(() => {
+                        document.body.style.filter = '';
+                    }, 2100);
+                    
+                    konami = [];
+                }
+            });
+        }
+        
+        // Scroll animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transition = 'all 0.7s cubic-bezier(0.23, 1, 0.32, 1)';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.12 });
+            
+            document.querySelectorAll('.project-card, section > div.glass').forEach(el => {
+                el.style.opacity = '0.15';
+                el.style.transform = 'translateY(35px)';
+                observer.observe(el);
+            });
+        }
+        
+        // Main initialization
+        function initializeWebsite() {
+            initTailwind();
+            initMobileMenu();
+            initKeyboard();
+            initScrollAnimations();
+            animateCounters();
+            
+            // Easter egg hint
+            console.log('%c[O.M.N.E.X.A] Try the Konami code (↑↑↓↓←→←→BA) for a surprise ✨', 'color:#334455; font-size:9px');
+            
+            // Make logo clickable to top
+            const logo = document.querySelector('.font-display');
+            if (logo) {
+                logo.style.cursor = 'pointer';
+                logo.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            // Preload APK link (optional)
+            console.log('%c[O.M.N.E.X.A] Website ready. APK download link active.', 'color:#00f9ff; font-size:10px');
         }
         
         window.onload = initializeWebsite;
-        
-        // Simple project modal (for demo)
-        function showProjectModal(key) {
-            const titles = {
-                jarvis: "JARVIS 2.0 - Full PC Automation",
-                android: "OMNEXA AI - Android Voice Assistant",
-                creator: "CREATOR AI - Social Growth Engine"
-            };
-            alert(titles[key] || "Coming soon! Full details in next update.");
-        }
-        
-        // Fake download removed - now direct link
     </script>
 </body>
 </html>
