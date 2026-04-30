@@ -196,6 +196,24 @@
             background: linear-gradient(var(--neon-cyan), var(--neon-purple));
             border-radius: 10px;
         }
+        
+        /* Original download button style from your code */
+        .original-download-btn {
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #fff;
+        }
+        .original-download-btn:hover {
+            border-color: #00f9ff;
+            color: #00f9ff;
+            background: rgba(0,249,255,0.05);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -395,7 +413,7 @@
         </div>
     </section>
 
-    <!-- TOOLS & PROJECTS -->
+    <!-- TOOLS & PROJECTS (Download mechanism restored exactly like your original code) -->
     <section id="tools" class="py-24 px-6 relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
@@ -405,131 +423,85 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- MyChillAssistant -->
+                <!-- MyChillAssistant - EXACT original download mechanism -->
                 <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-start mb-6">
                         <div class="p-4 bg-[#00f9ff]/10 rounded-2xl"><i class="fa-solid fa-mobile-screen-button text-4xl text-[#00f9ff]"></i></div>
-                        <div class="flex flex-col items-end">
-                            <span class="px-4 py-1 text-xs font-bold bg-emerald-400/20 text-emerald-400 rounded-3xl">APK • LIVE</span>
-                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
-                        </div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#00f9ff]/20 text-[#00f9ff] rounded border border-[#00f9ff]/30">APK LIVE</span>
                     </div>
-                    <h3 class="font-orbitron text-3xl mt-6 mb-2">MyChillAssistant</h3>
-                    <p class="text-white/70 flex-1">Siri-level AI voice assistant for Android. Natural conversation, smart home control, task automation, personal memory, futuristic UI.</p>
-                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00f9ff]"></i> Voice-first interface</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00f9ff]"></i> Offline capabilities</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00f9ff]"></i> 50+ automations</li>
-                    </ul>
-                    <a href="./downloads/mychillassistant.apk" download class="btn-neon w-full justify-center">
-                        <i class="fa-solid fa-download mr-3"></i> DOWNLOAD APK (Premium)
+                    <h3 class="font-orbitron text-3xl font-bold mb-3">MyChillAssistant</h3>
+                    <p class="text-white/70 flex-grow text-sm mb-6">AI voice assistant like Siri for Android. Features natural conversation, smart automation, and a personalized futuristic feel.</p>
+                    <a href="./downloads/mychillassistant.apk" download 
+                       class="original-download-btn flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-download"></i> Download APK
                     </a>
                 </div>
 
-                <!-- JARVIS -->
+                <!-- JARVIS (Jiya replaced with JARVIS) -->
                 <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-start mb-6">
                         <div class="p-4 bg-[#c026ff]/10 rounded-2xl"><i class="fa-solid fa-robot text-4xl text-[#c026ff]"></i></div>
-                        <div class="flex flex-col items-end">
-                            <span class="px-4 py-1 text-xs font-bold bg-purple-400/20 text-[#c026ff] rounded-3xl">PC • FULL SYSTEM</span>
-                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
-                        </div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#c026ff]/20 text-[#c026ff] rounded border border-[#c026ff]/30">PC SYSTEM</span>
                     </div>
-                    <h3 class="font-orbitron text-3xl mt-6 mb-2">JARVIS AI</h3>
-                    <p class="text-white/70 flex-1">The real-life Iron Man AI assistant. Full PC automation, voice control, intelligent task execution, system monitoring, deep OS integration, and contextual awareness.</p>
-                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#c026ff]"></i> Voice + gesture control</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#c026ff]"></i> Browser, files, apps automation</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#c026ff]"></i> Real-time learning</li>
-                    </ul>
-                    <button onclick="contactForTool('JARVIS AI')" class="w-full py-4 text-center font-semibold border-2 border-[#c026ff] hover:bg-[#c026ff] hover:text-black rounded-3xl flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
-                    </button>
+                    <h3 class="font-orbitron text-3xl font-bold mb-3">JARVIS AI</h3>
+                    <p class="text-white/70 flex-grow text-sm mb-6">A fully functional real-life AI assistant with complete PC automation, intelligent task handling, and deep OS integration.</p>
+                    <a href="#" class="original-download-btn flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-github"></i> View Source
+                    </a>
                 </div>
 
                 <!-- CreatorAI -->
                 <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-start mb-6">
                         <div class="p-4 bg-[#ff00aa]/10 rounded-2xl"><i class="fa-solid fa-wand-magic-sparkles text-4xl text-[#ff00aa]"></i></div>
-                        <div class="flex flex-col items-end">
-                            <span class="px-4 py-1 text-xs font-bold bg-pink-400/20 text-[#ff00aa] rounded-3xl">WEB APP</span>
-                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
-                        </div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#ff00aa]/20 text-[#ff00aa] rounded border border-[#ff00aa]/30">WEB APP</span>
                     </div>
-                    <h3 class="font-orbitron text-3xl mt-6 mb-2">CreatorAI</h3>
-                    <p class="text-white/70 flex-1">Your personal AI growth engine for social media. Analyzes trends, generates viral content, schedules posts, suggests hooks &amp; thumbnails.</p>
-                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff00aa]"></i> Instagram • YouTube • X</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff00aa]"></i> Content calendar AI</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff00aa]"></i> Performance analytics</li>
-                    </ul>
-                    <button onclick="contactForTool('CreatorAI')" class="w-full py-4 text-center font-semibold border-2 border-[#ff00aa] hover:bg-[#ff00aa] hover:text-black rounded-3xl flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
-                    </button>
+                    <h3 class="font-orbitron text-3xl font-bold mb-3">CreatorAI</h3>
+                    <p class="text-white/70 flex-grow text-sm mb-6">Advanced AI tool designed to help creators grow on social media through content analysis and intelligent generation.</p>
+                    <a href="#" class="original-download-btn flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch App
+                    </a>
                 </div>
 
                 <!-- Trading AI Bot -->
                 <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-start mb-6">
                         <div class="p-4 bg-[#00ff9d]/10 rounded-2xl"><i class="fa-solid fa-chart-line text-4xl text-[#00ff9d]"></i></div>
-                        <div class="flex flex-col items-end">
-                            <span class="px-4 py-1 text-xs font-bold bg-emerald-400/20 text-[#00ff9d] rounded-3xl">AUTONOMOUS BOT</span>
-                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
-                        </div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#00ff9d]/20 text-[#00ff9d] rounded border border-[#00ff9d]/30">BOT</span>
                     </div>
-                    <h3 class="font-orbitron text-3xl mt-6 mb-2">Trading AI Bot</h3>
-                    <p class="text-white/70 flex-1">Autonomous crypto &amp; stock trading intelligence. Real-time market analysis, risk management, dynamic strategy execution, 24/7 operation.</p>
-                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00ff9d]"></i> Multi-exchange support</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00ff9d]"></i> Backtesting engine</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#00ff9d]"></i> Telegram alerts</li>
-                    </ul>
-                    <button onclick="contactForTool('Trading AI Bot')" class="w-full py-4 text-center font-semibold border-2 border-[#00ff9d] hover:bg-[#00ff9d] hover:text-black rounded-3xl flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
-                    </button>
+                    <h3 class="font-orbitron text-3xl font-bold mb-3">Trading AI Bot</h3>
+                    <p class="text-white/70 flex-grow text-sm mb-6">Autonomous trading intelligence capable of analyzing market trends and executing strategies dynamically.</p>
+                    <a href="#" class="original-download-btn flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-github"></i> Get Script
+                    </a>
                 </div>
 
                 <!-- KaliRecon -->
                 <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-start mb-6">
                         <div class="p-4 bg-[#ff6b00]/10 rounded-2xl"><i class="fa-solid fa-terminal text-4xl text-[#ff6b00]"></i></div>
-                        <div class="flex flex-col items-end">
-                            <span class="px-4 py-1 text-xs font-bold bg-orange-400/20 text-[#ff6b00] rounded-3xl">KALI LINUX TOOL</span>
-                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
-                        </div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#ff6b00]/20 text-[#ff6b00] rounded border border-[#ff6b00]/30">LINUX</span>
                     </div>
-                    <h3 class="font-orbitron text-3xl mt-6 mb-2">KaliRecon</h3>
-                    <p class="text-white/70 flex-1">Next-gen reconnaissance &amp; OSINT framework for Kali Linux. Automated footprinting, subdomain enumeration, vulnerability scanning &amp; intelligence gathering.</p>
-                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff6b00]"></i> Passive &amp; active recon</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff6b00]"></i> Beautiful reports</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff6b00]"></i> Modular &amp; extensible</li>
-                    </ul>
-                    <button onclick="contactForTool('KaliRecon')" class="w-full py-4 text-center font-semibold border-2 border-[#ff6b00] hover:bg-[#ff6b00] hover:text-black rounded-3xl flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
-                    </button>
+                    <h3 class="font-orbitron text-3xl font-bold mb-3">KaliRecon</h3>
+                    <p class="text-white/70 flex-grow text-sm mb-6">Advanced reconnaissance and intelligence gathering tool developed specifically for Kali Linux environments.</p>
+                    <a href="#" class="original-download-btn flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-download"></i> Download Tool
+                    </a>
                 </div>
 
                 <!-- Net Disruptor -->
                 <div class="project-card glass-card rounded-3xl p-8 flex flex-col h-full">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-start mb-6">
                         <div class="p-4 bg-[#ff3333]/10 rounded-2xl"><i class="fa-solid fa-wifi text-4xl text-[#ff3333]"></i></div>
-                        <div class="flex flex-col items-end">
-                            <span class="px-4 py-1 text-xs font-bold bg-red-400/20 text-[#ff3333] rounded-3xl">ETHICAL • EDUCATIONAL</span>
-                            <span class="text-[10px] text-white/50 mt-1">PREMIUM</span>
-                        </div>
+                        <span class="px-3 py-1 text-[10px] font-bold bg-[#ff3333]/20 text-[#ff3333] rounded border border-[#ff3333]/30">ETHICAL</span>
                     </div>
-                    <h3 class="font-orbitron text-3xl mt-6 mb-2">Net Disruptor</h3>
-                    <p class="text-white/70 flex-1">Advanced WiFi deauthentication &amp; network testing toolkit. Perfect for ethical security research, penetration testing labs, and understanding wireless protocols.</p>
-                    <ul class="text-xs text-white/60 mt-6 space-y-1 mb-8">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff3333]"></i> Deauth attacks</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff3333]"></i> Evil twin simulation</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-[#ff3333]"></i> Educational scripts</li>
-                    </ul>
-                    <button onclick="contactForTool('Net Disruptor')" class="w-full py-4 text-center font-semibold border-2 border-[#ff3333] hover:bg-[#ff3333] hover:text-black rounded-3xl flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-envelope"></i> GET FULL ACCESS
-                    </button>
+                    <h3 class="font-orbitron text-3xl font-bold mb-3">Net Disruptor</h3>
+                    <p class="text-white/70 flex-grow text-sm mb-6">WiFi deauthentication and network jamming scripts for educational cybersecurity experiments and testing.</p>
+                    <a href="#" class="original-download-btn flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-github"></i> View Scripts
+                    </a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -633,7 +605,6 @@
     </div>
 
     <script>
-        // Tailwind script already loaded
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu')
             const icon = document.getElementById('mobile-menu-btn').querySelector('i')
@@ -648,7 +619,7 @@
             }
         }
 
-        // Particle system for extra futuristic feel
+        // Particle system
         function createParticles() {
             const canvas = document.getElementById('particles')
             const ctx = canvas.getContext('2d')
@@ -673,7 +644,6 @@
                 update() {
                     this.x += this.speedX
                     this.y += this.speedY
-                    
                     if (this.x < 0 || this.x > canvas.width) this.speedX *= -1
                     if (this.y < 0 || this.y > canvas.height) this.speedY *= -1
                 }
@@ -701,7 +671,6 @@
             animate()
         }
 
-        // Contact for specific tool
         function contactForTool(tool) {
             hidePremiumModal()
             const subject = encodeURIComponent(`O.M.N.E.X.A Premium Access – ${tool}`)
@@ -720,11 +689,9 @@
             modal.classList.remove('flex')
         }
 
-        // Fake transmission success
         function sendTransmission() {
             const form = document.getElementById('contact-form')
             const btn = form.querySelector('button')
-            
             const originalText = btn.innerHTML
             btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-3"></i> TRANSMITTING TO O.M.N.E.X.A CORE...`
             btn.disabled = true
@@ -737,7 +704,6 @@
             }, 1650)
         }
 
-        // Scroll reveal animation
         function revealOnScroll() {
             const cards = document.querySelectorAll('.project-card, .glass-card')
             const observer = new IntersectionObserver((entries) => {
@@ -756,7 +722,6 @@
             })
         }
 
-        // Initialize everything
         window.onload = function() {
             createParticles()
             revealOnScroll()
